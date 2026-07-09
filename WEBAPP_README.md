@@ -102,7 +102,7 @@ cd .. && python -m uvicorn server:app --port 8000
 ## קבצי פרויקט
 
 ```
-post_branches_db/
+post_office/
 ├── server.py                        ← FastAPI (autocomplete/search/branches/nearby/branch/meta)
 ├── .env                             ← מפתחות API (לא ב-git)
 └── webapp/
