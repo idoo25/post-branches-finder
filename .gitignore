@@ -3,6 +3,9 @@
 # Committed as a deploy snapshot for Render (no build-time data source there) —
 # refresh locally with refresh_from_live.py --apply, then commit the update.
 !post_branches.db
+# Stripped-down copy of a separate 425MB project DB (see address_lookup.py) —
+# committed so address canonicalization works on Render too, not just locally.
+!addresses_lite.db
 *.db-shm
 *.db-wal
 __pycache__/

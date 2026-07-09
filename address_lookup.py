@@ -1,17 +1,24 @@
 """
-Canonicalize a free-text Israeli address against the verified address_db
+Canonicalize a free-text Israeli address against a verified address dataset
 (city/street/house-number data sourced from Israel Post + Ministry of
-Interior — C:\\school\\addresses_db\\addresses.db) before handing it to a
-geocoding provider.
+Interior) before handing it to a geocoding provider.
 
 Why: Nominatim (OSM) sometimes fails or mismatches on Hebrew addresses due to
 spelling variants, alternate street names, or missing/rare entries.
-address_db has 1,583 cities (+525 aliases), 63,813 streets (+92,956 aliases),
-and 606,811 verified house-level (city, street, house_number) combinations.
+The dataset has 1,583 cities (+525 aliases), 63,813 streets (+92,956 aliases),
+and 716,207 verified house-level (city, street, house_number) combinations.
 If the free-text input matches, we rewrite it to the OFFICIAL spelling before
 geocoding — same free Nominatim call, better hit rate. Pure local SQLite
 lookup, no network call. Falls back to the original text (returns None) on
 any mismatch, missing file, or ambiguity — never raises.
+
+Bundled as "addresses_lite.db" (~25MB, committed to this repo) rather than
+the full ~425MB source DB it's derived from — it keeps only the tables and
+columns this module actually reads (cities/city_aliases/streets/
+street_aliases/zip_codes, house-existence check only), dropping unrelated
+ETL/crawl bookkeeping tables and per-row metadata the lookup never touches.
+This keeps it small enough to ship with the app (including to Render), so
+address canonicalization works identically in production, not just locally.
 """
 from __future__ import annotations
 
@@ -26,7 +33,7 @@ from address_norm import normalize as normalize_address
 
 logger = logging.getLogger(__name__)
 
-ADDRESSES_DB = Path(os.environ.get("ADDRESSES_DB_PATH", r"C:\school\addresses_db\addresses.db"))
+ADDRESSES_DB = Path(os.environ.get("ADDRESSES_DB_PATH", str(Path(__file__).resolve().parent / "addresses_lite.db")))
 
 _HOUSE_NUM_RE = re.compile(r"^(.*?)\s*(\d+)\s*$")
 
