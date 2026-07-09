@@ -13,10 +13,10 @@ interface Props {
 
 function makePinIcon(rank: number, kind: "default" | "hover" | "selected"): L.DivIcon {
   const bg =
-    kind === "selected" ? "#7c0a17" : kind === "hover" ? "#a51226" : "#E63946";
+    kind === "selected" ? "#A80B1E" : kind === "hover" ? "#C40E22" : "#D40E26";
   const ring =
-    kind === "selected" ? "0 0 0 4px rgba(124,10,23,0.25)" :
-    kind === "hover"    ? "0 0 0 6px rgba(229,57,70,0.30)" : "none";
+    kind === "selected" ? "0 0 0 4px rgba(168,11,30,0.25)" :
+    kind === "hover"    ? "0 0 0 6px rgba(212,14,38,0.28)" : "none";
   const html = `
     <div class="pin" style="
       background:${bg};

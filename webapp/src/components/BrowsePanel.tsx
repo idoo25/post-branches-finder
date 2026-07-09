@@ -62,12 +62,6 @@ export function BrowsePanel({ branches, loading, error, filter, setFilter, focus
     ? [focusedBranch.latitude, focusedBranch.longitude]
     : null;
 
-  // Clicking a map pin focuses a branch that may be scrolled out of view in
-  // the list (or, before the fix below, not rendered at all) — bring it into
-  // view whenever the focus changes, and again whenever its height changes:
-  // BranchDetail loads its data asynchronously, so the row is still just a
-  // small "loading" placeholder at the moment we first scroll, then grows
-  // once the real content renders — re-scroll after that growth too.
   const focusedRef = useRef<HTMLLIElement | null>(null);
   useEffect(() => {
     const el = focusedRef.current;
@@ -80,10 +74,6 @@ export function BrowsePanel({ branches, loading, error, filter, setFilter, focus
     return () => ro.disconnect();
   }, [focused]);
 
-  // The map renders every filtered marker, but the list caps at LIST_CAP for
-  // performance — so clicking a marker outside the first LIST_CAP would set
-  // `focused` with no matching <li> ever rendered to show the detail in.
-  // Make sure the focused branch always has a row, even if it's off-cap.
   const visibleBranches = useMemo(() => {
     const capped = filtered.slice(0, LIST_CAP);
     if (focusedBranch && !capped.some((b) => b.branch_number === focusedBranch.branch_number)) {
@@ -108,9 +98,9 @@ export function BrowsePanel({ branches, loading, error, filter, setFilter, focus
                 radius={focused === b.branch_number ? 9 : 5}
                 pathOptions={{
                   color: "#fff",
-                  weight: 1,
-                  fillColor: focused === b.branch_number ? "#7c0a17" : "#E63946",
-                  fillOpacity: 0.85,
+                  weight: 1.5,
+                  fillColor: focused === b.branch_number ? "#A80B1E" : "#D40E26",
+                  fillOpacity: 0.9,
                 }}
                 eventHandlers={{ click: () => setFocused(focused === b.branch_number ? null : b.branch_number) }}
               />
@@ -122,26 +112,63 @@ export function BrowsePanel({ branches, loading, error, filter, setFilter, focus
       </div>
       <aside className="list-col">
         <div className="browse-search">
-          <input
-            className="browse-input"
-            type="text"
-            placeholder="חפשו לפי שם סניף, עיר או כתובת…"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            dir="rtl"
-          />
+          <div className="browse-input-wrap">
+            <span className="browse-input-icon" aria-hidden>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+                <path d="M20 20l-3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </span>
+            <input
+              className="browse-input"
+              type="text"
+              placeholder="חפשו לפי שם סניף, עיר או כתובת…"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              dir="rtl"
+              aria-label="חיפוש סניפים"
+            />
+          </div>
         </div>
-        {loading && <div className="list-empty">טוען את כל הסניפים…</div>}
+        {loading && (
+          <div className="list-wrap">
+            <div className="list-header">
+              <span className="list-header-title">טוען את כל הסניפים…</span>
+            </div>
+            <div className="skeleton-list">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="skeleton-item">
+                  <div className="skeleton-circle" />
+                  <div className="skeleton-lines">
+                    <div className="skeleton-line skeleton-line--medium" />
+                    <div className="skeleton-line skeleton-line--short" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         {error && <div className="error-msg" style={{ margin: 12 }}>{error}</div>}
         {!loading && !error && (
           <>
             <div className="list-header">
-              {filter
-                ? `${filtered.length} תוצאות מתוך ${branches?.length ?? 0}`
-                : `כל ${branches?.length ?? 0} הסניפים`}
+              <span className="list-header-title">
+                {filter
+                  ? `${filtered.length} תוצאות`
+                  : `כל ${branches?.length ?? 0} הסניפים`}
+              </span>
+              {filter && (
+                <span className="list-header-count">מתוך {branches?.length ?? 0}</span>
+              )}
             </div>
             {visibleBranches.length === 0 ? (
               <div className="list-empty">
+                <div className="list-empty-icon" aria-hidden>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.5" />
+                    <path d="M20 20l-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div>
                 <div className="list-empty-title">לא נמצאו סניפים תואמים</div>
                 <div className="list-empty-sub">נסו לחפש לפי שם סניף, עיר או כתובת אחרים</div>
               </div>
@@ -169,9 +196,9 @@ export function BrowsePanel({ branches, loading, error, filter, setFilter, focus
                           </div>
                           <div className="branch-addr">{b.full_address}</div>
                         </div>
-                        <span className={`expand-arrow${isSel ? " is-open" : ""}`} aria-hidden>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path d="M7 14l5-5 5 5" stroke="#E63946" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <span className="expand-arrow" aria-hidden>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 14l5-5 5 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </span>
                       </button>
@@ -187,7 +214,7 @@ export function BrowsePanel({ branches, loading, error, filter, setFilter, focus
             )}
             {filtered.length > LIST_CAP && (
               <div className="browse-more-hint">
-                מוצגים {LIST_CAP} התוצאות הראשונות מתוך {filtered.length} — כל הסניפים התואמים כן מופיעים על המפה. צמצמו את החיפוש כדי לראות רשימה מדויקת יותר.
+                מוצגים {LIST_CAP} התוצאות הראשונות מתוך {filtered.length} — כל הסניפים התואמים מופיעים על המפה. צמצמו את החיפוש לרשימה מדויקת יותר.
               </div>
             )}
           </>

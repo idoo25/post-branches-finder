@@ -29,14 +29,10 @@ export function AddressInput({ onSubmit, loading }: Props) {
         lastQuery.current = q;
         const r = await autocomplete(q);
         if (q === lastQuery.current) {
-          // Pelias autocomplete sometimes returns 0 results for Hebrew when a
-          // house number is appended (e.g. "זלמן ארן 96"). Don't drop the
-          // existing suggestions in that case — the user is mid-typing and
-          // the previous results are still relevant context.
           if (r.suggestions.length > 0) setSuggestions(r.suggestions);
         }
       } catch {
-        /* ignore — autocomplete is non-critical */
+        /* ignore */
       }
     }, DEBOUNCE_MS);
     return () => {
@@ -44,7 +40,6 @@ export function AddressInput({ onSubmit, loading }: Props) {
     };
   }, [text]);
 
-  // close dropdown on click-outside
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
       if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
@@ -86,13 +81,12 @@ export function AddressInput({ onSubmit, loading }: Props) {
   return (
     <div className="addr-wrap" ref={wrapRef}>
       <div className="addr-row">
-        <button
-          className="addr-search"
-          disabled={loading || !text.trim()}
-          onClick={() => text.trim() && submit(text.trim())}
-        >
-          {loading ? "מחפש…" : "חיפוש"}
-        </button>
+        <span className="addr-search-icon" aria-hidden>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+            <path d="M20 20l-3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        </span>
         <input
           className="addr-input"
           type="text"
@@ -116,6 +110,23 @@ export function AddressInput({ onSubmit, loading }: Props) {
           onKeyDown={onKey}
           dir="rtl"
         />
+        <button
+          className="addr-search"
+          disabled={loading || !text.trim()}
+          onClick={() => text.trim() && submit(text.trim())}
+        >
+          {loading ? (
+            "מחפש…"
+          ) : (
+            <>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2.5" />
+                <path d="M20 20l-3-3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
+              חיפוש
+            </>
+          )}
+        </button>
       </div>
       {showList && suggestions.length > 0 && (
         <ul className="addr-suggest" role="listbox" id="addr-suggest-listbox">
@@ -127,7 +138,7 @@ export function AddressInput({ onSubmit, loading }: Props) {
               aria-selected={i === highlight}
               className={i === highlight ? "is-highlighted" : ""}
               onMouseEnter={() => setHighlight(i)}
-              onMouseDown={(e) => e.preventDefault()}  // keep input focus
+              onMouseDown={(e) => e.preventDefault()}
               onClick={() => submit(s.label, { lat: s.lat, lng: s.lng })}
             >
               {s.label}

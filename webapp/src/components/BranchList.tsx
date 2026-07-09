@@ -15,6 +15,33 @@ interface Props {
   emptyHint?: string;
 }
 
+function SkeletonList() {
+  return (
+    <div className="skeleton-list">
+      {[1, 2, 3, 4].map((i) => (
+        <div key={i} className="skeleton-item">
+          <div className="skeleton-circle" />
+          <div className="skeleton-lines">
+            <div className="skeleton-line skeleton-line--medium" />
+            <div className="skeleton-line skeleton-line--short" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function EmptyIcon() {
+  return (
+    <div className="list-empty-icon" aria-hidden>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
+    </div>
+  );
+}
+
 export function BranchList({
   results,
   loading,
@@ -24,16 +51,9 @@ export function BranchList({
   setSelectedRank,
   headerText = "10 הסניפים הקרובים אליך",
   loadingText = "מחפש את הסניפים הקרובים…",
-  emptyTitle = "10 הסניפים הקרובים אליך",
+  emptyTitle = "מוכנים לחיפוש",
   emptyHint = "הזינו כתובת למעלה כדי להתחיל",
 }: Props) {
-  // Clicking a map pin selects a rank that may currently be scrolled out of
-  // view in the list — without this, the detail opens but the user never
-  // sees it happen. Bring the selected row into view whenever it changes,
-  // and again whenever its height changes: BranchDetail loads its data
-  // asynchronously, so the row is still just a small "loading" placeholder
-  // at the moment we first scroll, then grows once the real content (hours
-  // table, contact, services) renders — re-scroll after that growth too.
   const selectedRef = useRef<HTMLLIElement | null>(null);
   useEffect(() => {
     const el = selectedRef.current;
@@ -47,19 +67,32 @@ export function BranchList({
   }, [selectedRank]);
 
   if (loading) {
-    return <div className="list-empty">{loadingText}</div>;
+    return (
+      <div className="list-wrap">
+        <div className="list-header">
+          <span className="list-header-title">{loadingText}</span>
+        </div>
+        <SkeletonList />
+      </div>
+    );
   }
+
   if (results.length === 0) {
     return (
       <div className="list-empty">
+        <EmptyIcon />
         <div className="list-empty-title">{emptyTitle}</div>
         <div className="list-empty-sub">{emptyHint}</div>
       </div>
     );
   }
+
   return (
     <div className="list-wrap">
-      <div className="list-header">{headerText}</div>
+      <div className="list-header">
+        <span className="list-header-title">{headerText}</span>
+        <span className="list-header-count">{results.length} תוצאות</span>
+      </div>
       <ul className="branch-list" role="list">
         {results.map((r) => {
           const isSel = selectedRank === r.rank;
@@ -88,24 +121,25 @@ export function BranchList({
                   <div className="branch-addr">{r.full_address}</div>
                   <div className="branch-meta">
                     {traffic !== null && (
-                      <>
-                        <span className="meta-time">~{traffic.toFixed(1)} דק׳</span>
-                        <span className="meta-sep">·</span>
-                      </>
+                      <span className="meta-badge meta-badge--time">
+                        ~{traffic.toFixed(1)} דק׳
+                      </span>
                     )}
-                    <span className="meta-dist">{r.distance_km.toFixed(2)} ק״מ</span>
+                    <span className="meta-badge meta-badge--dist">
+                      {r.distance_km.toFixed(2)} ק״מ
+                    </span>
                     {r.duration_in_traffic_min !== null &&
                       r.duration_min !== null &&
                       Math.abs(r.duration_in_traffic_min - r.duration_min) > 0.2 && (
                         <span className="meta-traffic">
-                          (פקקים: {(r.duration_in_traffic_min - r.duration_min).toFixed(1)} דק׳)
+                          +{(r.duration_in_traffic_min - r.duration_min).toFixed(1)} דק׳ פקקים
                         </span>
                       )}
                   </div>
                 </div>
-                <span className={`expand-arrow${isSel ? " is-open" : ""}`} aria-hidden>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M7 14l5-5 5 5" stroke="#E63946" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                <span className="expand-arrow" aria-hidden>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M7 14l5-5 5 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
               </button>
