@@ -159,7 +159,7 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <div className="logo-strip">
-          <div className="logo-mark">דואר ישראל</div>
+          <div className="logo-mark">הדואר שלי</div>
           <div className="logo-tag">איתור סניפים לפי זמן נסיעה אמיתי</div>
         </div>
       </header>
