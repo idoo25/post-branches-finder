@@ -152,7 +152,10 @@ def _branch_to_dict(b, conn: sqlite3.Connection) -> dict:
 app = FastAPI(title="Post Branches Finder")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    # 5173 is Vite's configured dev port (webapp/vite.config.ts), but Vite
+    # auto-increments to 5174/5175/... whenever the configured port is
+    # already taken, so allow a small range rather than just the one port.
+    allow_origins=[f"http://{host}:{port}" for host in ("localhost", "127.0.0.1") for port in range(5173, 5178)],
     allow_methods=["*"], allow_headers=["*"],
 )
 
