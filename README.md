@@ -11,25 +11,39 @@ branch by **real** travel time".
 | `schema.sql`              | Tables, indexes, R-Tree, performance PRAGMAs |
 | `seed_providers.sql`      | Seeds `providers` + `provider_quotas` for every supported service |
 | `build_db.py`             | Loads the verified JSON into SQLite (idempotent) |
+| `refresh_from_live.py`    | Diffs `post_branches.db` against Israel Post's live branch feed; report-only by default, `--apply` rebuilds the DB from the fresh data |
 | `branch_index.py`         | Hash-indexed in-memory directory + spatial nearest-neighbour |
+| `address_norm.py`         | Hebrew/English address normalizer for the geocode cache key |
+| `address_lookup.py`       | Canonicalizes free-text Israeli addresses against the verified `addresses_db` (city/street/house-number) before geocoding, for a better Nominatim hit rate |
 | `providers.py`            | Capability-aware routing/geocoding providers (ORS, Mapbox, Google ×2, OSRM, Valhalla, Waze, Mock, Nominatim) + `RoutingOptions` + `pick_provider` |
 | `nearest.py`              | `NearestBranchService` — `find_nearest()` (top-K by time) + `find_within_minutes()` (isochrone-or-matrix) |
-| `address_norm.py`         | Hebrew/English address normalizer for the geocode cache key |
 | `quota.py`                | `QuotaGuard` — pre-call budget check against sliding window |
 | `geo_utils.py`            | UTM-aware buffer, point-in-polygon, encoded-polyline decoder |
-| `bench.py`                | Measured ops/sec for every hot-path operation |
-| `test_cache_and_quota.py` | End-to-end demo of the geocode cache and quota enforcement |
-| `test_versatility.py`     | Shows the same `RoutingOptions` flowing through 7 providers |
+| `server.py`               | FastAPI HTTP API wrapping `NearestBranchService` for the React webapp — `/api/autocomplete`, `/api/search`, `/api/branches`, `/api/nearby`, `/api/branch/{n}`, `/api/meta`, plus `/` (serves the built webapp) |
+| `webapp/`                 | React + TypeScript frontend (Vite, Leaflet map, RTL Hebrew UI) — see `WEBAPP_README.md` |
+| `tests/`                  | Pytest/unittest suite — address normalization, geo utils, quota, routing/geocoding providers, and full-pipeline integration tests (`tests/run_all.py` to run everything) |
+| `scripts/bench.py`        | Measured ops/sec for every hot-path operation |
+| `scripts/smoke_here.py`   | One-call live smoke test against the real HERE Matrix Routing API |
+| `examples/demo_cache_and_quota.py` | End-to-end demo of the geocode cache and quota enforcement |
+| `examples/demo_stage1.py` | Stage 1 only — address → 50 nearest branches by air distance, no API call |
+| `examples/demo_stage2.py` | Stage 1 + 2 — air-distance shortlist reranked by drive time, incl. auto-batching |
+| `examples/demo_stage3.py` | Full 3-tier pipeline (air → drive time → traffic-aware time) with mock providers, runs offline |
+| `examples/demo_versatility.py`     | Shows the same `RoutingOptions` flowing through 7 providers |
 | `ORS_API_NOTES.md`        | Complete openrouteservice API reference (24 endpoints) |
 | `ORS_PATTERNS.md`         | Code recipes from the ORS official examples |
+| `WEBAPP_README.md`        | Webapp setup, architecture, and component overview |
 
 ## Quick start
 
 ```bash
-python build_db.py     # creates post_branches.db
-python nearest.py      # runs the demo with the mock provider
-python bench.py        # benchmarks the index
+python build_db.py         # creates post_branches.db
+python nearest.py          # runs the demo with the mock provider
+python server.py           # runs the FastAPI backend on :8000
+python -m tests.run_all    # runs the full test suite
+python scripts/bench.py    # benchmarks the index
 ```
+
+See `WEBAPP_README.md` for running the React frontend (`webapp/`).
 
 ## Performance (measured on this machine)
 

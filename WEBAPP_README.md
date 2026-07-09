@@ -1,6 +1,10 @@
 # האתר — איתור סניפים בקליק
 
-צינור 50→20→10 (אווירי → ORS → traffic-aware) חי במסך אחד. עיצוב בהשראת `doar.israelpost.co.il`.
+צינור 50→20→10 (אווירי → ORS → traffic-aware) חי במסך אחד, לצד שני מצבים
+נוספים שנבחרים דרך לשונית `ModeTabs`: "קו אווירי סביבי" (ללא קריאה לספק
+ניתוב) ו-"כל הסניפים וחיפוש" (`BrowsePanel` — עיון וסינון מקומי בכל
+הסניפים, בלי קריאת רשת נוספת אחרי הטעינה הראשונה). עיצוב בהשראת
+`doar.israelpost.co.il`.
 
 ## הפעלה
 
@@ -99,7 +103,7 @@ cd .. && python -m uvicorn server:app --port 8000
 
 ```
 post_branches_db/
-├── server.py                        ← FastAPI (3 endpoints)
+├── server.py                        ← FastAPI (autocomplete/search/branches/nearby/branch/meta)
 ├── .env                             ← מפתחות API (לא ב-git)
 └── webapp/
     ├── package.json
@@ -112,10 +116,14 @@ post_branches_db/
         ├── api.ts                   ← fetch helpers + types
         ├── styles.css               ← העיצוב הדואר-ישראלי
         └── components/
+            ├── ModeTabs.tsx         ← מתג בין 3 מצבים: travel/nearby/browse
             ├── AddressInput.tsx     ← autocomplete + debounce + keyboard nav
             ├── BranchMap.tsx        ← Leaflet, numbered DivIcons, fitBounds
             ├── BranchList.tsx       ← רשימה ממוספרת + hover/click handlers
-            └── BranchDetail.tsx     ← אקורדיון פרטים (שעות/שירותים/נגישות)
+            ├── BranchDetail.tsx     ← אקורדיון פרטים (שעות/שירותים/נגישות)
+            └── BrowsePanel.tsx      ← מצב "browse": כל הסניפים על מפה +
+                                        סינון טקסט מקומי (שם/עיר/כתובת/מספר),
+                                        בלי קריאת routing/traffic API
 ```
 
 ## להחליף את הספק

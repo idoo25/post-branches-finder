@@ -95,7 +95,7 @@ export function BranchList({
                     )}
                     <span className="meta-dist">{r.distance_km.toFixed(2)} ק״מ</span>
                     {r.duration_in_traffic_min !== null &&
-                      r.duration_min &&
+                      r.duration_min !== null &&
                       Math.abs(r.duration_in_traffic_min - r.duration_min) > 0.2 && (
                         <span className="meta-traffic">
                           (פקקים: {(r.duration_in_traffic_min - r.duration_min).toFixed(1)} דק׳)

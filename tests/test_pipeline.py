@@ -51,6 +51,13 @@ def _make_service(routing, *, traffic=None, geocoding=None):
     svc.geocoding = geocoding
     from quota import QuotaGuard
     svc.quota = QuotaGuard(svc.conn)
+    # NearestBranchService.__init__ also sets up the per-cache-key locking
+    # state used by _lock_for_key (called from geocode + _matrix_rerank).
+    # Since this factory bypasses __init__ via __new__, replicate that state
+    # here too, or __slots__ leaves these attributes unset entirely.
+    import threading
+    svc._cache_locks = {}
+    svc._cache_locks_guard = threading.Lock()
     return svc
 
 
@@ -74,7 +81,10 @@ class TestStage1AirDistance(unittest.TestCase):
 
     def test_address_string_uses_geocoder(self):
         hits = self.svc.find_nearest_by_air_distance("דיזנגוף 50 תל אביב", k=3)
-        self.assertEqual(self.svc.geocoding.calls, ["דיזנגוף 50 תל אביב"])
+        # address_lookup.canonicalize() rewrites free-text input to the
+        # official "<street> <house>, <city>" form before it ever reaches
+        # the geocoder, so that's the string the fake geocoder records.
+        self.assertEqual(self.svc.geocoding.calls, ["דיזנגוף 50, תל אביב - יפו"])
         self.assertEqual(hits[0].branch.branch_number, 1001)
 
     def test_geocoder_failure_returns_empty(self):

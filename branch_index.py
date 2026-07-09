@@ -22,7 +22,7 @@ import sqlite3
 from collections import defaultdict
 from dataclasses import dataclass, field
 from heapq import nsmallest
-from typing import Callable, Iterable
+from typing import Iterable
 
 EARTH_RADIUS_M = 6_371_000.0
 

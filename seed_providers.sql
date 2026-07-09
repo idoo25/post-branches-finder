@@ -109,7 +109,29 @@ VALUES
      'https://nominatim.openstreetmap.org/search',
      31536000,        -- 1 year
      0, 0, 1, 1,
-     'Free. Fair-use policy: 1 req/sec. Self-host for any real volume.');
+     'Free. Fair-use policy: 1 req/sec. Self-host for any real volume.'),
+
+    -- Synthetic providers — production writes travel_time_cache rows under
+    -- 'mock_haversine' (the offline estimate-fallback tier, see server.py's
+    -- _ESTIMATE_PROVIDER / MockHaversineProvider) and tests use 'mock_traffic'
+    -- (MockHaversineProvider with traffic_multiplier set). Both must be
+    -- registered here or the provider FK on travel_time_cache/geocode_cache
+    -- rejects the insert once PRAGMA foreign_keys = ON is actually enforced.
+    ('mock_haversine',
+     'Mock straight-line/constant-speed provider (offline estimate fallback)',
+     'routing',
+     NULL,
+     86400,
+     1, 0, 0, 1,
+     'SYNTHETIC — not a real API. Pure haversine + constant avg_kmh, used when no real routing provider is configured. Not for production accuracy claims.'),
+
+    ('mock_traffic',
+     'Mock traffic-aware provider (tests only)',
+     'routing',
+     NULL,
+     300,
+     1, 1, 0, 0,
+     'SYNTHETIC — not a real API. MockHaversineProvider with a traffic_multiplier, used by tests to exercise rerank_with_traffic. Disabled: do not enable in production.');
 
 -- ============================================================================
 -- Quota policy (per provider × endpoint).

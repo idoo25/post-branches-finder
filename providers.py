@@ -19,6 +19,8 @@ optional methods you can support). Done.
 """
 from __future__ import annotations
 
+import socket
+import threading
 import time
 import warnings
 from dataclasses import dataclass, field
@@ -251,7 +253,7 @@ class OpenRouteServiceProvider(_ProviderBase):
     def _post_json(self, path: str, body: dict) -> dict:
         import json as _json
         from urllib.request import Request, urlopen
-        from urllib.error import HTTPError
+        from urllib.error import HTTPError, URLError
 
         req = Request(
             f"{self.base_url}{path}",
@@ -267,7 +269,9 @@ class OpenRouteServiceProvider(_ProviderBase):
             with urlopen(req, timeout=self.timeout) as resp:
                 return _json.loads(resp.read().decode("utf-8"))
         except HTTPError as e:
-            raise RuntimeError(f"ORS {path} HTTP {e.code}: {e.read().decode('utf-8','replace')[:300]}")
+            raise RuntimeError(f"ORS {path} HTTP {e.code}: {e.read().decode('utf-8','replace')[:300]}") from e
+        except (URLError, socket.timeout) as e:
+            raise RuntimeError(f"ORS {path} network error: {e}") from e
 
     # ----- public API -----
     def matrix(self, origin, destinations, *, mode="driving", options=None):
@@ -369,7 +373,7 @@ class OpenRouteServiceGeocodingProvider:
         import json as _json
         from urllib.parse import urlencode
         from urllib.request import Request, urlopen
-        from urllib.error import HTTPError
+        from urllib.error import HTTPError, URLError
         req = Request(f"{self.BASE_URL}{path}?{urlencode(params)}", headers={
             "Authorization": self.api_key,
             "Accept":        "application/geo+json, application/json",
@@ -378,7 +382,9 @@ class OpenRouteServiceGeocodingProvider:
             with urlopen(req, timeout=self.timeout) as resp:
                 return _json.loads(resp.read().decode("utf-8"))
         except HTTPError as e:
-            raise RuntimeError(f"ORS {path} HTTP {e.code}: {e.read().decode('utf-8','replace')[:300]}")
+            raise RuntimeError(f"ORS {path} HTTP {e.code}: {e.read().decode('utf-8','replace')[:300]}") from e
+        except (URLError, socket.timeout) as e:
+            raise RuntimeError(f"ORS {path} network error: {e}") from e
 
     def geocode(self, address: str) -> GeocodeResult | None:
         payload = self._get_json("/geocode/search",
@@ -526,7 +532,7 @@ class GoogleDistanceMatrixProvider(_ProviderBase):
         import json as _json
         from urllib.parse import urlencode
         from urllib.request import Request, urlopen
-        from urllib.error import HTTPError
+        from urllib.error import HTTPError, URLError
 
         self._warn_unsupported(options)
 
@@ -556,7 +562,9 @@ class GoogleDistanceMatrixProvider(_ProviderBase):
             with urlopen(req, timeout=self.timeout) as resp:
                 payload = _json.loads(resp.read().decode("utf-8"))
         except HTTPError as e:
-            raise RuntimeError(f"Google DM HTTP {e.code}: {e.read().decode('utf-8','replace')[:300]}")
+            raise RuntimeError(f"Google DM HTTP {e.code}: {e.read().decode('utf-8','replace')[:300]}") from e
+        except (URLError, socket.timeout) as e:
+            raise RuntimeError(f"Google DM network error: {e}") from e
 
         if payload.get("status") != "OK":
             raise RuntimeError(
@@ -664,7 +672,7 @@ class HEREMatrixProvider(_ProviderBase):
         import json as _json
         from datetime import datetime, timezone
         from urllib.request import Request, urlopen
-        from urllib.error import HTTPError
+        from urllib.error import HTTPError, URLError
 
         self._warn_unsupported(options)
 
@@ -713,7 +721,9 @@ class HEREMatrixProvider(_ProviderBase):
                 err_body = e.read().decode("utf-8", "replace")[:400]
             except Exception:
                 err_body = ""
-            raise RuntimeError(f"HERE Matrix HTTP {e.code}: {err_body}")
+            raise RuntimeError(f"HERE Matrix HTTP {e.code}: {err_body}") from e
+        except (URLError, socket.timeout) as e:
+            raise RuntimeError(f"HERE Matrix network error: {e}") from e
 
         m = payload.get("matrix") or {}
         durations = m.get("travelTimes") or []
@@ -770,6 +780,7 @@ class OSRMProvider(_ProviderBase):
         # Table Service coordinates are lng,lat (NOT lat,lng) — the opposite
         # order from HERE/ORS. Origin goes first (index 0), destinations follow.
         import json as _json
+        import socket
         from urllib.error import HTTPError, URLError
         from urllib.request import Request, urlopen
 
@@ -790,9 +801,13 @@ class OSRMProvider(_ProviderBase):
                 err_body = e.read().decode("utf-8", "replace")[:400]
             except Exception:
                 err_body = ""
-            raise RuntimeError(f"OSRM HTTP {e.code}: {err_body}")
-        except URLError as e:
-            raise RuntimeError(f"OSRM unreachable: {e.reason}")
+            raise RuntimeError(f"OSRM HTTP {e.code}: {err_body}") from e
+        except (URLError, socket.timeout) as e:
+            # A read-timeout on resp.read() (as opposed to a connect-timeout)
+            # raises a bare socket.timeout, not a URLError — must be caught
+            # separately or it escapes the tier-fallback chain uncaught.
+            reason = getattr(e, "reason", e)
+            raise RuntimeError(f"OSRM unreachable: {reason}") from e
 
         if payload.get("code") != "Ok":
             raise RuntimeError(f"OSRM error: {payload.get('code')} — {payload.get('message', '')}")
@@ -896,7 +911,6 @@ class MockHaversineProvider(_ProviderBase):
 
     def matrix(self, origin, destinations, *, mode="driving", options=None):
         self._warn_unsupported(options)
-        import random
         legs = []
         for d in destinations:
             dist = self._haversine_m(origin, d)
@@ -937,6 +951,7 @@ class NominatimProvider:
     in Israel because OSM has rich Hebrew tags."""
     name = "nominatim"
     _last_call_ts = 0.0
+    _throttle_lock = threading.Lock()
 
     def __init__(self, user_agent: str = "post-branches-finder/1.0", country: str = "il"):
         self.user_agent = user_agent
@@ -946,12 +961,13 @@ class NominatimProvider:
         import json as _json
         from urllib.parse import urlencode
         from urllib.request import Request, urlopen
-        from urllib.error import HTTPError
+        from urllib.error import HTTPError, URLError
 
-        wait = 1.0 - (time.time() - NominatimProvider._last_call_ts)
-        if wait > 0:
-            time.sleep(wait)
-        NominatimProvider._last_call_ts = time.time()
+        with NominatimProvider._throttle_lock:
+            wait = 1.0 - (time.time() - NominatimProvider._last_call_ts)
+            if wait > 0:
+                time.sleep(wait)
+            NominatimProvider._last_call_ts = time.time()
 
         qs = urlencode({"q": address, "format": "json", "limit": 1,
                         "countrycodes": self.country, "addressdetails": 1})
@@ -961,7 +977,9 @@ class NominatimProvider:
             with urlopen(req, timeout=15) as resp:
                 results = _json.loads(resp.read().decode("utf-8"))
         except HTTPError as e:
-            raise RuntimeError(f"Nominatim HTTP {e.code}")
+            raise RuntimeError(f"Nominatim HTTP {e.code}") from e
+        except (URLError, socket.timeout) as e:
+            raise RuntimeError(f"Nominatim network error: {e}") from e
         if not results:
             return None
         r = results[0]

@@ -20,6 +20,7 @@ the DB unless the bucket says we *might* be over.
 from __future__ import annotations
 
 import sqlite3
+import threading
 import time
 from collections import defaultdict
 from dataclasses import dataclass
@@ -37,15 +38,19 @@ class QuotaStatus:
 
 
 class QuotaGuard:
-    """One instance per process. Thread-unsafe — wrap with a Lock if needed."""
+    """One instance per process. Guards check-then-increment with an instance Lock."""
 
-    __slots__ = ("conn", "_policy", "_minute_buckets")
+    __slots__ = ("conn", "_policy", "_minute_buckets", "_lock")
 
     def __init__(self, conn: sqlite3.Connection):
         self.conn = conn
         self._policy: dict[tuple[str, str], tuple[int | None, int | None]] = {}
         # bucket = (window_start_ts, count). Reset every 60 s.
         self._minute_buckets: dict[tuple[str, str], list[float]] = defaultdict(lambda: [0.0, 0])
+        # Guards the check-then-increment in allow()/refund() so concurrent
+        # requests (FastAPI's real threadpool) can't both pass the check
+        # before either has incremented the bucket.
+        self._lock = threading.Lock()
         self._reload_policy()
 
     def _reload_policy(self) -> None:
@@ -90,18 +95,27 @@ class QuotaGuard:
     # ------------------------------------------------------------------
     def allow(self, provider: str, endpoint: str, units: int = 1) -> bool:
         """Check + reserve. Returns False if the call would exceed quota."""
-        st = self.status(provider, endpoint)
-        if not st.allowed:
-            return False
-        # Pre-reserve in the per-minute bucket so concurrent callers see it.
-        bucket = self._minute_buckets[(provider, endpoint)]
-        bucket[1] += units
-        return True
+        with self._lock:
+            st = self.status(provider, endpoint)
+            if not st.allowed:
+                return False
+            # Reject if *this* request would push usage over the limit, not
+            # just if we're already over it — a single call can request more
+            # than one unit (e.g. a matrix call billed per element).
+            if st.daily_limit is not None and (st.daily_used + units) > st.daily_limit:
+                return False
+            if st.minute_limit is not None and (st.minute_used + units) > st.minute_limit:
+                return False
+            # Pre-reserve in the per-minute bucket so concurrent callers see it.
+            bucket = self._minute_buckets[(provider, endpoint)]
+            bucket[1] += units
+            return True
 
     def refund(self, provider: str, endpoint: str, units: int = 1) -> None:
         """Roll back a reservation if the call ultimately failed before sending."""
-        bucket = self._minute_buckets[(provider, endpoint)]
-        bucket[1] = max(0, bucket[1] - units)
+        with self._lock:
+            bucket = self._minute_buckets[(provider, endpoint)]
+            bucket[1] = max(0, bucket[1] - units)
 
     # ------------------------------------------------------------------
     def remaining(self, provider: str, endpoint: str) -> dict:

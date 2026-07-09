@@ -14,6 +14,10 @@ import sys
 import time
 from pathlib import Path
 
+# This file lives in examples/, one level below the project root where
+# nearest.py / providers.py / post_branches.db actually live.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
@@ -21,7 +25,7 @@ from nearest import NearestBranchService
 from providers import (Coordinate, GeocodeResult, GoogleDistanceMatrixProvider,
                        MockHaversineProvider, OpenRouteServiceProvider)
 
-DB = Path(__file__).resolve().parent / "post_branches.db"
+DB = Path(__file__).resolve().parent.parent / "post_branches.db"
 
 
 class FakeGeocoder:

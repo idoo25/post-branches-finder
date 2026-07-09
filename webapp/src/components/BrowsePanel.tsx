@@ -140,44 +140,51 @@ export function BrowsePanel({ branches, loading, error, filter, setFilter, focus
                 ? `${filtered.length} תוצאות מתוך ${branches?.length ?? 0}`
                 : `כל ${branches?.length ?? 0} הסניפים`}
             </div>
-            <ul className="branch-list" role="list">
-              {visibleBranches.map((b) => {
-                const isSel = focused === b.branch_number;
-                return (
-                  <li
-                    key={b.branch_number}
-                    ref={isSel ? focusedRef : undefined}
-                    className={`branch-item${isSel ? " is-selected" : ""}`}
-                  >
-                    <button
-                      type="button"
-                      className="branch-row"
-                      onClick={() => setFocused(isSel ? null : b.branch_number)}
-                      aria-expanded={isSel}
+            {visibleBranches.length === 0 ? (
+              <div className="list-empty">
+                <div className="list-empty-title">לא נמצאו סניפים תואמים</div>
+                <div className="list-empty-sub">נסו לחפש לפי שם סניף, עיר או כתובת אחרים</div>
+              </div>
+            ) : (
+              <ul className="branch-list" role="list">
+                {visibleBranches.map((b) => {
+                  const isSel = focused === b.branch_number;
+                  return (
+                    <li
+                      key={b.branch_number}
+                      ref={isSel ? focusedRef : undefined}
+                      className={`branch-item${isSel ? " is-selected" : ""}`}
                     >
-                      <span className="branch-dot" aria-hidden />
-                      <div className="branch-text">
-                        <div className="branch-name">
-                          {b.branch_name}
-                          <span className="branch-num">({b.branch_number})</span>
+                      <button
+                        type="button"
+                        className="branch-row"
+                        onClick={() => setFocused(isSel ? null : b.branch_number)}
+                        aria-expanded={isSel}
+                      >
+                        <span className="branch-dot" aria-hidden />
+                        <div className="branch-text">
+                          <div className="branch-name">
+                            {b.branch_name}
+                            <span className="branch-num">({b.branch_number})</span>
+                          </div>
+                          <div className="branch-addr">{b.full_address}</div>
                         </div>
-                        <div className="branch-addr">{b.full_address}</div>
-                      </div>
-                      <span className={`expand-arrow${isSel ? " is-open" : ""}`} aria-hidden>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                          <path d="M7 14l5-5 5 5" stroke="#E63946" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                    </button>
-                    {isSel && (
-                      <div className="branch-detail-wrap">
-                        <BranchDetail branchNumber={b.branch_number} />
-                      </div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+                        <span className={`expand-arrow${isSel ? " is-open" : ""}`} aria-hidden>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 14l5-5 5 5" stroke="#E63946" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
+                      </button>
+                      {isSel && (
+                        <div className="branch-detail-wrap">
+                          <BranchDetail branchNumber={b.branch_number} />
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
             {filtered.length > LIST_CAP && (
               <div className="browse-more-hint">
                 מוצגים {LIST_CAP} התוצאות הראשונות מתוך {filtered.length} — כל הסניפים התואמים כן מופיעים על המפה. צמצמו את החיפוש כדי לראות רשימה מדויקת יותר.

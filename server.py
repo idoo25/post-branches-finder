@@ -10,7 +10,10 @@ Run:
 Endpoints:
     GET  /api/autocomplete?q=...           — Pelias autocomplete (ORS)
     POST /api/search    {address}          — top-10 by traffic-aware time
+    GET  /api/branches                      — lightweight list of all branches
+    POST /api/nearby    {address}          — top-k by straight-line distance only
     GET  /api/branch/{branch_number}        — full branch details
+    GET  /api/meta                          — build/database metadata
     GET  /                                  — serves the static React build
 """
 from __future__ import annotations
@@ -18,20 +21,18 @@ from __future__ import annotations
 import os
 import sqlite3
 from pathlib import Path
-from typing import Any
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-from address_norm import normalize as normalize_address
 from nearest import NearestBranchService
-from providers import (ChainedGeocodingProvider, Coordinate, GeocodeResult,
+from providers import (ChainedGeocodingProvider, Coordinate,
                        GoogleDistanceMatrixProvider, HEREMatrixProvider,
                        MockHaversineProvider, NominatimProvider, OSRMProvider,
                        OpenRouteServiceProvider,
-                       OpenRouteServiceGeocodingProvider, RoutingOptions)
+                       OpenRouteServiceGeocodingProvider)
 
 # Free real-routing fallback for /api/search, tried when ORS itself is out of
 # quota: the public OSRM demo server (router.project-osrm.org), routing over
@@ -57,7 +58,10 @@ if _ENV_FILE.exists():
         if not ln or ln.startswith("#") or "=" not in ln:
             continue
         k, _, v = ln.partition("=")
-        os.environ.setdefault(k.strip(), v.strip())
+        k, v = k.strip(), v.strip()
+        if len(v) >= 2 and v[0] == v[-1] and v[0] in ("'", '"'):
+            v = v[1:-1]
+        os.environ.setdefault(k, v)
 
 ORS_KEY    = os.environ.get("ORS_API_KEY")
 GOOGLE_KEY = os.environ.get("GOOGLE_API_KEY")
@@ -148,7 +152,8 @@ def _branch_to_dict(b, conn: sqlite3.Connection) -> dict:
 app = FastAPI(title="Post Branches Finder")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], allow_methods=["*"], allow_headers=["*"],
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_methods=["*"], allow_headers=["*"],
 )
 
 
@@ -156,13 +161,18 @@ class SearchRequest(BaseModel):
     address: str = ""
     lat: float | None = None
     lng: float | None = None
-    air_pool:   int = 50
-    drive_pool: int = 20
-    final_k:    int = 10
+    # Bounded well below the ~1.5k-row branch table: air_pool is the cheap/free
+    # haversine shortlist, drive_pool feeds a billed routing-matrix call, and
+    # final_k feeds the premium traffic-matrix call — each cap keeps a single
+    # request from enumerating (near-)the whole table and firing dozens of
+    # billed provider calls.
+    air_pool:   int = Field(default=50, gt=0, le=200)
+    drive_pool: int = Field(default=20, gt=0, le=50)
+    final_k:    int = Field(default=10, gt=0, le=25)
 
 
 @app.get("/api/autocomplete")
-def autocomplete(q: str = Query(..., min_length=2), size: int = 5):
+def autocomplete(q: str = Query(..., min_length=2), size: int = Query(default=5, gt=0, le=20)):
     """Pelias autocomplete via ORS. Falls back to local 'starts with' search
     over our cached/known addresses if ORS is unavailable."""
     if svc.geocoding is None:
@@ -190,7 +200,12 @@ def search(req: SearchRequest):
     else:
         if not req.address.strip():
             raise HTTPException(status_code=400, detail="address or lat/lng is required")
-        coord = svc.geocode(req.address)
+        try:
+            coord = svc.geocode(req.address)
+        except RuntimeError as e:
+            raise HTTPException(status_code=502, detail=f"geocoding unavailable: {e}")
+        except Exception:
+            raise HTTPException(status_code=502, detail="geocoding unavailable")
         if coord is None:
             raise HTTPException(status_code=404, detail="Address not resolved")
 
@@ -212,6 +227,10 @@ def search(req: SearchRequest):
             try:
                 air_hits = svc.find_nearest_by_air_distance(coord, k=req.drive_pool)
                 ranked = svc.rerank_with_traffic(coord, air_hits, k=req.final_k)
+                # Stage 2 (ORS) was skipped entirely in this branch — don't
+                # leave routing_used pointing at a provider that was never
+                # actually called for this request.
+                routing_used = "air-distance-only"
                 print(f"[server] Stage 2 unavailable ({e}); fell back to "
                       f"air-distance + traffic ({len(air_hits)} → {len(ranked)})")
             except RuntimeError as e2:
@@ -314,7 +333,7 @@ class NearbyRequest(BaseModel):
     address: str | None = None
     lat: float | None = None
     lng: float | None = None
-    k: int = 15
+    k: int = Field(default=15, gt=0, le=100)
 
 
 @app.post("/api/nearby")
@@ -325,7 +344,12 @@ def nearby(req: NearbyRequest):
     if req.lat is not None and req.lng is not None:
         coord = Coordinate(req.lat, req.lng)
     elif req.address and req.address.strip():
-        coord = svc.geocode(req.address)
+        try:
+            coord = svc.geocode(req.address)
+        except RuntimeError as e:
+            raise HTTPException(status_code=502, detail=f"geocoding unavailable: {e}")
+        except Exception:
+            raise HTTPException(status_code=502, detail="geocoding unavailable")
         if coord is None:
             raise HTTPException(status_code=404, detail="Address not resolved")
     else:
@@ -349,6 +373,14 @@ def nearby(req: NearbyRequest):
     return {"origin": {"lat": coord.lat, "lng": coord.lng}, "results": out}
 
 
+@app.get("/api/meta")
+def meta():
+    """Build/database metadata (written by build_db.py into db_meta)."""
+    cur = svc.conn.cursor()
+    rows = cur.execute("SELECT key, value FROM db_meta").fetchall()
+    return {r[0]: r[1] for r in rows}
+
+
 @app.get("/api/branch/{branch_number}")
 def branch_detail(branch_number: int):
     b = svc.index.get(branch_number)
@@ -367,7 +399,14 @@ else:
     def root_placeholder():
         return {
             "message": "API is running. Build the React app:  cd webapp && npm install && npm run build",
-            "endpoints": ["GET /api/autocomplete?q=...", "POST /api/search", "GET /api/branch/{n}"],
+            "endpoints": [
+                "GET /api/autocomplete?q=...",
+                "POST /api/search",
+                "GET /api/branches",
+                "POST /api/nearby",
+                "GET /api/branch/{n}",
+                "GET /api/meta",
+            ],
         }
 
 

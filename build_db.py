@@ -49,10 +49,31 @@ def compose_full_address(b: dict) -> str:
 
 def load_branches(conn: sqlite3.Connection, branches: list[dict]) -> dict:
     cur = conn.cursor()
-    # Wipe branch-derived tables (services dictionary kept; branch FKs will cascade)
+    # Wipe branch-derived child tables (services dictionary kept). None of these
+    # tables are referenced by travel_time_cache's FK, so fully clearing and
+    # reinserting them on every rebuild is harmless.
     for tbl in ("branch_hours", "branch_services", "branch_extra_services",
-                "branch_accessibility", "branches_rtree", "branches"):
+                "branch_accessibility", "branches_rtree"):
         cur.execute(f"DELETE FROM {tbl}")
+
+    # IMPORTANT: do NOT "DELETE FROM branches" unconditionally here.
+    # travel_time_cache.branch_number references branches(branch_number)
+    # ON DELETE CASCADE — deleting every branch row (even to immediately
+    # reinsert identical data) silently wipes the entire travel-time cache,
+    # including still-valid ORS/OSRM entries within their 7-day TTL, on
+    # every single rebuild. Instead we diff against what's already on disk:
+    # only branch_numbers truly absent from the new dataset (real closures)
+    # get deleted; everything else is UPSERTed in place below so its row
+    # (and thus its cascade-linked cache rows) is never removed.
+    new_branch_numbers = {int(b["branch_number"]) for b in branches}
+    cur.execute("SELECT branch_number FROM branches")
+    existing_branch_numbers = {row[0] for row in cur.fetchall()}
+    removed_branch_numbers = existing_branch_numbers - new_branch_numbers
+    if removed_branch_numbers:
+        cur.executemany(
+            "DELETE FROM branches WHERE branch_number = ?",
+            [(bn,) for bn in removed_branch_numbers],
+        )
 
     # Build a unique services dictionary from the data
     seen_services: dict[int, dict] = {}
@@ -84,7 +105,25 @@ def load_branches(conn: sqlite3.Connection, branches: list[dict]) -> dict:
                (branch_number, branch_name, branch_type, region, area, city,
                 street, house, zip, address_extra, full_address,
                 latitude, longitude, lat_rad, lng_rad, sin_lat, cos_lat, telephone)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+               ON CONFLICT(branch_number) DO UPDATE SET
+                   branch_name   = excluded.branch_name,
+                   branch_type   = excluded.branch_type,
+                   region        = excluded.region,
+                   area          = excluded.area,
+                   city          = excluded.city,
+                   street        = excluded.street,
+                   house         = excluded.house,
+                   zip           = excluded.zip,
+                   address_extra = excluded.address_extra,
+                   full_address  = excluded.full_address,
+                   latitude      = excluded.latitude,
+                   longitude     = excluded.longitude,
+                   lat_rad       = excluded.lat_rad,
+                   lng_rad       = excluded.lng_rad,
+                   sin_lat       = excluded.sin_lat,
+                   cos_lat       = excluded.cos_lat,
+                   telephone     = excluded.telephone""",
             (
                 bn, b["branch_name"], b.get("branch_type"), b.get("region"),
                 b.get("area"), b.get("city"), b.get("street"),

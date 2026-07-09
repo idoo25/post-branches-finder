@@ -5,18 +5,23 @@ Uses a fake geocoding provider so we don't actually hit any API.
 from __future__ import annotations
 
 import sys
+from pathlib import Path
+
+# This file lives in examples/, one level below the project root where
+# nearest.py / providers.py / post_branches.db actually live.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 import sqlite3
 import time
-from pathlib import Path
 
 from nearest import NearestBranchService
 from providers import (Coordinate, GeocodeResult, GeocodingProvider,
                        MockHaversineProvider)
 
-DB = Path(__file__).resolve().parent / "post_branches.db"
+DB = Path(__file__).resolve().parent.parent / "post_branches.db"
 
 
 # A geocoding provider stub that COUNTS how many times it's actually called.

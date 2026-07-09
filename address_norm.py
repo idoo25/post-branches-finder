@@ -28,9 +28,9 @@ _MULTISPACE_RE = re.compile(r"\s+")
 _REPLACEMENTS = [
     (re.compile(r'\bת"א\b'), "תל אביב"),
     (re.compile(r"\bת'א\b"), "תל אביב"),
-    (re.compile(r"\bר'?ג\b"), "רמת גן"),
-    (re.compile(r"\bפ'?ת\b"), "פתח תקווה"),
-    (re.compile(r"\bב'?ש\b"), "באר שבע"),
+    (re.compile(r"\bר['\"]?ג\b"), "רמת גן"),
+    (re.compile(r"\bפ['\"]?ת\b"), "פתח תקווה"),
+    (re.compile(r"\bב['\"]?ש\b"), "באר שבע"),
     (re.compile(r"\bרח'\b"), ""),    # "רחוב" prefix carries no information
     (re.compile(r"\bרחוב\b"), ""),
     (re.compile(r"\bשדרות\b"), "שד"),

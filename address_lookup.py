@@ -15,13 +15,18 @@ any mismatch, missing file, or ambiguity — never raises.
 """
 from __future__ import annotations
 
+import logging
+import os
 import re
 import sqlite3
+import threading
 from pathlib import Path
 
 from address_norm import normalize as normalize_address
 
-ADDRESSES_DB = Path(r"C:\school\addresses_db\addresses.db")
+logger = logging.getLogger(__name__)
+
+ADDRESSES_DB = Path(os.environ.get("ADDRESSES_DB_PATH", r"C:\school\addresses_db\addresses.db"))
 
 _HOUSE_NUM_RE = re.compile(r"^(.*?)\s*(\d+)\s*$")
 
@@ -144,6 +149,7 @@ class AddressLookup:
 
 _singleton: "AddressLookup | None" = None
 _load_failed = False
+_singleton_lock = threading.Lock()
 
 
 def get_lookup() -> "AddressLookup | None":
@@ -154,12 +160,24 @@ def get_lookup() -> "AddressLookup | None":
         return _singleton
     if _load_failed:
         return None
-    try:
-        _singleton = AddressLookup()
-    except Exception:
-        _load_failed = True
-        return None
-    return _singleton
+    with _singleton_lock:
+        # Re-check inside the lock: another thread may have already built
+        # (or failed to build) the singleton while we were waiting for it.
+        if _singleton is not None:
+            return _singleton
+        if _load_failed:
+            return None
+        try:
+            _singleton = AddressLookup()
+        except Exception:
+            _load_failed = True
+            logger.warning(
+                "AddressLookup unavailable — tried %s; address canonicalization is disabled.",
+                ADDRESSES_DB,
+                exc_info=True,
+            )
+            return None
+        return _singleton
 
 
 def canonicalize(raw_address: str) -> str | None:

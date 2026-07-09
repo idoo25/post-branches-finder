@@ -5,6 +5,12 @@ NO routing API call. Pure spatial math from the in-memory index.
 from __future__ import annotations
 import sys
 import time
+from pathlib import Path
+
+# This file lives in examples/, one level below the project root where
+# nearest.py / providers.py / address_norm.py actually live.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 

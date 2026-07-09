@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AddressInput } from "./components/AddressInput";
 import { BranchList } from "./components/BranchList";
 import { BranchMap } from "./components/BranchMap";
@@ -42,28 +42,44 @@ export default function App() {
   const [hoveredRank, setHoveredRank] = useState<number | null>(null);
   const [selectedRank, setSelectedRank] = useState<number | null>(null);
 
+  // re-entrancy guard for the browse-mode fetch effect below — a ref (not state)
+  // so that flipping it does NOT retrigger the effect; only `mode`/`allBranches`
+  // changing should do that. `browseLoading` state remains purely for the UI spinner.
+  const browseFetchInFlightRef = useRef(false);
+
+  // monotonically increasing request ids so a slow, stale response can never
+  // clobber the state written by a later request that already resolved.
+  const searchRequestIdRef = useRef(0);
+  const nearbyRequestIdRef = useRef(0);
+
   useEffect(() => {
     setHoveredRank(null);
     setSelectedRank(null);
   }, [mode]);
 
   useEffect(() => {
-    if (mode !== "browse" || allBranches !== null || browseLoading) return;
+    if (mode !== "browse" || allBranches !== null || browseFetchInFlightRef.current) return;
+    browseFetchInFlightRef.current = true;
     setBrowseLoading(true);
     setBrowseError(null);
     fetchAllBranches()
       .then(setAllBranches)
       .catch((e) => setBrowseError(String(e)))
-      .finally(() => setBrowseLoading(false));
-  }, [mode, allBranches, browseLoading]);
+      .finally(() => {
+        browseFetchInFlightRef.current = false;
+        setBrowseLoading(false);
+      });
+  }, [mode, allBranches]);
 
   async function handleSearch(address: string, coord?: { lat: number; lng: number }) {
+    const requestId = ++searchRequestIdRef.current;
     setLoading(true);
     setError(null);
     setSelectedRank(null);
     setHoveredRank(null);
     try {
       const r = await search({ address, lat: coord?.lat, lng: coord?.lng });
+      if (requestId !== searchRequestIdRef.current) return; // a newer search superseded this one
       setResults(r.results);
       setOrigin(r.origin);
       setProviders(r.providers);
@@ -75,22 +91,25 @@ export default function App() {
         prefetchBranches(r.results.map((x) => x.branch_number));
       }
     } catch (e) {
+      if (requestId !== searchRequestIdRef.current) return; // a newer search superseded this one
       setError(String(e));
       setResults([]);
       setOrigin(null);
       setIsEstimate(false);
     } finally {
-      setLoading(false);
+      if (requestId === searchRequestIdRef.current) setLoading(false);
     }
   }
 
   async function runNearby(params: { lat?: number; lng?: number; address?: string }) {
+    const requestId = ++nearbyRequestIdRef.current;
     setNearbyLoading(true);
     setNearbyError(null);
     setSelectedRank(null);
     setHoveredRank(null);
     try {
       const r = await nearbyByAirDistance(params);
+      if (requestId !== nearbyRequestIdRef.current) return; // a newer nearby search superseded this one
       const asRanked: RankedBranch[] = r.results.map((x) => ({
         ...x,
         duration_min: null,
@@ -102,11 +121,12 @@ export default function App() {
       if (r.results.length === 0) setNearbyError("לא נמצאו סניפים בקרבת מקום.");
       else prefetchBranches(r.results.map((x) => x.branch_number));
     } catch (e) {
+      if (requestId !== nearbyRequestIdRef.current) return; // a newer nearby search superseded this one
       setNearbyError(String(e));
       setNearbyResults([]);
       setNearbyOrigin(null);
     } finally {
-      setNearbyLoading(false);
+      if (requestId === nearbyRequestIdRef.current) setNearbyLoading(false);
     }
   }
 

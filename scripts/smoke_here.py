@@ -13,14 +13,15 @@ import sys
 import time
 from pathlib import Path
 
-# Allow running as a script
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+# Allow running as a script. This file lives in scripts/, one level below
+# the project root where branch_index.py / providers.py / .env / the DB live.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 # Load .env (server.py also loads it but this script is standalone)
-ENV_FILE = Path(__file__).resolve().parent / ".env"
+ENV_FILE = Path(__file__).resolve().parent.parent / ".env"
 if ENV_FILE.exists():
     for ln in ENV_FILE.read_text(encoding="utf-8").splitlines():
         ln = ln.strip()
@@ -37,7 +38,7 @@ HERE_KEY = os.environ.get("HERE_API_KEY")
 if not HERE_KEY:
     print("ERROR: HERE_API_KEY missing from .env"); raise SystemExit(2)
 
-DB = Path(__file__).resolve().parent / "post_branches.db"
+DB = Path(__file__).resolve().parent.parent / "post_branches.db"
 print(f"DB     : {DB}")
 print(f"key    : {HERE_KEY[:6]}…{HERE_KEY[-4:]}  ({len(HERE_KEY)} chars)")
 

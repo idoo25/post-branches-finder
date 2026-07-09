@@ -5,6 +5,12 @@ each honouring only the RoutingOptions fields it supports.
 from __future__ import annotations
 import sys
 import warnings
+from pathlib import Path
+
+# This file lives in examples/, one level below the project root where
+# providers.py / geo_utils.py actually live.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 

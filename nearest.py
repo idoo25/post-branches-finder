@@ -18,6 +18,7 @@ import json
 import math
 import re
 import sqlite3
+import threading
 import time
 import warnings
 from dataclasses import dataclass
@@ -27,11 +28,10 @@ from pathlib import Path
 from address_lookup import canonicalize as canonicalize_address
 from address_norm import normalize as normalize_address
 from branch_index import Branch, BranchIndex, NearestHit
-from geo_utils import point_in_polygon
-from providers import (Coordinate, GeocodingProvider, GeocodeResult,
-                       IsochroneResult, RoutingOptions, RoutingProvider,
-                       TravelLeg)
-from quota import QuotaGuard, QuotaStatus
+from geo_utils import haversine_m, point_in_polygon
+from providers import (Coordinate, GeocodingProvider, RoutingOptions,
+                       RoutingProvider, TravelLeg)
+from quota import QuotaGuard
 
 DB_PATH = Path(__file__).resolve().parent / "post_branches.db"
 ORIGIN_PRECISION = 5  # 5 decimals ≈ 1.1 m — same query rounds to same cache key
@@ -63,7 +63,8 @@ class ReachableBranch:
 class NearestBranchService:
     """The high-level finder. One instance per process."""
 
-    __slots__ = ("conn", "index", "routing", "traffic", "geocoding", "quota")
+    __slots__ = ("conn", "index", "routing", "traffic", "geocoding", "quota",
+                 "_cache_locks", "_cache_locks_guard")
 
     def __init__(
         self,
@@ -79,6 +80,9 @@ class NearestBranchService:
         # Performance pragmas (per-connection)
         self.conn.execute("PRAGMA cache_size = -65536")
         self.conn.execute("PRAGMA mmap_size = 268435456")
+        # FK enforcement is a per-connection SQLite setting, NOT persisted in
+        # schema.sql — must be re-set on every connection we open ourselves.
+        self.conn.execute("PRAGMA foreign_keys = ON")
         self.index = BranchIndex(self.conn)
         self.routing = routing_provider
         # Optional traffic-aware provider (e.g. Google) used in rerank_with_traffic.
@@ -86,6 +90,22 @@ class NearestBranchService:
         self.traffic = traffic_provider
         self.geocoding = geocoding_provider
         self.quota = QuotaGuard(self.conn)
+        # Per-cache-key locks so two concurrent requests for the identical
+        # geocode/matrix key serialize on the (paid) provider call instead of
+        # both missing the cache and both billing/consuming quota.
+        self._cache_locks: dict[str, threading.Lock] = {}
+        self._cache_locks_guard = threading.Lock()
+
+    def _lock_for_key(self, key: str) -> threading.Lock:
+        """Get (or create) the lock for a given cache key. Creation is
+        guarded by one small meta-lock; the returned per-key lock is what
+        callers actually hold while they check-then-populate the cache."""
+        with self._cache_locks_guard:
+            lock = self._cache_locks.get(key)
+            if lock is None:
+                lock = threading.Lock()
+                self._cache_locks[key] = lock
+            return lock
 
     # ------------------------------------------------------------------
     # Geocoding (cached + quota-guarded)
@@ -124,76 +144,107 @@ class NearestBranchService:
                 return coord
         return None
 
+    def _geocode_cache_lookup(self, norm: str) -> Coordinate | None:
+        """SELECT by normalized form, honouring expires_at (mirrors
+        travel_time_cache's TTL check). On hit, bump lookup_count +
+        last_used_at and return; on miss/expired, return None."""
+        row = self.conn.execute(
+            "SELECT latitude, longitude FROM geocode_cache "
+            "WHERE address_normalized = ? "
+            "AND (expires_at IS NULL OR expires_at > strftime('%s','now'))",
+            (norm,),
+        ).fetchone()
+        if not row:
+            return None
+        # Cheap popularity bump — same row, no INSERT.
+        with self.conn:
+            self.conn.execute(
+                "UPDATE geocode_cache SET lookup_count = lookup_count + 1, "
+                "last_used_at = CURRENT_TIMESTAMP WHERE address_normalized = ?",
+                (norm,),
+            )
+        return Coordinate(row["latitude"], row["longitude"])
+
     def _geocode_one(self, address: str) -> Coordinate | None:
         """Cache flow for a single address string:
             1. Normalize the input (Hebrew niqqud strip, abbreviations, etc.).
-            2. SELECT by normalized form (PK lookup, O(log n)).
+            2. SELECT by normalized form (PK lookup, O(log n)), skipping
+               expired rows.
             3. On hit → bump lookup_count + last_used_at, return.
-            4. On miss → check provider quota → call → INSERT.
+            4. On miss → check provider quota → call → INSERT with a fresh
+               expires_at.
         """
         norm = normalize_address(address)
         if not norm:
             return None
 
-        row = self.conn.execute(
-            "SELECT latitude, longitude FROM geocode_cache WHERE address_normalized = ?",
-            (norm,),
-        ).fetchone()
-        if row:
-            # Cheap popularity bump — same row, no INSERT.
-            with self.conn:
-                self.conn.execute(
-                    "UPDATE geocode_cache SET lookup_count = lookup_count + 1, "
-                    "last_used_at = CURRENT_TIMESTAMP WHERE address_normalized = ?",
-                    (norm,),
-                )
-            return Coordinate(row["latitude"], row["longitude"])
+        coord = self._geocode_cache_lookup(norm)
+        if coord is not None:
+            return coord
 
         if self.geocoding is None:
             return None  # no provider wired → cache-only mode
 
-        # Quota check before paying for the call.
-        if not self.quota.allow(self.geocoding.name, "geocode"):
-            st = self.quota.status(self.geocoding.name, "geocode")
-            raise RuntimeError(
-                f"Quota exceeded for {self.geocoding.name}/geocode "
-                f"({st.reason}; retry in {st.retry_after_s:.0f}s). "
-                f"Daily {st.daily_used}/{st.daily_limit}, minute {st.minute_used}/{st.minute_limit}."
-            )
+        # Serialize concurrent requests for the identical address so only
+        # one of them ever pays for the provider call; the loser re-checks
+        # the (now populated) cache instead of calling the provider again.
+        with self._lock_for_key(f"geocode:{norm}"):
+            coord = self._geocode_cache_lookup(norm)
+            if coord is not None:
+                return coord
 
-        t0 = time.perf_counter()
-        try:
-            result = self.geocoding.geocode(address)
-        except Exception:
-            self.quota.refund(self.geocoding.name, "geocode")
-            raise
-        dur_ms = int((time.perf_counter() - t0) * 1000)
+            # Quota check before paying for the call.
+            if not self.quota.allow(self.geocoding.name, "geocode"):
+                st = self.quota.status(self.geocoding.name, "geocode")
+                raise RuntimeError(
+                    f"Quota exceeded for {self.geocoding.name}/geocode "
+                    f"({st.reason}; retry in {st.retry_after_s:.0f}s). "
+                    f"Daily {st.daily_used}/{st.daily_limit}, minute {st.minute_used}/{st.minute_limit}."
+                )
 
-        with self.conn:
-            self.conn.execute(
-                """INSERT INTO routing_requests_log
-                   (provider, request_type, num_destinations, status_code,
-                    elements_billed, duration_ms)
-                   VALUES (?, 'geocode', 1, ?, 1, ?)""",
-                (self.geocoding.name, 200 if result else 404, dur_ms),
-            )
+            t0 = time.perf_counter()
+            try:
+                result = self.geocoding.geocode(address)
+            except Exception:
+                self.quota.refund(self.geocoding.name, "geocode")
+                raise
+            dur_ms = int((time.perf_counter() - t0) * 1000)
 
-        if result is None:
-            return None
+            with self.conn:
+                self.conn.execute(
+                    """INSERT INTO routing_requests_log
+                       (provider, request_type, num_destinations, status_code,
+                        elements_billed, duration_ms)
+                       VALUES (?, 'geocode', 1, ?, 1, ?)""",
+                    (self.geocoding.name, 200 if result else 404, dur_ms),
+                )
 
-        with self.conn:
-            self.conn.execute(
-                """INSERT INTO geocode_cache
-                   (address_normalized, address_raw, latitude, longitude,
-                    formatted_address, provider)
-                   VALUES (?, ?, ?, ?, ?, ?)
-                   ON CONFLICT(address_normalized) DO UPDATE SET
-                     lookup_count = lookup_count + 1,
-                     last_used_at = CURRENT_TIMESTAMP""",
-                (norm, address, result.lat, result.lng,
-                 result.formatted_address, self.geocoding.name),
-            )
-        return Coordinate(result.lat, result.lng)
+            if result is None:
+                return None
+
+            ttl = self._provider_ttl(self.geocoding.name)
+            expires = int(time.time()) + ttl if ttl > 0 else None
+
+            with self.conn:
+                self.conn.execute(
+                    """INSERT INTO geocode_cache
+                       (address_normalized, address_raw, latitude, longitude,
+                        formatted_address, provider, expires_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?)
+                       ON CONFLICT(address_normalized) DO UPDATE SET
+                         address_raw = excluded.address_raw,
+                         latitude = excluded.latitude,
+                         longitude = excluded.longitude,
+                         formatted_address = excluded.formatted_address,
+                         provider = excluded.provider,
+                         fetched_at = CURRENT_TIMESTAMP,
+                         expires_at = excluded.expires_at,
+                         lookup_count = lookup_count + 1,
+                         last_used_at = CURRENT_TIMESTAMP""",
+                    (norm, address, result.lat, result.lng,
+                     result.formatted_address, self.geocoding.name, expires),
+                )
+            return Coordinate(result.lat, result.lng)
 
     # ------------------------------------------------------------------
     # Travel-time cache helpers
@@ -339,46 +390,58 @@ class NearestBranchService:
         misses = [bn for bn in candidate_bns if bn not in cached]
 
         if misses:
-            cap = max(1, int(getattr(provider, "max_destinations_per_matrix_call", 25)))
-            num_batches = (len(misses) + cap - 1) // cap
+            # Serialize concurrent requests hitting the identical
+            # (origin, mode, provider) cache namespace so only one caller
+            # ever pays the provider for a given miss; the loser re-checks
+            # the cache (now populated by the winner) instead of re-calling.
+            olat_e5, olng_e5 = self._cache_key(origin.lat, origin.lng)
+            lock_key = f"matrix:{provider.name}:{mode}:{olat_e5}:{olng_e5}"
+            with self._lock_for_key(lock_key):
+                recheck = self._fetch_cached_legs(origin, misses, mode, provider.name)
+                cached.update(recheck)
+                misses = [bn for bn in misses if bn not in recheck]
 
-            if not self.quota.allow(provider.name, "matrix", units=num_batches):
-                st = self.quota.status(provider.name, "matrix")
-                raise RuntimeError(
-                    f"Quota exceeded for {provider.name}/matrix "
-                    f"(need {num_batches} units; {st.reason}; retry in {st.retry_after_s:.0f}s). "
-                    f"Daily {st.daily_used}/{st.daily_limit}, minute {st.minute_used}/{st.minute_limit}."
-                )
+                if misses:
+                    cap = max(1, int(getattr(provider, "max_destinations_per_matrix_call", 25)))
+                    num_batches = (len(misses) + cap - 1) // cap
 
-            ttl = ttl_seconds_override if ttl_seconds_override is not None \
-                  else self._provider_ttl(provider.name)
+                    if not self.quota.allow(provider.name, "matrix", units=num_batches):
+                        st = self.quota.status(provider.name, "matrix")
+                        raise RuntimeError(
+                            f"Quota exceeded for {provider.name}/matrix "
+                            f"(need {num_batches} units; {st.reason}; retry in {st.retry_after_s:.0f}s). "
+                            f"Daily {st.daily_used}/{st.daily_limit}, minute {st.minute_used}/{st.minute_limit}."
+                        )
 
-            for i in range(0, len(misses), cap):
-                batch_bns    = misses[i:i + cap]
-                batch_coords = [Coordinate(bn_to_branch[bn].latitude, bn_to_branch[bn].longitude)
-                                for bn in batch_bns]
-                t0 = time.perf_counter()
-                try:
-                    legs = provider.matrix(origin, batch_coords, mode=mode, options=options)
-                except Exception:
-                    remaining = num_batches - (i // cap)
-                    self.quota.refund(provider.name, "matrix", units=remaining)
-                    raise
-                dur_ms = int((time.perf_counter() - t0) * 1000)
+                    ttl = ttl_seconds_override if ttl_seconds_override is not None \
+                          else self._provider_ttl(provider.name)
 
-                self._store_legs(origin, batch_bns, legs, mode, provider.name, ttl)
-                with self.conn:
-                    self.conn.execute(
-                        """INSERT INTO routing_requests_log
-                           (provider, request_type, origin_lat, origin_lng,
-                            num_destinations, mode, status_code, elements_billed, duration_ms)
-                           VALUES (?, 'matrix', ?, ?, ?, ?, 200, ?, ?)""",
-                        (provider.name, origin.lat, origin.lng, len(batch_bns),
-                         mode, len(batch_bns), dur_ms),
-                    )
-                for bn, leg in zip(batch_bns, legs):
-                    if leg is not None:
-                        cached[bn] = leg
+                    for i in range(0, len(misses), cap):
+                        batch_bns    = misses[i:i + cap]
+                        batch_coords = [Coordinate(bn_to_branch[bn].latitude, bn_to_branch[bn].longitude)
+                                        for bn in batch_bns]
+                        t0 = time.perf_counter()
+                        try:
+                            legs = provider.matrix(origin, batch_coords, mode=mode, options=options)
+                        except Exception:
+                            remaining = num_batches - (i // cap)
+                            self.quota.refund(provider.name, "matrix", units=remaining)
+                            raise
+                        dur_ms = int((time.perf_counter() - t0) * 1000)
+
+                        self._store_legs(origin, batch_bns, legs, mode, provider.name, ttl)
+                        with self.conn:
+                            self.conn.execute(
+                                """INSERT INTO routing_requests_log
+                                   (provider, request_type, origin_lat, origin_lng,
+                                    num_destinations, mode, status_code, elements_billed, duration_ms)
+                                   VALUES (?, 'matrix', ?, ?, ?, ?, 200, ?, ?)""",
+                                (provider.name, origin.lat, origin.lng, len(batch_bns),
+                                 mode, len(batch_bns), dur_ms),
+                            )
+                        for bn, leg in zip(batch_bns, legs):
+                            if leg is not None:
+                                cached[bn] = leg
 
         def time_key(bn: int) -> int:
             leg = cached.get(bn)
@@ -610,22 +673,34 @@ class NearestBranchService:
 
             if not bands:
                 return []
-            polygon = bands[0].geometry_geojson
+            polygon = bands[0].geometry_geojson or {}
 
             # Spatial pre-filter via R-Tree on the bounding box of the polygon.
-            ring = polygon.get("coordinates", [[]])[0] if polygon.get("type") == "Polygon" \
-                   else polygon.get("coordinates", [[[[]]]])[0][0]
-            if ring:
-                lats = [p[1] for p in ring]
-                lngs = [p[0] for p in ring]
-                cur = self.conn.cursor()
-                bn_candidates = [r[0] for r in cur.execute(
-                    "SELECT branch_number FROM branches_rtree "
-                    "WHERE max_lat >= ? AND min_lat <= ? AND max_lng >= ? AND min_lng <= ?",
-                    (min(lats), max(lats), min(lngs), max(lngs)),
-                )]
+            # Handle Polygon vs MultiPolygon explicitly and bail out to []
+            # for missing/empty/degenerate geometry (e.g. an
+            # OpenRouteServiceProvider isochrone that returned {} on a
+            # degenerate response) instead of indexing into a nested default.
+            gtype = polygon.get("type")
+            coords = polygon.get("coordinates") or []
+            if gtype == "Polygon":
+                ring = coords[0] if coords else []
+            elif gtype == "MultiPolygon":
+                first_poly = coords[0] if coords else []
+                ring = first_poly[0] if first_poly else []
             else:
-                bn_candidates = list(self.index.by_number.keys())
+                ring = []
+
+            if not ring:
+                return []
+
+            lats = [p[1] for p in ring]
+            lngs = [p[0] for p in ring]
+            cur = self.conn.cursor()
+            bn_candidates = [r[0] for r in cur.execute(
+                "SELECT branch_number FROM branches_rtree "
+                "WHERE max_lat >= ? AND min_lat <= ? AND max_lng >= ? AND min_lng <= ?",
+                (min(lats), max(lats), min(lngs), max(lngs)),
+            )]
 
             # Filter by required services
             if required_services:
@@ -634,7 +709,6 @@ class NearestBranchService:
 
             # Point-in-polygon refine
             results: list[ReachableBranch] = []
-            from geo_utils import haversine_m
             for bn in bn_candidates:
                 b = self.index.by_number[bn]
                 if not point_in_polygon(b.longitude, b.latitude, polygon):
@@ -652,7 +726,6 @@ class NearestBranchService:
             coord, k=candidate_pool, candidate_pool=candidate_pool,
             mode=mode, required_services=required_services, options=options,
         )
-        from geo_utils import haversine_m
         out: list[ReachableBranch] = []
         for r in ranked:
             chosen = r.duration_in_traffic_seconds or r.duration_seconds

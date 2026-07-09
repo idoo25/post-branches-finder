@@ -79,6 +79,11 @@ class TestNominatim(unittest.TestCase):
         mu.return_value = fake_urlopen_response([{
             "lat": "32.0788", "lon": "34.7741",
             "display_name": "Dizengoff Center, Tel Aviv-Yafo",
+            # A house-number query (address contains a digit) is only accepted
+            # when Nominatim's match includes a road-level component — without
+            # it, geocode() correctly rejects a city-centroid mismatch as None.
+            "address": {"road": "Dizengoff Street", "city": "Tel Aviv-Yafo",
+                        "country": "Israel"},
         }])
         r = self.p.geocode("Dizengoff 50")
         req, _ = captured_request(mu)

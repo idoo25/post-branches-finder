@@ -14,16 +14,46 @@ Usage:
 """
 from __future__ import annotations
 
+import argparse
 import json
 import sqlite3
 import sys
 import urllib.request
+from datetime import datetime
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 DB_PATH = HERE / "post_branches.db"
 LIVE_URL = "https://mypostvouchars-prd.azureedge.net/branches/branches.json"
 OUT_JSON = Path.home() / "Downloads" / "israelpost_branches_full.json"
+REPORTS_DIR = HERE / "reports"
+
+# If the live feed's branch count drops below this fraction of the DB's current
+# count, treat it as a probably-truncated/corrupt feed rather than a real mass
+# closure of branches, and refuse to --apply unless --force is passed.
+MIN_PLAUSIBLE_RATIO = 0.9
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Diff post_branches.db against Israel Post's live branch feed and, "
+            "optionally, rebuild the DB from the fresh data."
+        )
+    )
+    parser.add_argument(
+        "--apply", action="store_true",
+        help="Rebuild post_branches.db from the live feed (default: report only, no writes).",
+    )
+    parser.add_argument(
+        "--force", action="store_true",
+        help=(
+            "Proceed with --apply even if the live feed shows an implausibly large "
+            f"drop in branch count vs. the current DB (less than {MIN_PLAUSIBLE_RATIO * 100:.0f}%% "
+            "of the current count)."
+        ),
+    )
+    return parser.parse_args(argv)
 
 
 def fetch_live() -> list[dict]:
@@ -143,7 +173,9 @@ def diff_branch(before: dict, after: dict) -> list[str]:
 
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
-    apply = "--apply" in sys.argv
+    args = parse_args()
+    apply = args.apply
+    force = args.force
 
     print("Fetching live feed...")
     live_raw = fetch_live()
@@ -202,7 +234,8 @@ def main() -> int:
     if unknown_ids:
         print(f"\n=== Unrecognized service IDs in live feed (not in local `services` table): {unknown_ids} ===")
 
-    report_path = HERE / "refresh_report.json"
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    report_path = REPORTS_DIR / "refresh_report.json"
     report_path.write_text(json.dumps({
         "db_count": len(before_nums),
         "live_count": len(after_nums),
@@ -218,10 +251,39 @@ def main() -> int:
         conn.close()
         return 0
 
+    # ---- Sanity-check the scale of the change before touching anything ----
+    if before_nums and len(after_nums) < MIN_PLAUSIBLE_RATIO * len(before_nums):
+        drop_pct = 100 * (1 - len(after_nums) / len(before_nums))
+        print(
+            f"\nERROR: live feed has only {len(after_nums)} branches vs {len(before_nums)} "
+            f"currently in the DB (a {drop_pct:.1f}% drop, {len(removed)} branches would be "
+            "removed). This looks like a truncated or corrupted feed rather than a real mass "
+            "closure of branches.",
+            file=sys.stderr,
+        )
+        if not force:
+            print("Refusing to --apply. Re-run with --force to proceed anyway.", file=sys.stderr)
+            conn.close()
+            return 1
+        print("--force passed: proceeding despite the implausible drop.", file=sys.stderr)
+
     conn.close()
 
     # ---- Apply: rebuild the source JSON (build_db.py's expected shape) + rebuild DB ----
     print("\nApplying: writing fresh source JSON and rebuilding DB...")
+
+    if DB_PATH.exists():
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        db_backup = DB_PATH.with_name(f"{DB_PATH.stem}_backup_{ts}{DB_PATH.suffix}")
+        db_backup.write_bytes(DB_PATH.read_bytes())
+        print(f"Backed up current DB to {db_backup}")
+        for side_suffix in ("-wal", "-shm"):
+            side_path = DB_PATH.with_name(DB_PATH.name + side_suffix)
+            if side_path.exists():
+                side_backup = DB_PATH.with_name(f"{DB_PATH.stem}_backup_{ts}{DB_PATH.suffix}{side_suffix}")
+                side_backup.write_bytes(side_path.read_bytes())
+                print(f"Backed up {side_path.name} to {side_backup.name}")
+
     out_branches = []
     for b in live_raw:
         nb = normalize_live_branch(b, service_names)

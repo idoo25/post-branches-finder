@@ -8,6 +8,10 @@ import sqlite3
 import time
 from pathlib import Path
 
+# This file lives in examples/, one level below the project root where
+# nearest.py / providers.py / post_branches.db actually live.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
@@ -83,7 +87,7 @@ def demo(svc, address, *, candidate_pool=50, top_k=30):
 
 def main():
     # Wipe cache + log so the demo's "live vs cache" tag is meaningful.
-    db = Path(__file__).resolve().parent / "post_branches.db"
+    db = Path(__file__).resolve().parent.parent / "post_branches.db"
     conn = sqlite3.connect(db)
     with conn:
         conn.execute("DELETE FROM travel_time_cache")

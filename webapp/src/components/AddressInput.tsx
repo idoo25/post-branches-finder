@@ -71,6 +71,7 @@ export function AddressInput({ onSubmit, loading }: Props) {
       setHighlight((h) => Math.max(h - 1, -1));
     } else if (e.key === "Enter") {
       e.preventDefault();
+      if (loading) return;
       if (highlight >= 0 && suggestions[highlight]) {
         const s = suggestions[highlight];
         submit(s.label, { lat: s.lat, lng: s.lng });
@@ -97,6 +98,15 @@ export function AddressInput({ onSubmit, loading }: Props) {
           type="text"
           value={text}
           placeholder="הזינו כתובת (למשל: דיזנגוף 50, תל אביב)"
+          aria-label="הזינו כתובת לחיפוש"
+          role="combobox"
+          aria-expanded={showList && suggestions.length > 0}
+          aria-controls="addr-suggest-listbox"
+          aria-activedescendant={
+            showList && highlight >= 0 && suggestions[highlight]
+              ? `addr-suggest-option-${highlight}`
+              : undefined
+          }
           onChange={(e) => {
             setText(e.target.value);
             setShowList(true);
@@ -108,10 +118,11 @@ export function AddressInput({ onSubmit, loading }: Props) {
         />
       </div>
       {showList && suggestions.length > 0 && (
-        <ul className="addr-suggest" role="listbox">
+        <ul className="addr-suggest" role="listbox" id="addr-suggest-listbox">
           {suggestions.map((s, i) => (
             <li
               key={`${s.lat}-${s.lng}-${i}`}
+              id={`addr-suggest-option-${i}`}
               role="option"
               aria-selected={i === highlight}
               className={i === highlight ? "is-highlighted" : ""}
