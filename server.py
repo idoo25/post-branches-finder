@@ -155,7 +155,9 @@ app.add_middleware(
     # 5173 is Vite's configured dev port (webapp/vite.config.ts), but Vite
     # auto-increments to 5174/5175/... whenever the configured port is
     # already taken, so allow a small range rather than just the one port.
-    allow_origins=[f"http://{host}:{port}" for host in ("localhost", "127.0.0.1") for port in range(5173, 5178)],
+    # The GitHub Pages origin is the deployed frontend's real production origin.
+    allow_origins=[f"http://{host}:{port}" for host in ("localhost", "127.0.0.1") for port in range(5173, 5178)]
+    + ["https://idoo25.github.io"],
     allow_methods=["*"], allow_headers=["*"],
 )
 

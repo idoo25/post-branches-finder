@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: post-branches-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ORS_API_KEY
+        sync: false
+      - key: HERE_API_KEY
+        sync: false

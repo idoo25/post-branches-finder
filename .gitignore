@@ -1,10 +1,14 @@
 .env
 *.db
+# Committed as a deploy snapshot for Render (no build-time data source there) —
+# refresh locally with refresh_from_live.py --apply, then commit the update.
+!post_branches.db
 *.db-shm
 *.db-wal
 __pycache__/
 *.pyc
 webapp/node_modules/
 webapp/dist/
+webapp/*.tsbuildinfo
 .DS_Store
 reports/

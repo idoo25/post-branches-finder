@@ -1,6 +1,10 @@
 // All HTTP calls to the FastAPI backend.
 
-const API = "/api";
+// In dev, Vite proxies "/api" to the local FastAPI server (vite.config.ts),
+// so a relative path works with no config. A static production build (e.g.
+// GitHub Pages) has no proxy, so VITE_API_BASE_URL must point at the
+// deployed backend's own origin — set at build time, see .github/workflows.
+const API = `${import.meta.env.VITE_API_BASE_URL ?? ""}/api`;
 
 export interface Suggestion {
   label: string;
