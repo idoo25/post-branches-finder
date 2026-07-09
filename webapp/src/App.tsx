@@ -166,7 +166,7 @@ export default function App() {
 
       <section className="hero">
         <div className="hero-inner">
-          <h1 className="hero-title">איתור סניפים וזימון תור בקליק</h1>
+          <h1 className="hero-title">איתור סניפים</h1>
           <ModeTabs mode={mode} onChange={setMode} />
 
           {mode === "travel" && (
