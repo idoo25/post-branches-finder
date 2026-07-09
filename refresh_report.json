@@ -1,0 +1,4163 @@
+{
+  "db_count": 1513,
+  "live_count": 1487,
+  "added": [
+    390,
+    799,
+    2168,
+    2233,
+    3180,
+    3453,
+    3505,
+    3508,
+    3584,
+    3600,
+    3601,
+    3602,
+    3607,
+    3608,
+    3610,
+    3623,
+    3626,
+    3633,
+    3640,
+    3641,
+    3642,
+    3703,
+    454545
+  ],
+  "removed": [
+    2014,
+    2027,
+    2045,
+    2064,
+    2133,
+    2160,
+    2161,
+    2186,
+    2196,
+    2221,
+    2234,
+    2238,
+    2305,
+    2418,
+    2420,
+    2424,
+    2437,
+    2468,
+    2470,
+    2472,
+    2481,
+    2497,
+    2602,
+    2613,
+    2630,
+    2637,
+    2648,
+    2707,
+    2743,
+    2751,
+    2783,
+    2789,
+    2822,
+    2851,
+    2893,
+    2908,
+    2916,
+    2917,
+    2928,
+    2971,
+    3376,
+    3414,
+    3500,
+    3524,
+    3543,
+    3546,
+    3576,
+    3588,
+    3636
+  ],
+  "changed": {
+    "3": [
+      "services added: [5]"
+    ],
+    "20": [
+      "street: \"נרקיס עוזי\" -> \"None\""
+    ],
+    "93": [
+      "branch_name: \"קטוף קרית אתא \" -> \"קטוף קרית אתא\"",
+      "address_extra: \" קטוף קומה מינוס 1  קניון כפיר\" -> \"קטוף קומה מינוס 1  קניון תימורה\""
+    ],
+    "101": [
+      "services removed: [2, 4, 5]"
+    ],
+    "102": [
+      "services removed: [2, 4, 5]"
+    ],
+    "108": [
+      "street: \"גסר א-נסף\" -> \"None\""
+    ],
+    "110": [
+      "street: \"דרך רופין\" -> \"None\"",
+      "services removed: [5]"
+    ],
+    "111": [
+      "services removed: [5]"
+    ],
+    "113": [
+      "services removed: [2, 4, 5]"
+    ],
+    "114": [
+      "services removed: [2, 4, 5]"
+    ],
+    "117": [
+      "services removed: [2, 5]"
+    ],
+    "127": [
+      "street: \"דוד\" -> \"None\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "133": [
+      "branch_name: \"כספומט אולם תן ביס \" -> \"כספומט אולם תן ביס\"",
+      "address_extra: \"אולם תן ביס בנין המשרדים \" -> \"אולם תן ביס בנין המשרדים\""
+    ],
+    "135": [
+      "services removed: [2, 4, 5]"
+    ],
+    "138": [
+      "services removed: [2, 5]"
+    ],
+    "139": [
+      "branch_name: \"כספומט אולם חבילות \" -> \"כספומט אולם חבילות\"",
+      "address_extra: \"אולם חבילות בית המיון \" -> \"אולם חבילות בית המיון\""
+    ],
+    "140": [
+      "services removed: [2, 5]"
+    ],
+    "143": [
+      "services removed: [2, 5]"
+    ],
+    "151": [
+      "services removed: [5]"
+    ],
+    "155": [
+      "street: \"אלמדינה מונורה \" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "158": [
+      "services removed: [2, 5]"
+    ],
+    "159": [
+      "branch_type: \"סניף\" -> \"סוכנות א\"",
+      "hours day1: ('08:00 - 18:00', None, False) -> ('08:30 - 15:00', None, False)",
+      "hours day2: ('08:00 - 15:00', None, False) -> ('08:30 - 15:00', None, False)",
+      "hours day3: ('08:00 - 18:00', None, False) -> ('08:30 - 13:00', None, False)",
+      "hours day4: ('08:00 - 15:00', None, False) -> ('08:30 - 15:00', None, False)",
+      "hours day5: ('08:00 - 15:00', None, False) -> ('10:00 - 18:00', None, False)",
+      "services removed: [2, 5]"
+    ],
+    "160": [
+      "services removed: [41]"
+    ],
+    "161": [
+      "services removed: [2, 5]"
+    ],
+    "162": [
+      "services removed: [2, 5]"
+    ],
+    "165": [
+      "street: \"דרך השלום\" -> \"None\"",
+      "services removed: [2]"
+    ],
+    "166": [
+      "services removed: [2, 5]"
+    ],
+    "167": [
+      "street: \" \" -> \"None\"",
+      "address_extra: \"חניית הגן הלאומי ע\"ש טבנצ'יק \" -> \"חניית הגן הלאומי ע\"ש טבנצ'יק\"",
+      "hours day1: ('08:00 - 13:00', None, False) -> ('08:00 - 15:00', None, False)",
+      "hours day2: (None, None, True) -> ('08:00 - 15:00', None, False)",
+      "hours day3: ('08:00 - 13:00', None, False) -> ('08:00 - 15:00', None, False)",
+      "hours day4: (None, None, True) -> ('08:00 - 15:00', None, False)",
+      "hours day5: ('08:00 - 13:00', None, False) -> ('08:00 - 15:00', None, False)"
+    ],
+    "169": [
+      "street: \"שטנר\" -> \"None\""
+    ],
+    "170": [
+      "services removed: [2, 4, 5]"
+    ],
+    "171": [
+      "services removed: [2, 4, 5]"
+    ],
+    "172": [
+      "services removed: [2, 5]"
+    ],
+    "173": [
+      "branch_name: \" הירקות של גילי\" -> \"הירקות של גילי\""
+    ],
+    "174": [
+      "street: \"שדרות רחבעם\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "178": [
+      "services removed: [2, 5]"
+    ],
+    "182": [
+      "services removed: [2, 4, 5]"
+    ],
+    "183": [
+      "street: \"גלבוע\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "184": [
+      "branch_name: \"קניון רמי לוי עטרות \" -> \"קניון רמי לוי עטרות\"",
+      "street: \"עטרות\" -> \"None\""
+    ],
+    "187": [
+      "branch_type: \"סניף\" -> \"סוכנות א\"",
+      "hours day3: ('08:00 - 18:00', None, False) -> ('08:00 - 15:00', None, False)",
+      "hours day4: ('08:00 - 15:00', None, False) -> ('08:00 - 18:00', None, False)",
+      "services removed: [2, 5]"
+    ],
+    "191": [
+      "hours day2: ('08:30 - 12:00', None, False) -> ('08:30 - 12:00', '16:00 - 18:00', False)",
+      "services removed: [2, 5]"
+    ],
+    "192": [
+      "services removed: [2, 5]"
+    ],
+    "193": [
+      "services removed: [2, 5]"
+    ],
+    "194": [
+      "services removed: [2, 5]"
+    ],
+    "196": [
+      "services removed: [2, 4, 5]"
+    ],
+    "197": [
+      "services removed: [2, 5]"
+    ],
+    "198": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "200": [
+      "street: \"שד התמרים\" -> \"דרך הערבה\"",
+      "house: \"19\" -> \"3\"",
+      "zip: \"8801416\" -> \"8850077\"",
+      "address_extra: \"מרכז עירוני הקניון האדום\" -> \"קניון שבעת הכוכבים\"",
+      "coords: (29.5559411,34.9519313) -> (29.5550838,34.9546502)",
+      "services removed: [2, 4, 5]"
+    ],
+    "205": [
+      "city: \"אילת\" -> \"אילות\"",
+      "zip: \"0000000\" -> \"8880500\"",
+      "coords: (29.557669,34.951925) -> (29.580548,34.963023)"
+    ],
+    "207": [
+      "street: \"הבושם\" -> \"None\""
+    ],
+    "208": [
+      "services removed: [2, 5]"
+    ],
+    "209": [
+      "address_extra: \"ליד ביה\"ס צאלח אלדין \" -> \"ליד ביה\"ס צאלח אלדין\""
+    ],
+    "210": [
+      "services removed: [2, 4, 5]"
+    ],
+    "215": [
+      "street: \"הבושם\" -> \"None\""
+    ],
+    "217": [
+      "street: \"שטנר\" -> \"None\""
+    ],
+    "218": [
+      "street: \"הבושם\" -> \"None\""
+    ],
+    "220": [
+      "branch_name: \"סניף מרכזי באר שבע \" -> \"סניף מרכזי באר שבע\"",
+      "hours day2: ('08:00 - 15:00', None, False) -> ('08:10 - 15:00', None, False)",
+      "services removed: [2, 4, 5]"
+    ],
+    "221": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "223": [
+      "services removed: [2, 5]"
+    ],
+    "224": [
+      "services removed: [2, 5]"
+    ],
+    "225": [
+      "street: \"רותם\" -> \"None\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "226": [
+      "street: \"שד הנשיאים\" -> \"None\""
+    ],
+    "227": [
+      "hours day1: ('08:00 - 14:00', None, False) -> ('08:00 - 16:00', None, False)",
+      "hours day3: ('08:00 - 14:00', None, False) -> ('08:00 - 16:00', None, False)",
+      "hours day4: ('08:00 - 14:00', None, False) -> ('08:00 - 12:30', '16:00 - 18:00', False)",
+      "hours day5: ('08:00 - 14:00', None, False) -> ('08:00 - 16:00', None, False)"
+    ],
+    "228": [
+      "street: \"שד הנשיאים\" -> \"None\""
+    ],
+    "229": [
+      "street: \"שד הנשיאים\" -> \"None\""
+    ],
+    "230": [
+      "branch_name: \"שכון ה' היעלים\" -> \"שכון ה' היעלים פוסטראק\"",
+      "hours day1: ('08:00 - 16:00', None, False) -> (None, None, True)",
+      "hours day2: ('08:00 - 12:30', '16:00 - 18:00', False) -> ('08:00 - 12:00', None, False)",
+      "hours day3: ('08:00 - 13:00', None, False) -> (None, None, True)",
+      "hours day4: ('08:00 - 12:30', '16:00 - 18:00', False) -> ('08:00 - 12:00', None, False)",
+      "hours day5: ('08:00 - 16:00', None, False) -> ('08:00 - 12:00', None, False)",
+      "hours day6: ('08:00 - 12:00', None, False) -> (None, None, True)",
+      "extra_services removed: ['Click2Post', 'הסטות']"
+    ],
+    "231": [
+      "services removed: [2, 5]"
+    ],
+    "232": [
+      "street: \"שד הנשיאים\" -> \"None\""
+    ],
+    "234": [
+      "services removed: [2, 5]"
+    ],
+    "237": [
+      "services removed: [2, 4, 5]"
+    ],
+    "239": [
+      "street: \"שכונה 3\" -> \"None\"",
+      "address_extra: \"מרכז מסחרי לקיה \" -> \"מרכז מסחרי לקיה\"",
+      "services removed: [13]"
+    ],
+    "240": [
+      "branch_name: \" סניף מרכזי קרית גת\" -> \"סניף מרכזי קרית גת\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "241": [
+      "branch_name: \"שכונה ג (שדרות גת) \" -> \"שכונה ג (שדרות גת)\"",
+      "street: \"שדרות גת\" -> \"שד גת\"",
+      "services removed: [2, 5]"
+    ],
+    "245": [
+      "hours day1: ('08:30 - 12:30', None, False) -> (None, None, True)",
+      "hours day2: ('08:30 - 12:30', None, False) -> ('08:30 - 11:30', None, False)",
+      "hours day3: ('08:30 - 12:30', None, False) -> (None, None, True)",
+      "hours day4: ('08:30 - 12:30', None, False) -> ('08:30 - 11:30', None, False)",
+      "hours day5: ('08:30 - 12:30', None, False) -> (None, None, True)",
+      "hours day6: ('08:30 - 11:00', None, False) -> (None, None, True)",
+      "services removed: [5]"
+    ],
+    "246": [
+      "services removed: [2, 5]"
+    ],
+    "249": [
+      "street: \"מ\"ג המעפילים\" -> \"None\""
+    ],
+    "250": [
+      "services removed: [2, 4, 5]"
+    ],
+    "251": [
+      "services removed: [2, 4, 5]"
+    ],
+    "252": [
+      "street: \"מ\"ג המעפילים\" -> \"None\""
+    ],
+    "253": [
+      "services removed: [2, 5]"
+    ],
+    "254": [
+      "street: \"שד בן גוריון\" -> \"None\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "255": [
+      "street: \"\" -> \"מ\"ג המעפילים\"",
+      "house: \"0\" -> \"5\"",
+      "zip: \"0000000\" -> \"8613602\"",
+      "coords: (31.0599108,35.0202534) -> (31.071775,35.039936)"
+    ],
+    "256": [
+      "services removed: [2, 4, 5]"
+    ],
+    "258": [
+      "services removed: [2, 4, 5]"
+    ],
+    "261": [
+      "street: \"שכונה 43 \" -> \"None\""
+    ],
+    "262": [
+      "branch_name: \"סוכנות שגב שלום \" -> \"סוכנות שגב שלום\"",
+      "street: \"אלשיח'עדה\" -> \"None\""
+    ],
+    "275": [
+      "branch_name: \"סוכנות צוחר \" -> \"סוכנות צוחר\"",
+      "street: \"מרכז מסחרי \" -> \"None\"",
+      "services removed: [2]"
+    ],
+    "277": [
+      "branch_name: \"מיתר \" -> \"מיתר\"",
+      "branch_type: \"סוכנות א\" -> \"מסירת דואר בלבד\"",
+      "street: \"מרכז היישוב\" -> \"None\"",
+      "hours day1: ('08:30 - 15:30', None, False) -> ('08:00 - 12:00', None, False)",
+      "hours day2: ('08:30 - 14:30', None, False) -> (None, None, True)",
+      "hours day3: ('12:00 - 18:00', None, False) -> ('08:00 - 12:00', None, False)",
+      "hours day4: ('08:30 - 15:30', None, False) -> (None, None, True)",
+      "hours day5: ('08:30 - 14:30', None, False) -> ('08:00 - 12:00', None, False)",
+      "services removed: [12, 115]"
+    ],
+    "278": [
+      "street: \"שד' תמר\" -> \"None\"",
+      "address_extra: \"מרכז מסחרי להבים \" -> \"מרכז מסחרי להבים\"",
+      "services removed: [5]"
+    ],
+    "279": [
+      "street: \"לייפר מילר רחל\" -> \"None\""
+    ],
+    "281": [
+      "address_extra: \"צמוד לבנין המועצה, מרכז מסחרי \" -> \"צמוד לבנין המועצה, מרכז מסחרי\"",
+      "services removed: [2]"
+    ],
+    "288": [
+      "street: \"לב עלי\" -> \"None\"",
+      "services removed: [2]"
+    ],
+    "295": [
+      "address_extra: \"כיכר גולומב \" -> \"כיכר גולומב\"",
+      "services removed: [2]"
+    ],
+    "297": [
+      "street: \"מרכז מסחרי רהט\" -> \"None\"",
+      "hours day1: ('08:00 - 17:00', None, False) -> ('08:00 - 14:00', None, False)",
+      "hours day4: ('08:00 - 17:00', None, False) -> ('08:00 - 14:00', None, False)",
+      "hours day5: ('08:00 - 17:00', None, False) -> ('08:00 - 14:00', None, False)",
+      "hours day6: ('08:00 - 12:00', None, False) -> (None, None, True)"
+    ],
+    "299": [
+      "services removed: [2, 4, 5]"
+    ],
+    "300": [
+      "services removed: [2, 4, 5]"
+    ],
+    "303": [
+      "street: \"התנופה\" -> \"None\"",
+      "services removed: [5]"
+    ],
+    "304": [
+      "services removed: [2, 5]"
+    ],
+    "308": [
+      "services removed: [2, 5]"
+    ],
+    "310": [
+      "services removed: [2, 4, 5]"
+    ],
+    "311": [
+      "street: \"\" -> \"בן צבי\"",
+      "house: \"0\" -> \"24\"",
+      "zip: \"0000000\" -> \"9903024\"",
+      "coords: (31.761919,34.9820473) -> (31.7487052,34.9890684)"
+    ],
+    "312": [
+      "street: \"\" -> \"בן צבי\"",
+      "house: \"0\" -> \"24\"",
+      "zip: \"0000000\" -> \"9903024\"",
+      "coords: (31.761919,34.9820473) -> (31.7487052,34.9890684)"
+    ],
+    "313": [
+      "street: \"הגפן\" -> \"None\""
+    ],
+    "315": [
+      "hours day1: ('08:00 - 12:30', '15:30 - 18:00', False) -> (None, None, True)",
+      "hours day2: ('08:00 - 12:30', '15:30 - 18:00', False) -> ('09:00 - 13:00', None, False)",
+      "hours day3: ('08:00 - 13:30', None, False) -> (None, None, True)",
+      "hours day4: ('08:00 - 12:30', '15:30 - 18:00', False) -> ('09:00 - 13:00', None, False)",
+      "hours day5: ('08:00 - 12:30', '15:30 - 18:00', False) -> ('09:00 - 13:00', None, False)",
+      "hours day6: ('08:00 - 12:00', None, False) -> (None, None, True)",
+      "extra_services removed: ['Click2Post', 'החזרות', 'הסטות']"
+    ],
+    "318": [
+      "services removed: [2, 5]"
+    ],
+    "324": [
+      "services removed: [2, 4, 5]"
+    ],
+    "325": [
+      "services removed: [5]"
+    ],
+    "326": [
+      "services removed: [2, 4, 5]"
+    ],
+    "327": [
+      "services removed: [2, 5]"
+    ],
+    "328": [
+      "street: \"שטנר\" -> \"None\""
+    ],
+    "331": [
+      "hours day4: ('08:00 - 12:30', '15:30 - 18:00', False) -> ('08:00 - 13:00', None, False)",
+      "services removed: [2, 5]"
+    ],
+    "333": [
+      "services removed: [2, 4, 5]"
+    ],
+    "334": [
+      "street: \"הבושם\" -> \"None\""
+    ],
+    "336": [
+      "branch_name: \" נחל דולב \" -> \"נחל דולב\"",
+      "hours day1: ('08:30 - 15:00', None, False) -> ('08:00 - 15:00', None, False)",
+      "hours day2: ('08:30 - 15:00', None, False) -> ('08:00 - 15:00', None, False)",
+      "hours day3: ('08:30 - 15:00', None, False) -> ('08:00 - 13:30', None, False)",
+      "hours day4: ('08:30 - 15:00', None, False) -> ('10:30 - 18:00', None, False)",
+      "hours day5: ('11:00 - 18:00', None, False) -> ('08:00 - 13:00', None, False)"
+    ],
+    "346": [
+      "services removed: [2, 5]"
+    ],
+    "348": [
+      "hours day1: ('08:00 - 12:30', '15:30 - 18:00', False) -> ('08:00 - 12:30', None, False)",
+      "hours day3: ('08:00 - 13:00', None, False) -> ('08:00 - 14:00', None, False)",
+      "hours day4: ('08:00 - 12:30', '15:30 - 18:00', False) -> ('08:00 - 13:00', None, False)",
+      "services removed: [2, 5]"
+    ],
+    "349": [
+      "services removed: [2, 5]"
+    ],
+    "351": [
+      "street: \"הבושם\" -> \"None\""
+    ],
+    "353": [
+      "branch_name: \"מודיעין סנטר \" -> \"מודיעין סנטר\""
+    ],
+    "358": [
+      "services removed: [2]"
+    ],
+    "360": [
+      "street: \"שד מונטיפיורי\" -> \"None\"",
+      "address_extra: \"קניון טופז \" -> \"קניון טופז\"",
+      "services removed: [2, 5]"
+    ],
+    "361": [
+      "services removed: [2, 5]"
+    ],
+    "362": [
+      "branch_name: \"אוניברסיטת אריאל \" -> \"אוניברסיטת אריאל\"",
+      "services removed: [2]"
+    ],
+    "366": [
+      "branch_name: \"ינה \" -> \"ינה\"",
+      "address_extra: \"סונול כביש רמלה-לוד מול הכלא  \" -> \"סונול כביש רמלה-לוד מול הכלא\"",
+      "services removed: [2, 5]"
+    ],
+    "367": [
+      "services removed: [2, 5, 13]"
+    ],
+    "372": [
+      "services removed: [2, 5]"
+    ],
+    "373": [
+      "branch_name: \"סוכנות גדרה  \" -> \"סוכנות גדרה\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "374": [
+      "street: \"הזית\" -> \"None\"",
+      "services removed: [2]"
+    ],
+    "375": [
+      "address_extra: \" \" -> \"None\"",
+      "services removed: [5]"
+    ],
+    "378": [
+      "services removed: [2, 4, 5]"
+    ],
+    "381": [
+      "services removed: [5]"
+    ],
+    "383": [
+      "services removed: [2, 4, 5]"
+    ],
+    "387": [
+      "services removed: [2, 4, 5]"
+    ],
+    "395": [
+      "services removed: [5]"
+    ],
+    "396": [
+      "street: \"רזיאל דוד\" -> \"None\"",
+      "services removed: [5]"
+    ],
+    "397": [
+      "address_extra: \"היחידה נפתחה בכתובתה החדשה \" -> \"היחידה נפתחה בכתובתה החדשה\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "398": [
+      "services removed: [2, 5]"
+    ],
+    "399": [
+      "services removed: [5]"
+    ],
+    "413": [
+      "services removed: [2, 4, 5]"
+    ],
+    "414": [
+      "services removed: [2, 4, 5]"
+    ],
+    "415": [
+      "services removed: [2, 4, 5]"
+    ],
+    "417": [
+      "services removed: [2, 4, 5]"
+    ],
+    "418": [
+      "services removed: [2]"
+    ],
+    "419": [
+      "services removed: [2, 4, 5]"
+    ],
+    "420": [
+      "services removed: [2, 4, 5]"
+    ],
+    "421": [
+      "services removed: [2, 3, 4, 5]"
+    ],
+    "423": [
+      "services removed: [2, 4, 5]"
+    ],
+    "426": [
+      "services removed: [2, 4, 5]"
+    ],
+    "429": [
+      "services removed: [2, 4, 5]"
+    ],
+    "431": [
+      "services removed: [2, 3, 4, 5]"
+    ],
+    "443": [
+      "street: \"אורלוב\" -> \"אורלוב זאב\""
+    ],
+    "449": [
+      "services removed: [2, 5]"
+    ],
+    "461": [
+      "branch_name: \"מכון הדרום \" -> \"מכון הדרום\""
+    ],
+    "464": [
+      "services removed: [2, 5]"
+    ],
+    "466": [
+      "street: \"לוינסקי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "467": [
+      "services removed: [2, 3, 5]"
+    ],
+    "469": [
+      "services removed: [2, 4, 5]"
+    ],
+    "473": [
+      "services removed: [2]"
+    ],
+    "476": [
+      "services removed: [2]"
+    ],
+    "481": [
+      "services removed: [2, 5]"
+    ],
+    "489": [
+      "address_extra: \"קניון בתימון קומת קרקע \" -> \"קניון בתימון קומת קרקע\"",
+      "services removed: [2, 5]"
+    ],
+    "490": [
+      "services removed: [2, 5]"
+    ],
+    "492": [
+      "branch_name: \"סוכנות דואר טירה \" -> \"סוכנות דואר טירה\"",
+      "street: \"טארק עבד אלחי\" -> \"None\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "495": [
+      "services removed: [2, 5]"
+    ],
+    "496": [
+      "address_extra: \"מתחם דמרי -סילברשיין  \" -> \"מתחם דמרי -סילברשיין\"",
+      "services removed: [2, 5]"
+    ],
+    "500": [
+      "services removed: [2, 4, 5]"
+    ],
+    "501": [
+      "branch_name: \"רוגובין שפע סטוק גבעת שמואל \" -> \"רוגובין שפע סטוק גבעת שמואל\"",
+      "address_extra: \"מתחם רוגובין קומה 1\" -> \"מתחם רוגובין קומה 1 חנות שפע סטוק\"",
+      "services removed: [2, 5]"
+    ],
+    "503": [
+      "services removed: [2, 4, 5]"
+    ],
+    "505": [
+      "branch_name: \"איירפורט סיטי \" -> \"איירפורט סיטי\"",
+      "city: \"נמל תעופה בן גוריון\" -> \"קריית שדה התעופה\"",
+      "street: \"הגולן\" -> \"None\""
+    ],
+    "506": [
+      "city: \"קדימה\" -> \"קדימה-צורן\"",
+      "zip: \"6092000\" -> \"6094231\"",
+      "address_extra: \"קדימה\" -> \"Kadima\"",
+      "services removed: [2, 5]"
+    ],
+    "511": [
+      "services removed: [2]"
+    ],
+    "515": [
+      "services removed: [5]"
+    ],
+    "516": [
+      "services removed: [2, 4, 5]"
+    ],
+    "520": [
+      "services removed: [2, 3, 4, 5]"
+    ],
+    "522": [
+      "street: \"כצנלסון\" -> \"None\""
+    ],
+    "525": [
+      "services removed: [2]"
+    ],
+    "528": [
+      "services removed: [2, 5]"
+    ],
+    "530": [
+      "services removed: [2, 4, 5]"
+    ],
+    "533": [
+      "services removed: [2, 4, 5]"
+    ],
+    "539": [
+      "services removed: [2, 5]"
+    ],
+    "540": [
+      "services removed: [2, 4, 5]"
+    ],
+    "546": [
+      "services added: [13]",
+      "services removed: [2, 5]"
+    ],
+    "550": [
+      "services removed: [2, 4, 5]"
+    ],
+    "552": [
+      "services removed: [2, 5]"
+    ],
+    "553": [
+      "services removed: [5]"
+    ],
+    "556": [
+      "services removed: [5]"
+    ],
+    "560": [
+      "street: \"שדרות ירושלים\" -> \"שד ירושלים\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "564": [
+      "street: \"אצל\" -> \"None\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "565": [
+      "services removed: [6]"
+    ],
+    "568": [
+      "street: \"החוגה רמת אפעל\" -> \"None\"",
+      "hours day3: ('08:00 - 13:30', None, False) -> ('08:00 - 12:30', None, False)",
+      "services removed: [2, 5]"
+    ],
+    "570": [
+      "branch_name: \"המחסן החד פעמי \" -> \"המחסן החד פעמי\"",
+      "services removed: [5]"
+    ],
+    "571": [
+      "services removed: [2, 4, 5]"
+    ],
+    "572": [
+      "services removed: [2, 5]"
+    ],
+    "573": [
+      "branch_name: \"באר יעקב \" -> \"באר יעקב\"",
+      "services removed: [5]"
+    ],
+    "574": [
+      "street: \"בגין מנחם\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "577": [
+      "branch_name: \"ג. סנטר בע\"מ \" -> \"ג. סנטר בע\"מ\""
+    ],
+    "581": [
+      "services removed: [2, 4, 5]"
+    ],
+    "584": [
+      "street: \"שוהם נוה אפרים\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "588": [
+      "services removed: [2, 4, 5]"
+    ],
+    "589": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "590": [
+      "services removed: [2, 4, 5]"
+    ],
+    "591": [
+      "services removed: [5]"
+    ],
+    "593": [
+      "street: \"\" -> \"התחיה\"",
+      "house: \"0\" -> \"7\"",
+      "zip: \"0000000\" -> \"4425009\"",
+      "coords: (32.178195,34.90761) -> (32.1752569,34.90428929)"
+    ],
+    "595": [
+      "street: \"התחייה\" -> \"התחיה\""
+    ],
+    "596": [
+      "branch_name: \"סוכנות כפר ברא \" -> \"סוכנות כפר ברא\""
+    ],
+    "599": [
+      "branch_name: \"יהוד \" -> \"יהוד\"",
+      "services removed: [2, 5]"
+    ],
+    "600": [
+      "services removed: [2, 4, 5]"
+    ],
+    "601": [
+      "services removed: [2, 5]"
+    ],
+    "608": [
+      "services removed: [2, 5, 13]"
+    ],
+    "610": [
+      "services removed: [2, 4, 5]"
+    ],
+    "616": [
+      "services removed: [5]"
+    ],
+    "619": [
+      "street: \"שטנר\" -> \"None\""
+    ],
+    "620": [
+      "services removed: [2, 4, 5]"
+    ],
+    "621": [
+      "services removed: [2, 3]"
+    ],
+    "623": [
+      "street: \"הברוש\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "624": [
+      "street: \"הבנים\" -> \"None\"",
+      "services removed: [2, 5, 13]"
+    ],
+    "627": [
+      "services removed: [3, 5]"
+    ],
+    "630": [
+      "services removed: [2, 4, 5]"
+    ],
+    "633": [
+      "services removed: [2, 5]"
+    ],
+    "634": [
+      "branch_name: \"כוכב יאיר \" -> \"כוכב יאיר\"",
+      "street: \"מרכז מסחרי, כוכב יאיר\" -> \"None\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "636": [
+      "services removed: [2, 4, 5]"
+    ],
+    "638": [
+      "services removed: [2, 5]"
+    ],
+    "640": [
+      "services removed: [2, 5]"
+    ],
+    "641": [
+      "services removed: [2, 5]"
+    ],
+    "642": [
+      "hours day2: ('11:00 - 18:00', None, False) -> ('10:00 - 18:00', None, False)",
+      "hours day6: ('08:00 - 12:00', None, False) -> (None, None, True)",
+      "services removed: [5]"
+    ],
+    "645": [
+      "hours day1: ('08:00 - 12:30', '15:30 - 18:00', False) -> ('08:00 - 15:00', None, False)",
+      "hours day2: ('08:00 - 12:30', '15:30 - 18:00', False) -> ('08:00 - 15:00', None, False)",
+      "hours day3: ('08:00 - 12:00', None, False) -> ('08:00 - 15:00', None, False)",
+      "hours day4: ('08:00 - 12:30', '15:30 - 18:00', False) -> ('08:00 - 15:00', None, False)",
+      "services removed: [2, 5]"
+    ],
+    "649": [
+      "branch_name: \"מכון רישוי דרום \" -> \"מכון רישוי דרום\"",
+      "services removed: [2]"
+    ],
+    "650": [
+      "services removed: [2, 4, 5]"
+    ],
+    "655": [
+      "services removed: [2, 5]"
+    ],
+    "659": [
+      "services removed: [2, 5]"
+    ],
+    "661": [
+      "services removed: [5]"
+    ],
+    "662": [
+      "services removed: [2, 5]"
+    ],
+    "664": [
+      "services removed: [2, 5]"
+    ],
+    "665": [
+      "street: \"אנשי בראשית\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "667": [
+      "services removed: [2, 5]"
+    ],
+    "671": [
+      "services removed: [2, 3]"
+    ],
+    "672": [
+      "services removed: [5]"
+    ],
+    "673": [
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "675": [
+      "services removed: [2, 4, 5]"
+    ],
+    "676": [
+      "services removed: [5]"
+    ],
+    "678": [
+      "services removed: [2, 5]"
+    ],
+    "682": [
+      "street: \"מעברות\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "684": [
+      "services removed: [2, 5]"
+    ],
+    "685": [
+      "services removed: [2]"
+    ],
+    "686": [
+      "services removed: [2, 5]"
+    ],
+    "690": [
+      "services removed: [2, 5]"
+    ],
+    "691": [
+      "services removed: [2, 4, 5]"
+    ],
+    "694": [
+      "services removed: [2, 5]"
+    ],
+    "695": [
+      "services removed: [2, 4, 5]"
+    ],
+    "696": [
+      "street: \"הפרחים\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "698": [
+      "services removed: [2, 5]"
+    ],
+    "699": [
+      "services removed: [2, 4, 5]"
+    ],
+    "701": [
+      "services removed: [4, 5]"
+    ],
+    "702": [
+      "services removed: [2, 4, 5]"
+    ],
+    "708": [
+      "services removed: [2, 4, 5]"
+    ],
+    "710": [
+      "services removed: [2, 4, 5]"
+    ],
+    "713": [
+      "services removed: [2, 3, 5]"
+    ],
+    "722": [
+      "address_extra: \"מרכז מסחרי הפיל \" -> \"מרכז מסחרי הפיל\"",
+      "services removed: [27, 40]"
+    ],
+    "723": [
+      "street: \"שאגור\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "728": [
+      "services removed: [6]"
+    ],
+    "731": [
+      "street: \"כביש ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "738": [
+      "services removed: [2, 5]"
+    ],
+    "740": [
+      "services removed: [2, 5]"
+    ],
+    "742": [
+      "services removed: [2, 5]"
+    ],
+    "751": [
+      "address_extra: \"בנין הספריה \" -> \"בנין הספריה\"",
+      "services removed: [5]"
+    ],
+    "757": [
+      "services removed: [2, 5]"
+    ],
+    "758": [
+      "street: \"אלקודס\" -> \"None\""
+    ],
+    "762": [
+      "services removed: [2, 5]"
+    ],
+    "774": [
+      "street: \"מרכז הכפר\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "775": [
+      "services removed: [2, 5]"
+    ],
+    "776": [
+      "services removed: [2, 5]"
+    ],
+    "778": [
+      "services removed: [2, 5]"
+    ],
+    "779": [
+      "services removed: [2, 5]"
+    ],
+    "780": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2]"
+    ],
+    "781": [
+      "services removed: [2, 5]"
+    ],
+    "783": [
+      "street: \"1034\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "786": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "787": [
+      "services removed: [2]"
+    ],
+    "788": [
+      "services removed: [2, 5]"
+    ],
+    "793": [
+      "services removed: [5]"
+    ],
+    "794": [
+      "services removed: [2, 5]"
+    ],
+    "795": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "796": [
+      "services removed: [2, 5]"
+    ],
+    "798": [
+      "services removed: [2, 4, 5]"
+    ],
+    "800": [
+      "services removed: [2, 4, 5]"
+    ],
+    "803": [
+      "services removed: [2, 5]"
+    ],
+    "804": [
+      "street: \"הרברט סמואל\" -> \"None\"",
+      "hours day2: ('09:00 - 16:00', None, False) -> ('09:00 - 16:00', '03:00 - None', False)"
+    ],
+    "805": [
+      "services removed: [2, 5]"
+    ],
+    "806": [
+      "services removed: [2, 5]"
+    ],
+    "807": [
+      "address_extra: \"מתחם החנויות אל מרג' \" -> \"מתחם החנויות אל מרג'\"",
+      "services removed: [2, 5]"
+    ],
+    "808": [
+      "address_extra: \"ליד בית אבות \" -> \"ליד בית אבות\"",
+      "services removed: [2, 5]"
+    ],
+    "810": [
+      "services removed: [2, 5]"
+    ],
+    "811": [
+      "services removed: [2, 4, 5]"
+    ],
+    "812": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "815": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \" (במרכז הקיבוץ)\" -> \"(במרכז הקיבוץ)\"",
+      "hours day1: ('08:00 - 12:00', None, False) -> ('08:00 - 12:30', None, False)",
+      "hours day2: ('08:00 - 12:00', '15:30 - 17:00', False) -> ('08:00 - 12:30', '15:30 - 17:30', False)",
+      "hours day3: ('08:00 - 12:00', None, False) -> ('08:00 - 12:30', None, False)",
+      "hours day4: ('08:00 - 12:00', '16:00 - 18:00', False) -> ('09:00 - 12:30', '16:00 - 18:00', False)",
+      "hours day5: ('08:00 - 12:00', None, False) -> ('08:00 - 12:30', None, False)",
+      "hours day6: (None, None, True) -> ('08:00 - 12:00', None, False)",
+      "services removed: [2, 5]"
+    ],
+    "819": [
+      "street: \"אלח'ולפאא אלראשדון\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "820": [
+      "street: \"שכונה צפונית\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "822": [
+      "address_extra: \"גבעת הרקפות \" -> \"גבעת הרקפות\""
+    ],
+    "823": [
+      "services removed: [2, 5]"
+    ],
+    "824": [
+      "services removed: [2, 5]"
+    ],
+    "825": [
+      "services removed: [2, 5]"
+    ],
+    "826": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "827": [
+      "services removed: [2, 5]"
+    ],
+    "828": [
+      "services removed: [2, 5]"
+    ],
+    "829": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "830": [
+      "branch_name: \" דאלית אל כרמל\" -> \"דאלית אל כרמל\"",
+      "street: \"שייח חמוד נסראלדין\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "835": [
+      "services removed: [2, 4, 5]"
+    ],
+    "837": [
+      "services removed: [2, 4, 5]"
+    ],
+    "839": [
+      "services removed: [2, 4, 5]"
+    ],
+    "840": [
+      "branch_name: \" יקנעם מושבה\" -> \"יקנעם מושבה\""
+    ],
+    "842": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "843": [
+      "services added: [13]",
+      "services removed: [2, 5]"
+    ],
+    "844": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "845": [
+      "services removed: [2, 5]"
+    ],
+    "846": [
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"קניון טמרה מול כביש ראשי אלקוץ טמרה \" -> \"קניון טמרה מול כביש ראשי אלקוץ טמרה\""
+    ],
+    "847": [
+      "services removed: [2, 5]"
+    ],
+    "851": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "852": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [5]"
+    ],
+    "853": [
+      "services removed: [2, 4, 5]"
+    ],
+    "854": [
+      "street: \"אלקודס\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "855": [
+      "services removed: [2, 5]"
+    ],
+    "857": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "861": [
+      "city: \"ערה\" -> \"עארה\"",
+      "street: \"עארה\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "862": [
+      "street: \"אלדהראת\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "863": [
+      "street: \"ההרדוף\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "864": [
+      "services removed: [2, 4, 5]"
+    ],
+    "865": [
+      "services removed: [2, 5]"
+    ],
+    "867": [
+      "services removed: [2, 5]"
+    ],
+    "870": [
+      "services removed: [2, 4, 5]"
+    ],
+    "874": [
+      "city: \"קריית חיים\" -> \"חיפה\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "875": [
+      "city: \"קריית חיים\" -> \"חיפה\"",
+      "services removed: [2, 5]"
+    ],
+    "877": [
+      "services removed: [2, 3, 4, 5]"
+    ],
+    "878": [
+      "hours day1: ('08:00 - 14:00', None, False) -> ('08:30 - 14:30', None, False)",
+      "hours day2: ('08:00 - 18:00', None, False) -> ('08:30 - 18:00', None, False)",
+      "hours day3: ('08:00 - 13:00', None, False) -> ('08:30 - 13:30', None, False)",
+      "hours day4: ('08:00 - 18:00', None, False) -> ('08:30 - 18:00', None, False)",
+      "hours day5: ('08:00 - 14:00', None, False) -> ('08:30 - 14:30', None, False)",
+      "hours day6: ('08:00 - 12:00', None, False) -> ('08:00 - 13:00', None, False)",
+      "services removed: [5]"
+    ],
+    "879": [
+      "services removed: [2, 4, 5]"
+    ],
+    "882": [
+      "services removed: [2, 4, 5]"
+    ],
+    "883": [
+      "street: \"החריש\" -> \"None\""
+    ],
+    "885": [
+      "street: \"לוביה\" -> \"None\"",
+      "address_extra: \"ליד קופ\"ח כללית \" -> \"ליד קופ\"ח כללית\"",
+      "services removed: [2, 5]"
+    ],
+    "888": [
+      "address_extra: \"קניון סטריט מול אזור תעשיה \" -> \"קניון סטריט מול אזור תעשיה\"",
+      "services removed: [2, 5]"
+    ],
+    "892": [
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "services removed: [2]"
+    ],
+    "899": [
+      "branch_name: \"שפרעם \" -> \"שפרעם\"",
+      "street: \"שייח' אמין טריף\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "900": [
+      "services removed: [2, 4, 5]"
+    ],
+    "901": [
+      "services removed: [2, 5]"
+    ],
+    "903": [
+      "street: \"ככר בעצמאות\" -> \"אלחדיף\"",
+      "house: \"0\" -> \"1\"",
+      "zip: \"0000000\" -> \"1424301\"",
+      "coords: (32.795859,35.530973) -> (32.7936,35.5321176)"
+    ],
+    "904": [
+      "street: \"ככר העצמאות\" -> \"אלחדיף\"",
+      "house: \"0\" -> \"1\"",
+      "zip: \"0000000\" -> \"1424301\"",
+      "coords: (32.7889341,35.5391407) -> (32.7936,35.5321176)"
+    ],
+    "905": [
+      "street: \"יאנוח\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "907": [
+      "services removed: [2, 5]"
+    ],
+    "908": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "909": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "910": [
+      "city: \"נהריה\" -> \"נהרייה\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "912": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "914": [
+      "city: \"נהריה\" -> \"נהרייה\"",
+      "services removed: [2, 5]"
+    ],
+    "915": [
+      "city: \"נהריה\" -> \"נהרייה\"",
+      "street: \"געתון\" -> \"None\""
+    ],
+    "917": [
+      "services removed: [2, 5]"
+    ],
+    "920": [
+      "services removed: [2, 4, 5]"
+    ],
+    "923": [
+      "street: \"העצמאות\" -> \"None\""
+    ],
+    "925": [
+      "city: \"נהריה\" -> \"נהרייה\"",
+      "services removed: [2, 5]"
+    ],
+    "926": [
+      "services removed: [2, 5]"
+    ],
+    "927": [
+      "services removed: [2, 5]"
+    ],
+    "928": [
+      "services removed: [2, 5]"
+    ],
+    "930": [
+      "services removed: [2, 4, 5]"
+    ],
+    "932": [
+      "street: \"הנרייטה סולד\" -> \"סולד הנריטה\"",
+      "services removed: [5]"
+    ],
+    "934": [
+      "street: \"הרב לוין\" -> \"None\""
+    ],
+    "935": [
+      "street: \"הרב לוין\" -> \"None\""
+    ],
+    "936": [
+      "street: \"ההסתדרות\" -> \"None\""
+    ],
+    "937": [
+      "street: \"הרב לוין\" -> \"None\""
+    ],
+    "938": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "940": [
+      "services removed: [2, 4, 5]"
+    ],
+    "942": [
+      "street: \"\" -> \"דליות\"",
+      "house: \"0\" -> \"6\"",
+      "zip: \"0000000\" -> \"1290414\"",
+      "coords: (32.990998,35.689865) -> (32.9943939,35.6898138)"
+    ],
+    "943": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "945": [
+      "street: \"הפלמ\"ח\" -> \"None\""
+    ],
+    "947": [
+      "services removed: [2, 5]"
+    ],
+    "948": [
+      "street: \"\" -> \"דליות\"",
+      "house: \"0\" -> \"6\"",
+      "zip: \"0000000\" -> \"1290414\"",
+      "coords: (32.990998,35.689865) -> (32.9943939,35.6898138)"
+    ],
+    "949": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "950": [
+      "street: \"כביש ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "951": [
+      "services removed: [2, 5]"
+    ],
+    "952": [
+      "services removed: [2, 5]"
+    ],
+    "955": [
+      "services removed: [2, 4, 5]"
+    ],
+    "956": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "959": [
+      "street: \"שיח מחמוד אלאסדי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "960": [
+      "street: \"ההסתדרות\" -> \"בן גוריון\"",
+      "services removed: [2, 5]"
+    ],
+    "961": [
+      "street: \"כביש ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "962": [
+      "services removed: [2, 5]"
+    ],
+    "963": [
+      "services removed: [2, 5]"
+    ],
+    "967": [
+      "address_extra: \"בנין העירייה \" -> \"מול המועצה המקומית\"",
+      "coords: (32.9520318,35.1599957) -> (32.952575,35.952575)"
+    ],
+    "968": [
+      "services removed: [2, 5]"
+    ],
+    "969": [
+      "services removed: [2, 4, 5]"
+    ],
+    "971": [
+      "city: \"מג'ד אל כרום\" -> \"מג`ד אל-כרום\"",
+      "street: \"אבן סינא\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "972": [
+      "street: \"התמר\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "973": [
+      "services removed: [2, 4, 5]"
+    ],
+    "977": [
+      "services removed: [2, 5]"
+    ],
+    "978": [
+      "services removed: [2, 5]"
+    ],
+    "979": [
+      "services removed: [2, 4, 5]"
+    ],
+    "981": [
+      "street: \"רח' 6077\" -> \"רח 6077\"",
+      "services removed: [2, 5]"
+    ],
+    "983": [
+      "services removed: [2, 4, 5]"
+    ],
+    "984": [
+      "street: \"הגליל\" -> \"None\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "985": [
+      "street: \"רקפות\" -> \"None\""
+    ],
+    "986": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "987": [
+      "services removed: [2, 5]"
+    ],
+    "988": [
+      "street: \"גיא אוני\" -> \"None\"",
+      "services removed: [2, 4, 5]"
+    ],
+    "989": [
+      "street: \"\" -> \"מעלה גיא אוני\"",
+      "house: \"0\" -> \"1\"",
+      "zip: \"0000000\" -> \"1201105\"",
+      "coords: (32.970422,35.542659) -> (32.9691217,35.5449377)"
+    ],
+    "990": [
+      "street: \"\" -> \"מעלה גיא אוני\"",
+      "house: \"0\" -> \"1\"",
+      "zip: \"0000000\" -> \"1201105\"",
+      "coords: (32.970422,35.542659) -> (32.9685935,35.5484237)"
+    ],
+    "992": [
+      "services removed: [2, 5]"
+    ],
+    "993": [
+      "street: \"כביש ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "995": [
+      "services removed: [2, 5]"
+    ],
+    "996": [
+      "branch_name: \"דייר חנא לשעת חרום \" -> \"דייר חנא לשעת חרום\"",
+      "address_extra: \"בית ספר יסודי ב \" -> \"בית ספר יסודי ב\""
+    ],
+    "997": [
+      "branch_name: \"יחידה מרכזית טמרה \" -> \"יחידה מרכזית טמרה\"",
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "services removed: [2, 5]"
+    ],
+    "998": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \" מול שוק ירקות ג'ומעה\" -> \"מול שוק ירקות ג'ומעה\"",
+      "services removed: [2, 5]"
+    ],
+    "999": [
+      "services removed: [2, 4, 5]"
+    ],
+    "1773": [
+      "street: \"הגליל\" -> \"None\""
+    ],
+    "2004": [
+      "street: \"המלך דוד\" -> \"None\""
+    ],
+    "2011": [
+      "street: \"שדרות ירושלים\" -> \"שד ירושלים\""
+    ],
+    "2013": [
+      "hours day1: ('09:30 - 12:30', '15:30 - 19:00', False) -> ('09:30 - 17:00', None, False)",
+      "hours day2: ('09:30 - 12:30', '15:30 - 19:00', False) -> ('09:30 - 17:00', None, False)",
+      "hours day3: ('09:30 - 12:30', '15:30 - 19:00', False) -> ('09:30 - 17:00', None, False)",
+      "hours day4: ('09:30 - 12:30', '15:30 - 19:00', False) -> ('09:30 - 17:00', None, False)",
+      "hours day5: ('09:30 - 12:30', '15:30 - 19:00', False) -> ('09:30 - 17:00', None, False)"
+    ],
+    "2021": [
+      "street: \"הרצל\" -> \"None\""
+    ],
+    "2023": [
+      "branch_name: \"פיצוחי גל- יהוד \" -> \"פיצוחי גל- יהוד\""
+    ],
+    "2039": [
+      "branch_name: \" מכולת השכונה\" -> \"מכולת השכונה\""
+    ],
+    "2040": [
+      "street: \"יוסף שטרן\" -> \"טרק גבריאל\""
+    ],
+    "2052": [
+      "street: \"רבינוביץ יהושע\" -> \"None\""
+    ],
+    "2053": [
+      "street: \"אברהם סופר\" -> \"סופר אברהם\""
+    ],
+    "2055": [
+      "branch_name: \"נוי מרקט \" -> \"נוי מרקט\""
+    ],
+    "2059": [
+      "street: \"אדר\" -> \"None\""
+    ],
+    "2063": [
+      "street: \"חסן מלך מרוקו השני\" -> \"None\""
+    ],
+    "2067": [
+      "street: \"פיקרד\" -> \"None\"",
+      "services added: [3, 5]",
+      "extra_services removed: ['Click2Post', 'דואר בקליק', 'הסטות']"
+    ],
+    "2074": [
+      "street: \"ארבע עונות\" -> \"ארבע העונות\""
+    ],
+    "2079": [
+      "branch_name: \"הקולה שוסטר \" -> \"הקולה שוסטר\""
+    ],
+    "2082": [
+      "street: \"ראשונים\" -> \"הראשונים\""
+    ],
+    "2083": [
+      "street: \"יוספטל\" -> \"שד יוספטל גיורא\""
+    ],
+    "2094": [
+      "street: \"משה קהירי\" -> \"קהירי\""
+    ],
+    "2101": [
+      "branch_name: \"מנהל קהילתי נוה יעקב \" -> \"מנהל קהילתי נוה יעקב\""
+    ],
+    "2103": [
+      "address_extra: \"שכונת מעלות דפנה \" -> \"שכונת מעלות דפנה\"",
+      "hours day1: ('11:00 - 19:00', None, False) -> ('09:30 - 17:00', None, False)",
+      "hours day2: ('11:00 - 19:00', None, False) -> ('09:30 - 17:00', None, False)",
+      "hours day3: ('11:00 - 19:00', None, False) -> ('09:30 - 17:00', None, False)",
+      "hours day4: ('11:00 - 19:00', None, False) -> ('09:30 - 17:00', None, False)",
+      "hours day5: ('11:00 - 19:00', None, False) -> ('09:30 - 17:00', None, False)",
+      "hours day6: ('09:00 - 12:00', None, False) -> (None, None, True)"
+    ],
+    "2106": [
+      "street: \"הארזים \" -> \"None\""
+    ],
+    "2111": [
+      "branch_name: \"פרי טרי \" -> \"פרי טרי\""
+    ],
+    "2115": [
+      "branch_name: \"הקולה בעיר ראש העין \" -> \"הקולה בעיר ראש העין\""
+    ],
+    "2120": [
+      "branch_name: \"פיצוחי אזולאי \" -> \"פיצוחי אזולאי\"",
+      "address_extra: \"פסגת זאב \" -> \"פסגת זאב\""
+    ],
+    "2125": [
+      "street: \"האצ\"ל\" -> \"אצ\"ל\""
+    ],
+    "2126": [
+      "branch_name: \"סמרט פון טייבה \" -> \"סמרט פון טייבה\"",
+      "street: \"הבנקים\" -> \"None\"",
+      "address_extra: \"ליד בנק הפועלים \" -> \"ליד בנק הפועלים\""
+    ],
+    "2127": [
+      "city: \"קרית יערים\" -> \"קריית יערים\"",
+      "street: \"הגרא\" -> \"None\""
+    ],
+    "2128": [
+      "branch_name: \"כל בו מפתחות \" -> \"כל בו מפתחות\"",
+      "street: \"מחמוד דרויש דרום \" -> \"None\"",
+      "address_extra: \"מול תחנת כיבוי אש \" -> \"מול תחנת כיבוי אש\""
+    ],
+    "2131": [
+      "street: \"זאב חקלאי\" -> \"חקלאי זאב\""
+    ],
+    "2134": [
+      "address_extra: \"מרכז מסחרי ישן \" -> \"מרכז מסחרי ישן\""
+    ],
+    "2136": [
+      "branch_name: \"אופיר דיזיין \" -> \"אופיר דיזיין\""
+    ],
+    "2137": [
+      "branch_name: \"מינימרקט המושבה \" -> \"מינימרקט המושבה\""
+    ],
+    "2138": [
+      "street: \"פנחס רוזן\" -> \"רוזן פנחס\""
+    ],
+    "2149": [
+      "street: \"יגאל אלון\" -> \"None\""
+    ],
+    "2151": [
+      "street: \"החוצבים\" -> \"שד החוצבים\""
+    ],
+    "2154": [
+      "branch_name: \"עבודה עברית המרכז לבניה \" -> \"עבודה עברית המרכז לבניה\""
+    ],
+    "2169": [
+      "branch_name: \"אביגיל \" -> \"אביגיל\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "2172": [
+      "street: \"כיסופים\" -> \"מעלות כיסופים\""
+    ],
+    "2176": [
+      "branch_name: \"זול סטוק ירושלים \" -> \"זול סטוק ירושלים\""
+    ],
+    "2178": [
+      "branch_name: \"הכל לשולחן \" -> \"הכל לשולחן\""
+    ],
+    "2179": [
+      "street: \"שד' משה דיין\" -> \"שד דיין משה\""
+    ],
+    "2180": [
+      "branch_name: \"קופי טיים מרקט \" -> \"קופי טיים מרקט\""
+    ],
+    "2181": [
+      "branch_name: \"זול סטוק כרמיאל \" -> \"זול סטוק כרמיאל\""
+    ],
+    "2182": [
+      "branch_name: \"אנימל פלוס \" -> \"אנימל פלוס\""
+    ],
+    "2185": [
+      "branch_name: \"המקום של אמליה \" -> \"המקום של אמליה\""
+    ],
+    "2190": [
+      "branch_name: \"סיטי מרקט  סוקולוב \" -> \"סיטי מרקט  סוקולוב\""
+    ],
+    "2200": [
+      "city: \"קדימה\" -> \"קדימה-צורן\""
+    ],
+    "2202": [
+      "branch_name: \"כלי וחומר \" -> \"כלי וחומר\""
+    ],
+    "2208": [
+      "branch_name: \"מאפיית אל חי \" -> \"מאפיית אל חי\""
+    ],
+    "2210": [
+      "branch_name: \"משכן הכנסת \" -> \"משכן הכנסת\""
+    ],
+    "2211": [
+      "branch_name: \"טוטו אבי \" -> \"טוטו אבי\"",
+      "hours day1: ('09:00 - 20:00', None, False) -> ('09:00 - 18:00', None, False)",
+      "hours day2: ('09:00 - 20:00', None, False) -> ('09:00 - 18:00', None, False)",
+      "hours day3: ('09:00 - 20:00', None, False) -> ('09:00 - 18:00', None, False)",
+      "hours day4: ('09:00 - 20:00', None, False) -> ('09:00 - 18:00', None, False)",
+      "hours day5: ('09:00 - 20:00', None, False) -> ('09:00 - 18:00', None, False)",
+      "hours day6: ('09:00 - 12:00', None, False) -> (None, None, True)"
+    ],
+    "2220": [
+      "branch_name: \"ספרדי הכל לבית \" -> \"ספרדי הכל לבית\""
+    ],
+    "2222": [
+      "branch_name: \"מעדניה באלי דאלי \" -> \"מעדניה באלי דאלי\""
+    ],
+    "2225": [
+      "branch_name: \"כפר מונש \" -> \"כפר מונש\"",
+      "street: \"הטרקטור\" -> \"None\"",
+      "address_extra: \"בצרכניה \" -> \"בצרכניה\""
+    ],
+    "2226": [
+      "branch_name: \"זול טוב ניקנור \" -> \"זול טוב ניקנור\""
+    ],
+    "2230": [
+      "hours day1: ('08:00 - 16:00', None, False) -> ('09:00 - 17:00', None, False)",
+      "hours day2: ('08:00 - 16:00', None, False) -> ('09:00 - 17:00', None, False)",
+      "hours day3: ('08:00 - 16:00', None, False) -> ('09:00 - 17:00', None, False)",
+      "hours day4: ('08:00 - 16:00', None, False) -> ('09:00 - 17:00', None, False)",
+      "hours day5: ('08:00 - 16:00', None, False) -> ('09:00 - 17:00', None, False)",
+      "hours day6: ('08:00 - 12:00', None, False) -> ('09:30 - 12:00', None, False)"
+    ],
+    "2231": [
+      "street: \"בצלאל\" -> \"None\""
+    ],
+    "2232": [
+      "street: \"ביל\"ו\" -> \"None\""
+    ],
+    "2237": [
+      "branch_name: \"מכולת ליאל \" -> \"מכולת ליאל\""
+    ],
+    "2243": [
+      "street: \"צביה ויצחק\" -> \"None\""
+    ],
+    "2244": [
+      "branch_name: \"מיני מרקט מאהר \" -> \"מיני מרקט מאהר\""
+    ],
+    "2250": [
+      "branch_name: \" סוויטס  \" -> \"סוויטס\""
+    ],
+    "2259": [
+      "branch_name: \" מרכז עסקים עלית\" -> \"מרכז עסקים עלית\"",
+      "hours day2: ('08:30 - 13:30', '16:30 - 18:00', False) -> ('08:30 - 13:30', '16:30 - 19:00', False)",
+      "hours day5: ('13:30 - 16:30', None, False) -> ('13:00 - 19:00', None, False)"
+    ],
+    "2266": [
+      "branch_name: \"ברכת כהן \" -> \"ברכת כהן\""
+    ],
+    "2272": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day1: ('09:00 - 12:00', None, False) -> ('17:00 - 20:00', None, False)",
+      "hours day2: ('17:00 - 20:00', None, False) -> (None, None, True)",
+      "hours day3: ('09:00 - 12:00', None, False) -> ('17:00 - 20:00', None, False)",
+      "hours day4: ('09:00 - 12:00', None, False) -> ('16:00 - 19:00', None, False)"
+    ],
+    "2273": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2274": [
+      "branch_name: \"בית צפאפא \" -> \"בית צפאפא\"",
+      "address_extra: \"בית צפאפא \" -> \"בית צפאפא\""
+    ],
+    "2308": [
+      "street: \"יסמין  \" -> \"None\""
+    ],
+    "2316": [
+      "street: \"הרצל\" -> \"None\""
+    ],
+    "2319": [
+      "street: \"פדובה\" -> \"פדובה טוביה\""
+    ],
+    "2322": [
+      "street: \"חנה סנש\" -> \"סנש חנה\""
+    ],
+    "2323": [
+      "branch_name: \" סיטון מרקט\" -> \"סיטון מרקט\""
+    ],
+    "2325": [
+      "street: \"הרצל\" -> \"None\"",
+      "hours day1: ('08:00 - 20:00', None, False) -> ('09:00 - 16:00', '17:00 - 19:30', False)",
+      "hours day2: ('08:00 - 13:30', '16:30 - 20:00', False) -> ('09:00 - 13:00', '17:00 - 19:30', False)",
+      "hours day3: ('08:00 - 20:00', None, False) -> ('09:00 - 16:00', '17:00 - 19:30', False)",
+      "hours day4: ('08:00 - 13:30', '16:30 - 20:00', False) -> ('09:00 - 13:30', '17:00 - 19:30', False)",
+      "hours day5: ('08:00 - 20:00', None, False) -> ('09:00 - 13:00', '17:00 - 19:30', False)",
+      "hours day6: ('08:00 - 13:00', None, False) -> ('09:00 - 12:00', None, False)"
+    ],
+    "2329": [
+      "branch_name: \"אחים ללזרי \" -> \"אחים ללזרי\"",
+      "street: \"הקישון\" -> \"None\""
+    ],
+    "2330": [
+      "street: \"אפרים לרון\" -> \"עפרוני\""
+    ],
+    "2334": [
+      "street: \"אבנר בן יהודה\" -> \"בן יהודה אבנר\""
+    ],
+    "2335": [
+      "street: \"קנאים\" -> \"הקנאים\""
+    ],
+    "2336": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2341": [
+      "branch_name: \"קליית בראשית \" -> \"קליית בראשית\""
+    ],
+    "2346": [
+      "branch_name: \"צרכניה תלמי מנשה \" -> \"צרכניה תלמי מנשה\"",
+      "street: \"אליהו\" -> \"None\""
+    ],
+    "2347": [
+      "street: \"מבצע סיני\" -> \"None\""
+    ],
+    "2353": [
+      "branch_name: \"סטופ רויאל \" -> \"סטופ רויאל\""
+    ],
+    "2356": [
+      "street: \"ד\"ר סמלו יוסף\" -> \"None\""
+    ],
+    "2360": [
+      "street: \"בן גוריון\" -> \"שד בן גוריון\""
+    ],
+    "2361": [
+      "branch_name: \"שפע טעמים \" -> \"שפע טעמים\""
+    ],
+    "2365": [
+      "street: \"בן גוריון\" -> \"דרך בן גוריון\""
+    ],
+    "2368": [
+      "branch_name: \"תקשורת  קי די \" -> \"תקשורת  קי די\""
+    ],
+    "2378": [
+      "street: \"שריג נחום\" -> \"None\""
+    ],
+    "2379": [
+      "branch_name: \"סופר סופר משמר השבעה \" -> \"סופר סופר משמר השבעה\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2380": [
+      "address_extra: \"רחוב השליחות 3 \" -> \"רחוב השליחות 3\""
+    ],
+    "2385": [
+      "branch_name: \"סופר השלום \" -> \"סופר השלום\""
+    ],
+    "2387": [
+      "branch_name: \"מינימרקט מור \" -> \"מינימרקט מור\"",
+      "address_extra: \"כיכר בן גוריון 1 \" -> \"כיכר בן גוריון 1\""
+    ],
+    "2389": [
+      "branch_name: \"פאר מרקט \" -> \"פאר מרקט\""
+    ],
+    "2392": [
+      "branch_name: \" הכל כלול אשדוד\" -> \"הכל כלול אשדוד\"",
+      "street: \"חיים משה שפירא\" -> \"שפירא משה חיים\""
+    ],
+    "2395": [
+      "branch_name: \"מסטרס \" -> \"מסטרס\""
+    ],
+    "2401": [
+      "branch_name: \"ביג פנדה \" -> \"ביג פנדה\""
+    ],
+    "2402": [
+      "branch_name: \"יואל מחשבים \" -> \"יואל מחשבים\""
+    ],
+    "2409": [
+      "hours day2: ('12:00 - 19:00', None, False) -> ('12:00 - 18:00', None, False)",
+      "hours day3: ('12:00 - 19:00', None, False) -> ('12:00 - 18:00', None, False)",
+      "hours day4: ('12:00 - 19:00', None, False) -> ('12:00 - 18:00', None, False)",
+      "hours day5: ('12:00 - 19:00', None, False) -> ('12:00 - 18:00', None, False)",
+      "hours day6: ('12:00 - 19:00', None, False) -> ('12:00 - 18:00', None, False)",
+      "hours day7: ('12:00 - 19:00', None, False) -> ('12:00 - 18:00', None, False)"
+    ],
+    "2411": [
+      "branch_name: \"סלין מרקט \" -> \"סלין מרקט\"",
+      "street: \"אל גאזלי\" -> \"None\""
+    ],
+    "2413": [
+      "street: \"חדר דואר\" -> \"None\""
+    ],
+    "2414": [
+      "branch_name: \"מרכז הפצה בלדי \" -> \"מרכז הפצה בלדי\"",
+      "address_extra: \"קניון בלדי בית חנינה \" -> \"קניון בלדי בית חנינה\""
+    ],
+    "2415": [
+      "address_extra: \"מרכז מסחרי \" -> \"מרכז מסחרי\""
+    ],
+    "2417": [
+      "branch_name: \"מתנס נחל שורק \" -> \"מתנס נחל שורק\""
+    ],
+    "2421": [
+      "street: \"בן גוריון\" -> \"שד בן גוריון\""
+    ],
+    "2423": [
+      "branch_name: \"פיצוחי דן מערב \" -> \"פיצוחי דן מערב\""
+    ],
+    "2426": [
+      "street: \"מזכירות \" -> \"None\""
+    ],
+    "2427": [
+      "branch_name: \"סטוק סנטר \" -> \"סטוק סנטר\""
+    ],
+    "2432": [
+      "hours day6: ('10:00 - 12:00', None, False) -> (None, None, True)"
+    ],
+    "2433": [
+      "branch_name: \"  אוטופון תקשורת מול הרים\" -> \"אוטופון תקשורת מול הרים\""
+    ],
+    "2440": [
+      "branch_name: \" טבק אור\" -> \"טבק אור\"",
+      "address_extra: \"מרכז סביניה \" -> \"מרכז סביניה\""
+    ],
+    "2442": [
+      "branch_name: \"הנגרייה של עמי \" -> \"הנגרייה של עמי\"",
+      "hours day6: ('09:00 - 14:00', None, False) -> ('09:00 - 13:00', None, False)"
+    ],
+    "2443": [
+      "branch_name: \"המכולת שלנו משען \" -> \"המכולת שלנו משען\""
+    ],
+    "2445": [
+      "branch_name: \"גלידוש \" -> \"גלידוש\"",
+      "street: \"הדקל\" -> \"דקל\""
+    ],
+    "2448": [
+      "branch_name: \"בריאות בטבע \" -> \"בריאות בטבע\""
+    ],
+    "2453": [
+      "street: \"מצודת ביתר\" -> \"מצודת בית\"ר\""
+    ],
+    "2454": [
+      "branch_name: \"עידן החיות \" -> \"עידן החיות\""
+    ],
+    "2455": [
+      "branch_name: \"סיטי מרקט אור יהודה \" -> \"סיטי מרקט אור יהודה\""
+    ],
+    "2456": [
+      "branch_name: \"בית חם-קניון אחים ישראל \" -> \"בית חם-קניון אחים ישראל\""
+    ],
+    "2459": [
+      "branch_name: \"סיטי מרקט השדרה \" -> \"סיטי מרקט השדרה\""
+    ],
+    "2461": [
+      "branch_name: \"תבליני נעמה \" -> \"תבליני נעמה\""
+    ],
+    "2462": [
+      "branch_name: \"  מיש מיש  גלידה \" -> \"מיש מיש  גלידה\"",
+      "hours day6: ('09:00 - 13:00', None, False) -> ('09:00 - 15:00', None, False)"
+    ],
+    "2467": [
+      "branch_name: \"חמודי מרקט \" -> \"חמודי מרקט\"",
+      "city: \"מג'ד אל-כרום\" -> \"מג`ד אל-כרום\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "2473": [
+      "street: \"רחוב 116\" -> \"None\""
+    ],
+    "2474": [
+      "address_extra: \"קניון חיפה קומת קרקע \" -> \"קניון חיפה קומת קרקע\""
+    ],
+    "2475": [
+      "branch_name: \"עיר היין והאלכוהול \" -> \"עיר היין והאלכוהול\""
+    ],
+    "2485": [
+      "branch_name: \"סופר מרקט  אלביארה \" -> \"סופר מרקט  אלביארה\""
+    ],
+    "2486": [
+      "street: \"חיים משה שפירא\" -> \"שפירא משה חיים\""
+    ],
+    "2487": [
+      "branch_name: \"אנרג'י\" -> \"איולי \"",
+      "address_extra: \"\" -> \"קניון לב השרון \""
+    ],
+    "2489": [
+      "branch_name: \"שלחמך \" -> \"שלחמך\""
+    ],
+    "2493": [
+      "street: \"אסתר המלכה\" -> \"None\""
+    ],
+    "2495": [
+      "branch_name: \"סיטי מרקט נרקיסים \" -> \"סיטי מרקט נרקיסים\""
+    ],
+    "2496": [
+      "branch_name: \"אם אי דאלה \" -> \"אם אי דאלה\""
+    ],
+    "2501": [
+      "street: \"בקעת בית נטופה\" -> \"None\""
+    ],
+    "2503": [
+      "branch_name: \"י דואר בר אילן \" -> \"י דואר בר אילן\"",
+      "address_extra: \"בנין המנהלה \" -> \"בנין המנהלה\""
+    ],
+    "2509": [
+      "branch_name: \"נסיך הצעצועים \" -> \"נסיך הצעצועים\""
+    ],
+    "2511": [
+      "hours day1: ('12:00 - 17:00', None, False) -> ('12:00 - 18:00', None, False)",
+      "hours day2: ('12:00 - 17:00', None, False) -> ('12:00 - 18:00', None, False)",
+      "hours day3: ('12:00 - 17:00', None, False) -> ('12:00 - 18:00', None, False)",
+      "hours day4: ('12:00 - 17:00', None, False) -> ('12:00 - 18:00', None, False)",
+      "hours day5: ('12:00 - 17:00', None, False) -> ('12:00 - 18:00', None, False)"
+    ],
+    "2517": [
+      "hours day1: ('09:00 - 23:00', None, False) -> ('10:30 - 20:00', None, False)",
+      "hours day2: ('09:00 - 23:00', None, False) -> ('10:30 - 20:00', None, False)",
+      "hours day3: ('09:00 - 23:00', None, False) -> ('10:30 - 20:00', None, False)",
+      "hours day4: ('09:00 - 23:00', None, False) -> ('10:30 - 20:00', None, False)",
+      "hours day5: ('09:00 - 23:00', None, False) -> ('10:30 - 20:00', None, False)",
+      "hours day6: ('08:30 - 14:30', None, False) -> ('10:30 - 14:00', None, False)",
+      "hours day7: ('19:00 - 23:00', None, False) -> (None, None, True)"
+    ],
+    "2518": [
+      "street: \"ביאליק\" -> \"None\""
+    ],
+    "2521": [
+      "street: \"אל מדינה\" -> \"None\""
+    ],
+    "2522": [
+      "branch_name: \"קיוסק פינת המזל \" -> \"קיוסק פינת המזל\"",
+      "address_extra: \"כניסה ב' \" -> \"כניסה ב'\""
+    ],
+    "2524": [
+      "branch_name: \"שוק פירות וירקות \" -> \"שוק פירות וירקות\"",
+      "street: \"ד\"ר אבו שדיד אברהם\" -> \"None\""
+    ],
+    "2525": [
+      "branch_name: \"יהודית \" -> \"יהודית\""
+    ],
+    "2528": [
+      "address_extra: \"מימין לסניף הדואר \" -> \"מימין לסניף הדואר\"",
+      "hours day1: ('09:00 - 17:00', None, False) -> ('12:00 - 17:00', None, False)",
+      "hours day2: ('09:00 - 17:00', None, False) -> ('12:00 - 17:00', None, False)",
+      "hours day3: ('09:00 - 17:00', None, False) -> ('12:00 - 17:00', None, False)",
+      "hours day4: ('09:00 - 17:00', None, False) -> ('12:00 - 17:00', None, False)",
+      "hours day5: ('09:00 - 17:00', None, False) -> ('12:00 - 17:00', None, False)"
+    ],
+    "2530": [
+      "branch_name: \"זול פה \" -> \"זול פה\"",
+      "street: \"ספיר יוסף\" -> \"None\""
+    ],
+    "2531": [
+      "street: \"הס משה\" -> \"None\""
+    ],
+    "2534": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day2: ('10:00 - 14:00', '16:00 - 20:00', False) -> ('12:00 - 20:00', None, False)",
+      "hours day3: ('10:00 - 14:00', '16:00 - 20:00', False) -> ('12:00 - 20:00', None, False)",
+      "hours day4: ('10:00 - 14:00', '16:00 - 20:00', False) -> ('12:00 - 20:00', None, False)",
+      "hours day5: ('10:00 - 14:00', '16:00 - 20:00', False) -> ('12:00 - 20:00', None, False)",
+      "hours day6: ('10:00 - 14:00', '16:00 - 20:00', False) -> (None, None, True)",
+      "hours day7: ('10:00 - 14:00', '16:00 - 20:00', False) -> ('12:00 - 20:00', None, False)"
+    ],
+    "2537": [
+      "branch_name: \"דיזינגוף 12\" -> \"אם בי מארקט\""
+    ],
+    "2539": [
+      "street: \"אחווה יעקב\" -> \"אחוה יעקב\""
+    ],
+    "2540": [
+      "branch_name: \"קונספט שופ \" -> \"קונספט שופ\""
+    ],
+    "2544": [
+      "street: \"קצנלסון יצחק\" -> \"None\""
+    ],
+    "2550": [
+      "branch_name: \"שליחים נתניה \" -> \"שליחים נתניה\""
+    ],
+    "2551": [
+      "street: \"בוני העיר\" -> \"None\""
+    ],
+    "2558": [
+      "branch_name: \"סופר המושבה \" -> \"סופר המושבה\""
+    ],
+    "2559": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "2560": [
+      "branch_name: \"אייס סגולה \" -> \"אייס סגולה\""
+    ],
+    "2562": [
+      "address_extra: \"ברחבת מסחר בצד שמאל \" -> \"ברחבת מסחר בצד שמאל\""
+    ],
+    "2563": [
+      "branch_name: \"טבע שופס \" -> \"טבע שופס\""
+    ],
+    "2578": [
+      "branch_name: \"דוארי רחובות \" -> \"דוארי רחובות\""
+    ],
+    "2581": [
+      "branch_name: \"פרסטיג \" -> \"פרסטיג\""
+    ],
+    "2587": [
+      "branch_name: \"בא לי קפה \" -> \"בא לי קפה\"",
+      "street: \"שמר נעמי\" -> \"None\""
+    ],
+    "2588": [
+      "branch_name: \" צעצועינו\" -> \"צעצועינו\""
+    ],
+    "2589": [
+      "city: \"צורן\" -> \"קדימה-צורן\"",
+      "house: \"0\" -> \"1\"",
+      "zip: \"4282300\" -> \"4288601\"",
+      "coords: (32.2969591,34.9368047) -> (32.2926161,34.9361322)"
+    ],
+    "2591": [
+      "street: \"מניה וישראל\" -> \"None\""
+    ],
+    "2593": [
+      "branch_name: \"מקור הגלידה הסנה \" -> \"מקור הגלידה הסנה\""
+    ],
+    "2595": [
+      "hours day1: ('16:00 - 19:00', None, False) -> ('16:00 - 20:00', None, False)",
+      "hours day3: ('17:00 - 20:00', None, False) -> ('16:00 - 20:00', None, False)",
+      "hours day5: ('16:00 - 19:00', None, False) -> (None, None, True)"
+    ],
+    "2598": [
+      "branch_name: \"סופר בונוס \" -> \"סופר בונוס\"",
+      "street: \"לב הישוב\" -> \"None\""
+    ],
+    "2601": [
+      "branch_name: \"מינימרקט אושר \" -> \"מינימרקט אושר\""
+    ],
+    "2603": [
+      "address_extra: \"אליהו אילוז 2 נתיבות \" -> \"אליהו אילוז 2 נתיבות\""
+    ],
+    "2605": [
+      "branch_name: \"העוגן \" -> \"העוגן\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"מרכז חלוקה בקיבוץ העוגן \" -> \"מרכז חלוקה בקיבוץ העוגן\""
+    ],
+    "2607": [
+      "branch_name: \"סופר ספיר אור ים \" -> \"סופר ספיר אור ים\""
+    ],
+    "2610": [
+      "branch_name: \"כפר קיש \" -> \"כפר קיש\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2619": [
+      "branch_name: \" סמארטפיקס \" -> \"סמארטפיקס\"",
+      "address_extra: \"קניון לב קצרין \" -> \"קניון לב קצרין\""
+    ],
+    "2620": [
+      "branch_name: \"בייקרס אופניים \" -> \"בייקרס אופניים\""
+    ],
+    "2621": [
+      "branch_name: \"סופר שבט אחים \" -> \"גו מרקט\"",
+      "hours day1: ('08:00 - 17:00', None, False) -> ('07:00 - 20:00', None, False)",
+      "hours day2: ('08:00 - 17:00', None, False) -> ('07:00 - 20:00', None, False)",
+      "hours day3: ('08:00 - 17:00', None, False) -> ('07:00 - 20:00', None, False)",
+      "hours day4: ('08:00 - 17:00', None, False) -> ('07:00 - 20:00', None, False)",
+      "hours day5: ('08:00 - 17:00', None, False) -> ('07:00 - 20:00', None, False)",
+      "hours day6: ('11:00 - 15:00', None, False) -> ('07:00 - 15:00', None, False)"
+    ],
+    "2622": [
+      "branch_name: \"מכולת אלנואר \" -> \"מכולת אלנואר\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2623": [
+      "branch_name: \"מינימרקט עדן נאור \" -> \"מינימרקט עדן נאור\""
+    ],
+    "2624": [
+      "street: \"הותיקים\" -> \"None\""
+    ],
+    "2625": [
+      "branch_name: \"פעמית פלייס \" -> \"פעמית פלייס\""
+    ],
+    "2635": [
+      "street: \"לוי אשכול\" -> \"אשכול לוי\""
+    ],
+    "2639": [
+      "branch_name: \"בוסט \" -> \"בוסט\"",
+      "street: \"טארק עבד אל חי\" -> \"None\""
+    ],
+    "2643": [
+      "street: \"הנביאים\" -> \"None\""
+    ],
+    "2644": [
+      "street: \"בלאל\" -> \"None\""
+    ],
+    "2645": [
+      "branch_name: \"אופוריה מכון יופי \" -> \"אופוריה מכון יופי\""
+    ],
+    "2647": [
+      "city: \"רמת השרון\" -> \"תל אביב - יפו\"",
+      "street: \"סנה משה\" -> \"None\"",
+      "zip: \"4723204\" -> \"6930153\"",
+      "coords: (32.1301475,34.8291714) -> (32.1303244,34.8295857)"
+    ],
+    "2651": [
+      "branch_name: \"מינימרקט \" -> \"מינימרקט\"",
+      "hours day1: ('12:00 - 16:00', '18:30 - 20:45', False) -> ('12:00 - 19:00', None, False)",
+      "hours day2: ('12:00 - 16:00', '18:30 - 20:45', False) -> ('12:00 - 19:00', None, False)",
+      "hours day3: ('12:00 - 16:00', '18:30 - 20:45', False) -> ('12:00 - 19:00', None, False)",
+      "hours day4: ('12:00 - 16:00', '18:30 - 20:45', False) -> ('12:00 - 19:00', None, False)",
+      "hours day5: ('12:00 - 16:00', '18:30 - 20:45', False) -> ('12:00 - 19:00', None, False)"
+    ],
+    "2652": [
+      "branch_name: \"הקולה גבעת שמואל \" -> \"הקולה גבעת שמואל\""
+    ],
+    "2657": [
+      "branch_name: \"סיטי מרקט כרמי גת \" -> \"סיטי מרקט כרמי גת\""
+    ],
+    "2659": [
+      "street: \"אחימאיר\" -> \"אחימאיר אבא\""
+    ],
+    "2661": [
+      "branch_name: \"לאב מובייל \" -> \"לאב מובייל\""
+    ],
+    "2663": [
+      "branch_name: \"מינימרקט ניסנוב \" -> \"מינימרקט ניסנוב\"",
+      "street: \"הקשת\" -> \"None\""
+    ],
+    "2665": [
+      "city: \"נהריה\" -> \"נהרייה\""
+    ],
+    "2666": [
+      "branch_name: \"איזיל מחסני גלידות \" -> \"איזיל מחסני גלידות\""
+    ],
+    "2667": [
+      "branch_name: \"סיטי מרקט גדרה \" -> \"סיטי מרקט גדרה\""
+    ],
+    "2669": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2670": [
+      "branch_name: \" המרכולית \" -> \"המרכולית\""
+    ],
+    "2671": [
+      "branch_name: \"עץ התמר \" -> \"עץ התמר\"",
+      "city: \"נהריה\" -> \"נהרייה\"",
+      "address_extra: \"אזור תעשיה צפוני \" -> \"אזור תעשיה צפוני\""
+    ],
+    "2674": [
+      "branch_name: \"לני \" -> \"לני\"",
+      "hours day6: (None, None, True) -> ('09:00 - 13:00', None, False)"
+    ],
+    "2675": [
+      "branch_name: \"חנות החיות של יוסי \" -> \"חנות החיות של יוסי\""
+    ],
+    "2680": [
+      "branch_name: \"ווינר קופי טופי \" -> \"ווינר קופי טופי\"",
+      "city: \"נהריה\" -> \"נהרייה\""
+    ],
+    "2689": [
+      "branch_name: \"אייס יהוד \" -> \"אייס יהוד\"",
+      "address_extra: \"מרכז ביג \" -> \"מרכז ביג\""
+    ],
+    "2690": [
+      "branch_name: \"סניף אייס חולון \" -> \"סניף אייס חולון\"",
+      "extra_services added: ['Click2Post']"
+    ],
+    "2691": [
+      "branch_name: \"אייס ראשון לציון \" -> \"אייס ראשון לציון\""
+    ],
+    "2692": [
+      "branch_name: \"סקרין פון \" -> \"סקרין פון\""
+    ],
+    "2694": [
+      "branch_name: \" פרימיום סיטי מרקט\" -> \"פרימיום סיטי מרקט\""
+    ],
+    "2696": [
+      "branch_name: \"קיו מרקט תלפיות \" -> \"קיו מרקט תלפיות\""
+    ],
+    "2699": [
+      "branch_name: \"קדם טעם של איכות \" -> \"קדם טעם של איכות\"",
+      "hours day1: ('10:00 - 22:00', None, False) -> ('08:30 - 20:00', None, False)",
+      "hours day2: ('10:00 - 22:00', None, False) -> ('08:30 - 20:00', None, False)",
+      "hours day3: ('10:00 - 22:00', None, False) -> ('08:30 - 20:00', None, False)",
+      "hours day4: ('10:00 - 22:00', None, False) -> ('08:30 - 20:00', None, False)",
+      "hours day5: ('10:00 - 22:00', None, False) -> ('08:30 - 20:00', None, False)",
+      "hours day6: ('09:00 - 14:30', None, False) -> ('08:00 - 16:00', None, False)"
+    ],
+    "2700": [
+      "hours day1: ('14:00 - 20:00', None, False) -> ('12:00 - 20:00', None, False)",
+      "hours day2: ('14:00 - 20:00', None, False) -> ('12:00 - 20:00', None, False)",
+      "hours day3: ('14:00 - 20:00', None, False) -> ('12:00 - 20:00', None, False)",
+      "hours day4: ('14:00 - 20:00', None, False) -> ('12:00 - 20:00', None, False)",
+      "hours day5: ('14:00 - 20:00', None, False) -> ('12:00 - 20:00', None, False)",
+      "hours day6: ('09:00 - 14:00', None, False) -> ('09:00 - 16:00', None, False)"
+    ],
+    "2704": [
+      "branch_name: \"מדילנד און ליין \" -> \"מדילנד און ליין\"",
+      "address_extra: \"קניון נחלת יצחק \" -> \"קניון נחלת יצחק\""
+    ],
+    "2708": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \"מרכז חלוקת דואר \" -> \"מרכז חלוקת דואר\""
+    ],
+    "2714": [
+      "street: \"שכונת עין גראר\" -> \"None\""
+    ],
+    "2717": [
+      "branch_name: \"משקאות הדוכס \" -> \"משקאות הדוכס\"",
+      "address_extra: \"שד' ההגשמה 20 חריש \" -> \"שד' ההגשמה 20 חריש\""
+    ],
+    "2719": [
+      "street: \"זכרון יעקב\" -> \"None\""
+    ],
+    "2723": [
+      "street: \"הרברט סמואל\" -> \"None\""
+    ],
+    "2724": [
+      "branch_name: \" ביגמרקט חיון\" -> \"ביגמרקט חיון\""
+    ],
+    "2727": [
+      "branch_name: \"שבט אחים ויצמן \" -> \"שבט אחים ויצמן\""
+    ],
+    "2729": [
+      "branch_name: \"מיני מרקט סרוסי \" -> \"מיני מרקט סרוסי\"",
+      "street: \"סולד הנריטה\" -> \"None\""
+    ],
+    "2731": [
+      "street: \"הנשיא ויצמן\" -> \"None\""
+    ],
+    "2734": [
+      "hours day6: ('09:00 - 12:00', None, False) -> (None, None, True)"
+    ],
+    "2735": [
+      "street: \"משרד הדואר\" -> \"None\""
+    ],
+    "2738": [
+      "street: \"אבו שהאב\" -> \"None\""
+    ],
+    "2740": [
+      "street: \"כביש ראשי\" -> \"None\""
+    ],
+    "2741": [
+      "branch_name: \"פלקום \" -> \"פלקום\"",
+      "city: \"נהריה\" -> \"נהרייה\"",
+      "street: \"שלמה המלך\" -> \"None\""
+    ],
+    "2746": [
+      "city: \"נהריה\" -> \"נהרייה\""
+    ],
+    "2747": [
+      "city: \"סכנין\" -> \"סח'נין\"",
+      "street: \"הגליל\" -> \"None\""
+    ],
+    "2752": [
+      "branch_name: \"קיוסק מרקט \" -> \"קיוסק מרקט\""
+    ],
+    "2753": [
+      "hours day6: ('07:00 - 11:00', None, False) -> (None, None, True)"
+    ],
+    "2755": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2758": [
+      "street: \"האיצטדיון\" -> \"None\""
+    ],
+    "2759": [
+      "branch_name: \" סופר בעיר \" -> \"סופר בעיר\""
+    ],
+    "2760": [
+      "street: \"אוסקר שינדלר\" -> \"שינדלר אוסקר\""
+    ],
+    "2762": [
+      "branch_name: \"נקודת מסירה באר שבע \" -> \"נקודת מסירה באר שבע\""
+    ],
+    "2763": [
+      "branch_name: \"הצריף \" -> \"הצריף\""
+    ],
+    "2766": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2767": [
+      "branch_name: \"לרשותך על הדרך \" -> \"לרשותך על הדרך\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2770": [
+      "branch_name: \"ידידותי לבית \" -> \"ידידותי לבית\""
+    ],
+    "2773": [
+      "branch_name: \"מקור הגלידה רמת אלון \" -> \"מקור הגלידה רמת אלון\""
+    ],
+    "2774": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2776": [
+      "branch_name: \"סופר מרקט אליהו'ס \" -> \"סופר מרקט אליהו'ס\""
+    ],
+    "2782": [
+      "street: \"רח' ראשי\" -> \"None\"",
+      "extra_services removed: ['Click2Post', 'הסטות']"
+    ],
+    "2784": [
+      "branch_name: \"אהל שרה \" -> \"אהל שרה\"",
+      "hours day1: ('11:00 - 16:00', None, False) -> ('11:00 - 17:00', None, False)",
+      "hours day2: ('11:00 - 16:00', None, False) -> ('11:00 - 17:00', None, False)",
+      "hours day3: ('11:00 - 16:00', None, False) -> ('11:00 - 17:00', None, False)",
+      "hours day4: ('11:00 - 16:00', None, False) -> ('11:00 - 17:00', None, False)",
+      "hours day5: ('11:00 - 16:00', None, False) -> ('11:00 - 17:00', None, False)"
+    ],
+    "2786": [
+      "street: \"קהילת ציון\" -> \"קהלת ציון\""
+    ],
+    "2787": [
+      "branch_name: \"פיצה סטורי צפריה \" -> \"פיצה סטורי צפריה\""
+    ],
+    "2794": [
+      "street: \"התמר\" -> \"None\""
+    ],
+    "2795": [
+      "street: \"ירושלים\" -> \"None\""
+    ],
+    "2796": [
+      "branch_name: \"אייס קרית אתא \" -> \"אייס קרית אתא\""
+    ],
+    "2797": [
+      "branch_name: \"סלקשיין טבריה \" -> \"סלקשיין טבריה\""
+    ],
+    "2799": [
+      "branch_name: \"בן שיווק  גלידות \" -> \"בן שיווק  גלידות\""
+    ],
+    "2801": [
+      "branch_name: \"אייס סניף סינרמה \" -> \"אייס סניף סינרמה\""
+    ],
+    "2802": [
+      "branch_name: \" קציר\" -> \"קציר\""
+    ],
+    "2803": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2805": [
+      "branch_name: \" עולם ומלואו\" -> \"עולם ומלואו\"",
+      "street: \"היהלום\" -> \"קרן היסוד\"",
+      "house: \"4\" -> \"1\"",
+      "zip: \"4061804\" -> \"1153401\"",
+      "coords: (33.1958654,35.576026) -> (33.2029304,35.5755195)",
+      "hours day1: ('08:00 - 18:00', None, False) -> ('08:00 - 17:00', None, False)",
+      "hours day2: ('08:00 - 18:00', None, False) -> ('08:00 - 17:00', None, False)",
+      "hours day3: ('08:00 - 18:00', None, False) -> ('08:00 - 17:00', None, False)",
+      "hours day4: ('08:00 - 18:00', None, False) -> ('08:00 - 17:00', None, False)",
+      "hours day5: ('08:00 - 18:00', None, False) -> ('08:00 - 17:00', None, False)"
+    ],
+    "2806": [
+      "branch_name: \" סופר מרקט זבידאת\" -> \"סופר מרקט זבידאת\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2808": [
+      "branch_name: \" זכי מרקט\" -> \"זכי מרקט\"",
+      "address_extra: \"רח עומר אבן אלחטאב 44 \" -> \"רח עומר אבן אלחטאב 44\""
+    ],
+    "2809": [
+      "branch_name: \"החמניה אופקים \" -> \"החמניה אופקים\""
+    ],
+    "2812": [
+      "branch_name: \"זול סטוק המלאכה \" -> \"זול סטוק המלאכה\""
+    ],
+    "2817": [
+      "branch_name: \"סער מחשבים- לגשת לפלורין\" -> \"פלורין חנות פרחים\"",
+      "hours day1: (None, None, True) -> ('12:30 - 18:30', None, False)"
+    ],
+    "2825": [
+      "branch_name: \"זול סטוק רמת ישי \" -> \"זול סטוק רמת ישי\""
+    ],
+    "2827": [
+      "city: \"קריית חיים\" -> \"חיפה\""
+    ],
+    "2828": [
+      "branch_name: \"פיצוחי דני קרית גת \" -> \"פיצוחי דני קרית גת\""
+    ],
+    "2831": [
+      "street: \"ורד\" -> \"None\""
+    ],
+    "2835": [
+      "hours day6: ('08:30 - 13:00', None, False) -> ('09:00 - 13:00', None, False)"
+    ],
+    "2836": [
+      "branch_name: \"קליית ירושלמי \" -> \"קליית ירושלמי\""
+    ],
+    "2838": [
+      "branch_name: \"תקשורת המרכז \" -> \"תקשורת המרכז\""
+    ],
+    "2839": [
+      "street: \"השבעה\" -> \"שז\"ר זלמן\""
+    ],
+    "2840": [
+      "branch_name: \"סופר עמר \" -> \"סופר עמר\""
+    ],
+    "2843": [
+      "branch_name: \"גוניור \" -> \"גוניור\"",
+      "services added: [5]",
+      "extra_services removed: ['Click2Post', 'הסטות']"
+    ],
+    "2845": [
+      "branch_name: \"בלוני הלא \" -> \"בלוני הלא\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2855": [
+      "branch_name: \"משתלת אהרוני \" -> \"משתלת אהרוני\""
+    ],
+    "2859": [
+      "branch_name: \" ג'סר א זרקא\" -> \"ג'סר א זרקא\""
+    ],
+    "2860": [
+      "branch_name: \"זול סטוק כפר כנא \" -> \"זול סטוק כפר כנא\"",
+      "street: \"אלבידה \" -> \"None\""
+    ],
+    "2861": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2862": [
+      "street: \"שכונת פאנורמה\" -> \"None\""
+    ],
+    "2863": [
+      "street: \"תחנת דלק פז \" -> \"None\""
+    ],
+    "2864": [
+      "branch_name: \"סופר שמש \" -> \"סופר שמש\""
+    ],
+    "2866": [
+      "street: \"תל חי\" -> \"שד תל חי\""
+    ],
+    "2867": [
+      "branch_name: \"סיטי מרקט הדקלים \" -> \"סיטי מרקט הדקלים\""
+    ],
+    "2868": [
+      "branch_name: \"עולם של מתוקים \" -> \"עולם של מתוקים\"",
+      "address_extra: \"מנחם בגין 30 גבעת שמואל \" -> \"מנחם בגין 30 גבעת שמואל\""
+    ],
+    "2869": [
+      "branch_name: \"קיוסק על הדרך זמר \" -> \"קיוסק על הדרך זמר\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "2871": [
+      "branch_name: \"גזל פון \" -> \"גזל פון\"",
+      "address_extra: \"ליד הדואר \" -> \"ליד הדואר\""
+    ],
+    "2872": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "2874": [
+      "branch_name: \"גונסון קלין \" -> \"גונסון קלין\""
+    ],
+    "2875": [
+      "branch_name: \"מינימרקט עמאד \" -> \"מינימרקט עמאד\"",
+      "address_extra: \"ליד סלקום \" -> \"ליד סלקום\""
+    ],
+    "2876": [
+      "branch_name: \"הקולה בעיר \" -> \"הקולה בעיר\""
+    ],
+    "2877": [
+      "branch_name: \"כדורי מרקט \" -> \"כדורי מרקט\""
+    ],
+    "2879": [
+      "branch_name: \"ברכת הטל \" -> \"ברכת הטל\""
+    ],
+    "2884": [
+      "street: \"זייד תאופיק\" -> \"None\""
+    ],
+    "2885": [
+      "street: \"שייח אמין טריף\" -> \"None\""
+    ],
+    "2889": [
+      "branch_name: \"הארי אקספרס \" -> \"הארי אקספרס\""
+    ],
+    "2890": [
+      "branch_name: \"קרפור \" -> \"קרפור\"",
+      "address_extra: \"מרכז מסחרי רננים \" -> \"מרכז מסחרי רננים\""
+    ],
+    "2892": [
+      "branch_name: \"סוויט בית שמש \" -> \"סוויט בית שמש\"",
+      "address_extra: \"קניון סאן מול \" -> \"קניון סאן מול\""
+    ],
+    "2894": [
+      "branch_name: \"הקולה בעיר הרצליה \" -> \"הקולה בעיר הרצליה\""
+    ],
+    "2895": [
+      "branch_name: \"סאגי אלפי כלים \" -> \"סאגי אלפי כלים\"",
+      "address_extra: \"אזור התעשיה בני דרור \" -> \"אזור התעשיה בני דרור\""
+    ],
+    "2896": [
+      "address_extra: \"מרכז דוד \" -> \"מרכז דוד\""
+    ],
+    "2897": [
+      "branch_name: \"הקולה בעיר גבעתיים \" -> \"הקולה בעיר גבעתיים\""
+    ],
+    "2905": [
+      "branch_name: \"זול סטוק סחנין \" -> \"זול סטוק סחנין\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"ליד אצטדיון דוחא \" -> \"ליד אצטדיון דוחא\""
+    ],
+    "2907": [
+      "city: \"נהריה\" -> \"נהרייה\""
+    ],
+    "2910": [
+      "street: \"רחוב 1\" -> \"None\""
+    ],
+    "2914": [
+      "branch_name: \"גרין פארם ערבה \" -> \"גרין פארם ערבה\""
+    ],
+    "2918": [
+      "branch_name: \"עזרא מרכז הבית \" -> \"עזרא מרכז הבית\""
+    ],
+    "2930": [
+      "branch_name: \"חזי חממה אשקלון \" -> \"חזי חממה אשקלון\""
+    ],
+    "2936": [
+      "branch_name: \"ויצמן מחשבים \" -> \"ויצמן מחשבים\""
+    ],
+    "2943": [
+      "city: \"קדימה\" -> \"קדימה-צורן\"",
+      "coords: (32.2696648,34.9171187) -> (32.2693666,34.9171777)"
+    ],
+    "2946": [
+      "street: \"ירושלים\" -> \"None\""
+    ],
+    "2952": [
+      "street: \"שד' שבעת הכוכבים\" -> \"שבעת הכוכבים\""
+    ],
+    "2954": [
+      "branch_name: \"כפר קאסם דוורים \" -> \"כפר קאסם דוורים\"",
+      "street: \"מול תחנת המשטרה \" -> \"None\"",
+      "hours day1: ('16:00 - 19:00', None, False) -> ('08:00 - 10:00', '18:00 - 20:00', False)",
+      "hours day2: ('15:00 - 19:00', None, False) -> ('18:00 - 20:00', None, False)",
+      "hours day3: ('16:00 - 19:00', None, False) -> (None, None, True)",
+      "hours day4: ('15:00 - 19:00', None, False) -> ('08:00 - 10:00', '18:00 - 20:00', False)",
+      "hours day5: ('15:00 - 19:00', None, False) -> ('08:00 - 10:00', None, False)"
+    ],
+    "2961": [
+      "branch_name: \"הגמד והענק \" -> \"הגמד והענק\""
+    ],
+    "2968": [
+      "services added: [5]",
+      "extra_services removed: ['Click2Post', 'הסטות']"
+    ],
+    "2980": [
+      "branch_name: \"הקונטיינר גלידה \" -> \"הקונטיינר גלידה\""
+    ],
+    "2990": [
+      "hours day1: ('08:45 - 18:30', None, False) -> ('08:45 - 14:00', '16:00 - 18:30', False)",
+      "hours day2: ('08:45 - 18:30', None, False) -> ('08:45 - 14:00', '16:00 - 18:30', False)",
+      "hours day3: ('08:45 - 18:30', None, False) -> ('08:45 - 14:00', '16:00 - 18:30', False)",
+      "hours day4: ('08:45 - 18:30', None, False) -> ('08:45 - 14:00', '16:00 - 18:30', False)",
+      "hours day5: ('08:45 - 18:30', None, False) -> ('08:45 - 14:00', '16:00 - 18:30', False)"
+    ],
+    "2991": [
+      "branch_name: \"חנן מכשירי כתיבה \" -> \"חנן מכשירי כתיבה\"",
+      "address_extra: \"מישור אדומים \" -> \"מישור אדומים\""
+    ],
+    "2997": [
+      "hours day1: ('09:00 - 17:00', None, False) -> ('08:00 - 18:00', None, False)",
+      "hours day2: ('09:00 - 17:00', None, False) -> ('08:00 - 18:00', None, False)",
+      "hours day3: ('09:00 - 17:00', None, False) -> ('08:00 - 18:00', None, False)",
+      "hours day4: ('09:00 - 17:00', None, False) -> ('08:00 - 18:00', None, False)",
+      "hours day5: ('09:00 - 17:00', None, False) -> ('08:00 - 18:00', None, False)",
+      "hours day6: ('09:00 - 11:00', None, False) -> ('08:00 - 14:00', None, False)"
+    ],
+    "3001": [
+      "street: \"האלה\" -> \"None\""
+    ],
+    "3003": [
+      "street: \"שוהם\" -> \"None\""
+    ],
+    "3004": [
+      "city: \"אדם\" -> \"גבע בנימין\"",
+      "street: \"רקפת\" -> \"None\"",
+      "hours day6: ('08:30 - 12:00', None, False) -> ('08:30 - 11:00', None, False)"
+    ],
+    "3005": [
+      "street: \"זריחה\" -> \"None\""
+    ],
+    "3006": [
+      "street: \"כפר אדומים\" -> \"None\""
+    ],
+    "3007": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day1: ('17:00 - 20:00', None, False) -> ('18:00 - 20:00', None, False)",
+      "hours day3: ('17:00 - 19:00', None, False) -> ('18:00 - 20:00', None, False)",
+      "hours day4: ('17:00 - 19:00', None, False) -> ('18:00 - 20:00', None, False)",
+      "hours day6: ('08:00 - 09:00', None, False) -> ('09:00 - 11:00', None, False)"
+    ],
+    "3008": [
+      "street: \"המוריה\" -> \"None\""
+    ],
+    "3009": [
+      "street: \"מבנה החדש\" -> \"None\""
+    ],
+    "3010": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3011": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3012": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day1: ('08:00 - 09:00', '18:00 - 20:00', False) -> ('18:00 - 20:00', None, False)",
+      "hours day4: ('08:00 - 10:00', '18:00 - 20:00', False) -> ('18:00 - 20:00', None, False)",
+      "hours day5: ('08:00 - 09:00', '18:00 - 20:00', False) -> ('18:00 - 20:00', None, False)",
+      "hours day6: ('08:00 - 10:00', None, False) -> (None, None, True)",
+      "services removed: [5]"
+    ],
+    "3013": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3015": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day1: ('19:00 - 21:00', None, False) -> (None, None, True)",
+      "hours day2: ('19:00 - 21:00', None, False) -> (None, None, True)",
+      "hours day3: ('19:00 - 21:00', None, False) -> ('18:00 - 21:00', None, False)",
+      "hours day4: (None, None, True) -> ('17:00 - 19:00', None, False)",
+      "hours day5: ('17:00 - 19:00', None, False) -> (None, None, True)",
+      "hours day6: (None, None, True) -> ('09:00 - 12:00', None, False)",
+      "extra_services removed: ['Click2Post', 'הסטות']"
+    ],
+    "3017": [
+      "street: \"טירת הכסף\" -> \"None\""
+    ],
+    "3020": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3022": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3023": [
+      "branch_name: \" מזכירות שמשית\" -> \"מזכירות שמשית\"",
+      "street: \"המוביל \" -> \"None\""
+    ],
+    "3024": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3028": [
+      "branch_name: \"עדי \" -> \"עדי\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3029": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day5: ('17:30 - 20:00', None, False) -> ('16:00 - 18:30', None, False)",
+      "hours day6: ('07:30 - 10:30', None, False) -> ('08:00 - 10:00', None, False)"
+    ],
+    "3032": [
+      "branch_name: \"אספר מיצד \" -> \"אספר מיצד\""
+    ],
+    "3033": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3036": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3037": [
+      "street: \"הלח\"י\" -> \"None\""
+    ],
+    "3039": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \"בחניון מול המזכירות \" -> \"בחניון מול המזכירות\""
+    ],
+    "3040": [
+      "branch_name: \"מזכירות ישוב צופים \" -> \"מזכירות ישוב צופים\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3041": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3042": [
+      "street: \"נחל אלכסנדר\" -> \"None\""
+    ],
+    "3044": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3045": [
+      "street: \"מרכז הישוב \" -> \"None\""
+    ],
+    "3046": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3047": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3048": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3049": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3050": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3051": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3052": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3053": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3054": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3055": [
+      "branch_name: \"אדורה \" -> \"אדורה\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3056": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3057": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3058": [
+      "street: \"מרכז הישוב\" -> \"None\""
+    ],
+    "3062": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3063": [
+      "branch_name: \"מזכירות אבני חפץ \" -> \"מזכירות אבני חפץ\"",
+      "street: \"רח' איבי הנח\"ל \" -> \"None\""
+    ],
+    "3064": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3065": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3066": [
+      "branch_name: \"מזכירות ישוב נוף  איילון \" -> \"מזכירות ישוב נוף  איילון\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3067": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3068": [
+      "branch_name: \"מזכירות ישוב הושעיה \" -> \"מזכירות ישוב הושעיה\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3069": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3070": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3071": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \"במרכז חלוקת הדואר \" -> \"במרכז חלוקת הדואר\""
+    ],
+    "3072": [
+      "street: \"מרכז הישוב\" -> \"None\""
+    ],
+    "3073": [
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3074": [
+      "city: \"לשם(1)\" -> \"לשם\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3075": [
+      "branch_name: \"כרם רעים \" -> \"כרם רעים\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3076": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3077": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3078": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3079": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3080": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3081": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3082": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3083": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3084": [
+      "street: \"יונתן הוופסי\" -> \"None\""
+    ],
+    "3086": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3087": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3088": [
+      "branch_name: \"מזכירות ישוב יצהר \" -> \"מזכירות ישוב יצהר\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3089": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3090": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day1: ('07:30 - 09:00', '12:30 - 14:00', False) -> ('07:30 - 10:00', '12:00 - 13:00', False)",
+      "hours day2: ('07:30 - 09:00', '12:30 - 14:00', False) -> (None, None, True)",
+      "hours day3: ('07:30 - 09:00', '12:30 - 14:00', False) -> ('07:30 - 10:00', '12:00 - 14:00', False)",
+      "hours day4: ('07:30 - 09:00', '12:30 - 14:00', False) -> ('07:30 - 10:00', '12:00 - 14:00', False)",
+      "hours day5: ('07:30 - 09:00', '12:30 - 14:00', False) -> (None, None, True)"
+    ],
+    "3091": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \"החלוקה בחדר הדואר \" -> \"החלוקה בחדר הדואר\""
+    ],
+    "3092": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3093": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3094": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3096": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3098": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3099": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3100": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3101": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3103": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3105": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3106": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day2: ('20:30 - 21:30', None, False) -> (None, None, True)",
+      "hours day3: ('08:00 - 10:00', None, False) -> ('08:00 - 10:00', '20:30 - 21:30', False)"
+    ],
+    "3107": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3108": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3109": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3110": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3111": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3112": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3115": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3116": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3117": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3118": [
+      "branch_name: \"מעלה שומרון \" -> \"מעלה שומרון\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3119": [
+      "street: \"ב\" -> \"None\""
+    ],
+    "3120": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3121": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3123": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3125": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3126": [
+      "branch_name: \"אבן ספיר \" -> \"אבן ספיר\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3127": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3128": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3129": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3130": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \"צרכנית הישוב \" -> \"צרכנית הישוב\"",
+      "hours day1: ('16:00 - 18:00', None, False) -> (None, None, True)",
+      "hours day2: (None, None, True) -> ('16:30 - 18:00', None, False)",
+      "hours day3: ('16:00 - 18:00', None, False) -> (None, None, True)",
+      "hours day4: (None, None, True) -> ('16:30 - 18:00', None, False)",
+      "hours day5: ('16:00 - 18:00', None, False) -> (None, None, True)",
+      "hours day6: (None, None, True) -> ('14:00 - 15:00', None, False)"
+    ],
+    "3134": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3135": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3137": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3138": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3139": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3140": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3141": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3143": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3144": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3145": [
+      "branch_name: \"  ישוב פדייה\" -> \"ישוב פדייה\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3146": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3147": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3152": [
+      "branch_name: \"גבעות בר \" -> \"גבעות בר\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3156": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3157": [
+      "street: \"החיטה\" -> \"None\""
+    ],
+    "3162": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3163": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3165": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3169": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3170": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3171": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3173": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3177": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3178": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3184": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3187": [
+      "branch_name: \"באר מילכה \" -> \"באר מילכה\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"מזכירות הישוב \" -> \"מזכירות הישוב\""
+    ],
+    "3188": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3189": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3190": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3191": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3192": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3193": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3194": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3195": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3196": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3197": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3198": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3200": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day1: ('09:00 - 11:00', None, False) -> ('09:00 - 10:00', '18:00 - 19:00', False)",
+      "hours day5: ('08:00 - 10:00', None, False) -> ('08:00 - 10:00', '18:00 - 19:00', False)"
+    ],
+    "3201": [
+      "branch_name: \"מוקיביילה \" -> \"מוקיביילה\"",
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3207": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day5: ('14:00 - 17:00', None, False) -> ('11:00 - 13:00', None, False)"
+    ],
+    "3210": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3212": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3213": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3214": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3216": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3217": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3219": [
+      "branch_name: \"חיבת ציון \" -> \"חיבת ציון\""
+    ],
+    "3221": [
+      "branch_name: \"שדה יעקב \" -> \"שדה יעקב\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3224": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3225": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3227": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3229": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3235": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3236": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3237": [
+      "branch_name: \"מזכירות ישוב עזריה \" -> \"מזכירות ישוב עזריה\"",
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3239": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3242": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3244": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3245": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3247": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3248": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3249": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3251": [
+      "street: \"השעורה\" -> \"None\""
+    ],
+    "3253": [
+      "branch_name: \"כפר הנגיד \" -> \"כפר הנגיד\"",
+      "address_extra: \"בעמדת הדואר \" -> \"בעמדת הדואר\""
+    ],
+    "3254": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3256": [
+      "street: \"הדקל\" -> \"None\""
+    ],
+    "3257": [
+      "street: \"גובר\" -> \"None\""
+    ],
+    "3259": [
+      "street: \"האלה\" -> \"None\""
+    ],
+    "3260": [
+      "branch_name: \"אבן שמואל \" -> \"אבן שמואל\""
+    ],
+    "3267": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3269": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3270": [
+      "branch_name: \"גיאה \" -> \"גיאה\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"מזכירות הישוב \" -> \"מזכירות הישוב\""
+    ],
+    "3271": [
+      "street: \"היוגב\" -> \"None\""
+    ],
+    "3272": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3281": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3286": [
+      "branch_name: \"עגור \" -> \"עגור\"",
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3287": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3289": [
+      "branch_name: \"אחווה \" -> \"אחווה\""
+    ],
+    "3290": [
+      "street: \"הדקל\" -> \"None\""
+    ],
+    "3291": [
+      "street: \"יונה\" -> \"None\""
+    ],
+    "3295": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3296": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3302": [
+      "branch_name: \"בני עטרות \" -> \"בני עטרות\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3303": [
+      "branch_name: \" היפר שופ\" -> \"היפר שופ\"",
+      "street: \"אפרים זקס\" -> \"זק\"ש אפרים\""
+    ],
+    "3304": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3307": [
+      "branch_name: \"תל נוף \" -> \"תל נוף\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3310": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3311": [
+      "branch_name: \"גואמיס \" -> \"גואמיס\""
+    ],
+    "3313": [
+      "street: \"מזכרות ישוב  \" -> \"None\""
+    ],
+    "3315": [
+      "branch_name: \"גבעות עדן \" -> \"גבעות עדן\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3316": [
+      "branch_name: \" הפרלמנט אקספרס\" -> \"הפרלמנט אקספרס\""
+    ],
+    "3317": [
+      "street: \"מזכירות ישוב\" -> \"None\""
+    ],
+    "3318": [
+      "branch_name: \"אירוס \" -> \"אירוס\"",
+      "street: \" \" -> \"None\"",
+      "address_extra: \"חדר הדואר בישוב \" -> \"חדר הדואר בישוב\""
+    ],
+    "3319": [
+      "branch_name: \" תמר דקל\" -> \"תמר דקל\""
+    ],
+    "3321": [
+      "branch_name: \"מועצת תרשיחא \" -> \"מועצת תרשיחא\"",
+      "address_extra: \"ע\"י כיכר הדקל \" -> \"ע\"י כיכר הדקל\""
+    ],
+    "3333": [
+      "branch_name: \" מכולת זערור\" -> \"מכולת זערור\""
+    ],
+    "3335": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3339": [
+      "branch_name: \"קרנאנצס קליית השדה \" -> \"קרנאנצס קליית השדה\""
+    ],
+    "3353": [
+      "branch_name: \" אינטל קרית גת\" -> \"אינטל קרית גת\""
+    ],
+    "3356": [
+      "branch_name: \" סיטי מרקט \" -> \"סיטי מרקט\"",
+      "street: \"הרצל\" -> \"None\"",
+      "hours day1: ('16:00 - 18:00', None, False) -> ('16:00 - 19:00', None, False)",
+      "hours day2: ('16:00 - 18:00', None, False) -> ('16:00 - 19:00', None, False)",
+      "hours day3: ('16:00 - 18:00', None, False) -> ('16:00 - 19:00', None, False)",
+      "hours day4: ('16:00 - 18:00', None, False) -> ('16:00 - 19:00', None, False)",
+      "hours day5: ('16:00 - 18:00', None, False) -> ('16:00 - 19:00', None, False)"
+    ],
+    "3359": [
+      "branch_name: \" זול סטוק אשדוד \" -> \"זול סטוק אשדוד\"",
+      "street: \"האורגים\" -> \"None\""
+    ],
+    "3372": [
+      "branch_name: \" סלקשיין חוצות \" -> \"סלקשיין חוצות\""
+    ],
+    "3373": [
+      "branch_name: \"טמבורית מרלז \" -> \"טמבורית מרלז\""
+    ],
+    "3378": [
+      "street: \"שד אליהו\" -> \"None\""
+    ],
+    "3386": [
+      "branch_name: \"מפגש אליה \" -> \"מפגש אליה\""
+    ],
+    "3397": [
+      "street: \"הרצל \" -> \"None\""
+    ],
+    "3399": [
+      "branch_name: \" הכל כלול\" -> \"הכל כלול\"",
+      "street: \"אלי כהן\" -> \"None\""
+    ],
+    "3411": [
+      "branch_name: \"אביחיל \" -> \"אביחיל\""
+    ],
+    "3413": [
+      "branch_name: \"הגל המתוק קדש אשדוד\" -> \"מינימרקט שלומי\"",
+      "hours day1: ('08:00 - 12:00', '13:00 - 20:00', False) -> ('10:00 - 20:00', None, False)",
+      "hours day2: ('08:00 - 12:00', '13:00 - 20:00', False) -> ('10:00 - 20:00', None, False)",
+      "hours day3: ('08:00 - 12:00', '13:00 - 20:00', False) -> ('10:00 - 20:00', None, False)",
+      "hours day4: ('08:00 - 12:00', '13:00 - 20:00', False) -> ('10:00 - 20:00', None, False)",
+      "hours day5: ('08:00 - 12:00', '13:00 - 20:00', False) -> ('10:00 - 20:00', None, False)",
+      "hours day6: ('09:00 - 12:00', None, False) -> (None, None, True)"
+    ],
+    "3415": [
+      "street: \"שד הרצל\" -> \"None\""
+    ],
+    "3421": [
+      "branch_name: \" סולומון סנטר \" -> \"סולומון סנטר\"",
+      "hours day1: ('15:30 - 18:00', None, False) -> ('10:30 - 13:00', '15:30 - 18:00', False)",
+      "hours day2: ('15:30 - 18:00', None, False) -> ('10:30 - 13:00', '15:30 - 18:00', False)",
+      "hours day3: ('15:30 - 18:00', None, False) -> ('10:30 - 13:00', '15:30 - 18:00', False)",
+      "hours day4: ('15:30 - 18:00', None, False) -> ('10:30 - 13:00', '15:30 - 18:00', False)",
+      "hours day5: ('15:30 - 18:00', None, False) -> ('10:30 - 13:00', '15:30 - 18:00', False)"
+    ],
+    "3424": [
+      "street: \"רבינוביץ יהושע\" -> \"None\""
+    ],
+    "3432": [
+      "street: \"קרן היסוד\" -> \"None\""
+    ],
+    "3434": [
+      "branch_name: \" סביון\" -> \"סביון\""
+    ],
+    "3435": [
+      "services added: [5]",
+      "extra_services removed: ['Click2Post', 'הסטות']"
+    ],
+    "3438": [
+      "branch_name: \"קיבוץ חצור \" -> \"קיבוץ חצור\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3439": [
+      "branch_name: \"רחובות דרך יבנה \" -> \"רחובות דרך יבנה\"",
+      "extra_services removed: ['Click2Post', 'דואר בקליק', 'החזרות', 'הסטות']"
+    ],
+    "3440": [
+      "branch_name: \"לפיד \" -> \"לפיד\"",
+      "street: \"חדר דואר \" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3442": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3444": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3448": [
+      "street: \"דרך הזית\" -> \"None\""
+    ],
+    "3450": [
+      "branch_name: \"מינימרקט אבי צרכניה \" -> \"מינימרקט אבי צרכניה\"",
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3451": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3454": [
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3455": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3460": [
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3465": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3466": [
+      "street: \"התמר\" -> \"None\""
+    ],
+    "3469": [
+      "street: \"האשל\" -> \"None\""
+    ],
+    "3471": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3472": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3473": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3475": [
+      "branch_name: \"בית אלעזרי \" -> \"בית אלעזרי\""
+    ],
+    "3477": [
+      "branch_name: \"באר טוביה \" -> \"באר טוביה\"",
+      "street: \" המורים \" -> \"None\""
+    ],
+    "3478": [
+      "branch_name: \"אביגדור \" -> \"אביגדור\"",
+      "street: \"יעל\" -> \"None\""
+    ],
+    "3479": [
+      "branch_name: \"כפר וורבורג \" -> \"כפר וורבורג\""
+    ],
+    "3480": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3481": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3482": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3483": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3490": [
+      "branch_name: \"מרכז שפירא \" -> \"מרכז שפירא\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3494": [
+      "branch_name: \"סגולה \" -> \"סגולה\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3496": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3497": [
+      "branch_name: \"מחנה מרים \" -> \"מחנה מרים\"",
+      "street: \"חדר הדואר \" -> \"None\""
+    ],
+    "3499": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3506": [
+      "branch_name: \" טנג'יר\" -> \"טנג'יר\""
+    ],
+    "3510": [
+      "branch_name: \" סופר פון\" -> \"סופר פון\"",
+      "street: \"מחמוד דרוויש\" -> \"None\""
+    ],
+    "3513": [
+      "branch_name: \"כל בו האמוראים \" -> \"כל בו האמוראים\""
+    ],
+    "3515": [
+      "branch_name: \"מינימרקט פינטס \" -> \"מינימרקט פינטס\""
+    ],
+    "3516": [
+      "branch_name: \"קפה תמר \" -> \"קפה תמר\""
+    ],
+    "3518": [
+      "branch_name: \"סופר נווה יהושוע \" -> \"סופר נווה יהושוע\""
+    ],
+    "3521": [
+      "branch_name: \"מכולת אבו סמרה מונירה \" -> \"מכולת אבו סמרה מונירה\""
+    ],
+    "3528": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3531": [
+      "branch_name: \"אפרים על הדרך \" -> \"אפרים על הדרך\""
+    ],
+    "3532": [
+      "branch_name: \"רוני מרקט \" -> \"רוני מרקט\""
+    ],
+    "3533": [
+      "branch_name: \"באתי לגני \" -> \"באתי לגני\""
+    ],
+    "3538": [
+      "branch_name: \"פפאיה מרקט \" -> \"פפאיה מרקט\""
+    ],
+    "3541": [
+      "branch_name: \"זוואיה \" -> \"זוואיה\""
+    ],
+    "3542": [
+      "street: \"שייח פארג\" -> \"None\""
+    ],
+    "3549": [
+      "branch_name: \"יבולים מהכפר\" -> \"פרי וירק עבד יבולים בכפר\""
+    ],
+    "3550": [
+      "extra_services added: ['Click2Post']"
+    ],
+    "3552": [
+      "street: \"הדר יוסף\" -> \"None\""
+    ],
+    "3553": [
+      "branch_name: \"סופר סטוק לב הארץ \" -> \"סופר סטוק לב הארץ\"",
+      "address_extra: \"אזור התעשיה לב הארץ צמוד לקינג סטור \" -> \"אזור התעשיה לב הארץ צמוד לקינג סטור\"",
+      "hours day3: ('12:00 - 15:00', None, False) -> ('12:00 - 15:00', '17:00 - 19:30', False)",
+      "hours day5: ('12:00 - 15:00', None, False) -> ('12:00 - 15:00', '17:00 - 19:30', False)"
+    ],
+    "3557": [
+      "branch_name: \" הפינה של באסם\" -> \"הפינה של באסם\""
+    ],
+    "3573": [
+      "branch_name: \"זול סטוק יפו \" -> \"זול סטוק יפו\""
+    ],
+    "3574": [
+      "branch_name: \"פיצוחי ירושלים \" -> \"פיצוחי ירושלים\""
+    ],
+    "3589": [
+      "street: \"שד לנטוס טום\" -> \"None\""
+    ],
+    "3590": [
+      "branch_name: \"בוטיק קליין גוהינה \" -> \"בוטיק קליין גוהינה\"",
+      "hours day1: ('10:00 - 17:00', None, False) -> ('10:00 - 16:30', None, False)",
+      "hours day2: ('10:00 - 17:00', None, False) -> ('10:00 - 16:30', None, False)",
+      "hours day3: ('10:00 - 17:00', None, False) -> ('10:00 - 16:30', None, False)",
+      "hours day4: ('10:00 - 17:00', None, False) -> ('10:00 - 16:30', None, False)",
+      "hours day5: ('10:00 - 17:00', None, False) -> ('10:00 - 16:30', None, False)"
+    ],
+    "3591": [
+      "branch_name: \" החמניה יד אליהו\" -> \"החמניה יד אליהו\""
+    ],
+    "3593": [
+      "branch_name: \"עוגי שוגי \" -> \"עוגי שוגי\""
+    ],
+    "3594": [
+      "branch_name: \"אלמה רעננה \" -> \"אלמה רעננה\""
+    ],
+    "3595": [
+      "branch_name: \"ברעם\" -> \"הטמבוריה ברמת החייל\""
+    ],
+    "3598": [
+      "branch_name: \"מינימרקט הכיכר \" -> \"מינימרקט הכיכר\""
+    ],
+    "3603": [
+      "hours day1: ('08:00 - 22:00', None, False) -> ('08:00 - 19:00', None, False)",
+      "hours day2: ('08:00 - 22:00', None, False) -> ('08:00 - 19:00', None, False)",
+      "hours day3: ('08:00 - 22:00', None, False) -> ('08:00 - 19:00', None, False)",
+      "hours day4: ('08:00 - 22:00', None, False) -> ('08:00 - 19:00', None, False)",
+      "hours day5: ('08:00 - 22:00', None, False) -> ('08:00 - 19:00', None, False)",
+      "hours day6: ('08:00 - 14:00', None, False) -> ('08:00 - 12:00', None, False)"
+    ],
+    "3604": [
+      "branch_name: \"מעונה \" -> \"מעונה\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3611": [
+      "branch_name: \" אביב בקר\" -> \"אביב בקר\"",
+      "street: \"שוהם\" -> \"None\""
+    ],
+    "3612": [
+      "branch_name: \"זול סטוק חשמונאים \" -> \"זול סטוק חשמונאים\""
+    ],
+    "3620": [
+      "branch_name: \"ממלכת ההפתעות \" -> \"ממלכת ההפתעות\""
+    ],
+    "3621": [
+      "street: \"ניסים אלוני\" -> \"None\""
+    ],
+    "3622": [
+      "branch_name: \"סופר צופית \" -> \"סופר צופית\""
+    ],
+    "3627": [
+      "branch_name: \" סופר ראם\" -> \"סופר ראם\""
+    ],
+    "3631": [
+      "branch_name: \" החמניה רמת החייל\" -> \"פיצוחי רמת החייל\""
+    ],
+    "3637": [
+      "address_extra: \"צמוד לרדיו אורי \" -> \"צמוד לרדיו אורי\""
+    ],
+    "3638": [
+      "street: \"שד אבא אבן\" -> \"None\"",
+      "hours day1: ('09:00 - 19:00', None, False) -> ('11:00 - 18:00', None, False)",
+      "hours day2: ('09:00 - 19:00', None, False) -> ('11:00 - 18:00', None, False)",
+      "hours day3: ('09:00 - 19:00', None, False) -> ('11:00 - 18:00', None, False)",
+      "hours day4: ('09:00 - 19:00', None, False) -> ('11:00 - 18:00', None, False)",
+      "hours day5: ('09:00 - 19:00', None, False) -> ('11:00 - 18:00', None, False)",
+      "hours day6: ('08:00 - 13:00', None, False) -> ('09:00 - 13:00', None, False)"
+    ],
+    "3649": [
+      "street: \"חדר דואר\" -> \"None\""
+    ],
+    "3650": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3651": [
+      "branch_name: \"ניצני עוז \" -> \"ניצני עוז\"",
+      "address_extra: \"מול המזכירות \" -> \"מול המזכירות\""
+    ],
+    "3652": [
+      "branch_name: \"כפר חיים \" -> \"כפר חיים\"",
+      "street: \"קדמה \" -> \"None\""
+    ],
+    "3653": [
+      "branch_name: \"ינון \" -> \"ינון\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3654": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3656": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3657": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3658": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3660": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3661": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3662": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3663": [
+      "branch_name: \"תנובות \" -> \"תנובות\"",
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3664": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3667": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3669": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3670": [
+      "hours day4: (None, None, True) -> ('18:30 - 19:30', None, False)",
+      "hours day5: ('18:30 - 19:30', None, False) -> (None, None, True)"
+    ],
+    "3671": [
+      "branch_name: \"עזריאל \" -> \"עזריאל\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3672": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3681": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3694": [
+      "branch_name: \"מזכירות ישוב נורדיה \" -> \"מזכירות ישוב נורדיה\"",
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3695": [
+      "branch_name: \"כפר מעש \" -> \"כפר מעש\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3696": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3697": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3704": [
+      "branch_name: \" דרך הקפה\" -> \"דרך הקפה\"",
+      "city: \"נהריה\" -> \"נהרייה\""
+    ],
+    "3707": [
+      "branch_name: \"איכסאל \" -> \"איכסאל\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3708": [
+      "branch_name: \"סטלה מרקט \" -> \"סטלה מרקט\"",
+      "hours day1: ('09:00 - 21:00', None, False) -> ('10:00 - 21:00', None, False)",
+      "hours day2: ('09:00 - 21:00', None, False) -> ('10:00 - 21:00', None, False)",
+      "hours day3: ('09:00 - 21:00', None, False) -> ('10:00 - 21:00', None, False)",
+      "hours day4: ('09:00 - 21:00', None, False) -> ('10:00 - 21:00', None, False)",
+      "hours day5: ('09:00 - 21:00', None, False) -> ('10:00 - 21:00', None, False)",
+      "hours day6: ('09:00 - 21:00', None, False) -> ('10:00 - 21:00', None, False)"
+    ],
+    "3713": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3717": [
+      "branch_name: \" ענאן פארם\" -> \"ענאן פארם\"",
+      "street: \"סולטאן באשא אלאטרש\" -> \"None\""
+    ],
+    "3732": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3746": [
+      "branch_name: \"תחנת הדלק דיזול \" -> \"תחנת הדלק דיזול\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3755": [
+      "branch_name: \"פנתה מרקט העכר \" -> \"פנתה מרקט העכר\""
+    ],
+    "3757": [
+      "street: \"הפריון \" -> \"None\""
+    ],
+    "3758": [
+      "street: \"כביש אל בירקא\" -> \"None\""
+    ],
+    "3762": [
+      "street: \"קלר\" -> \"None\""
+    ],
+    "3765": [
+      "street: \"הגפן\" -> \"None\""
+    ],
+    "3778": [
+      "street: \"בלפור\" -> \"None\""
+    ],
+    "3785": [
+      "branch_name: \"קיוסק על הדרך \" -> \"קיוסק על הדרך\""
+    ],
+    "3787": [
+      "branch_name: \"גולד מרקט \" -> \"גולד מרקט\""
+    ],
+    "3791": [
+      "branch_name: \"הארטמארט מינימרקט \" -> \"הארטמארט מינימרקט\""
+    ],
+    "3792": [
+      "branch_name: \"פרי וברכה \" -> \"פרי וברכה\"",
+      "address_extra: \"ליד אולם סגולה \" -> \"ליד אולם סגולה\""
+    ],
+    "3793": [
+      "branch_name: \"קבוצת מירל בע\"מ \" -> \"קבוצת מירל בע\"מ\"",
+      "street: \"תל אביב\" -> \"None\""
+    ],
+    "3803": [
+      "branch_name: \"יובלים \" -> \"יובלים\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "hours day1: ('08:30 - 10:00', '18:00 - 19:00', False) -> ('08:30 - 10:00', None, False)",
+      "hours day3: ('08:30 - 10:00', '18:00 - 19:00', False) -> ('08:30 - 10:00', '19:00 - 20:00', False)",
+      "hours day4: ('08:30 - 10:00', '18:00 - 19:00', False) -> ('08:30 - 10:00', '18:30 - 19:30', False)"
+    ],
+    "3804": [
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"חנות מחשבים ד\"ר רובוט \" -> \"חנות מחשבים ד\"ר רובוט\""
+    ],
+    "3807": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3808": [
+      "branch_name: \" מ. ישוב מצפה אבי\"ב\" -> \"מ. ישוב מצפה אבי\"ב\"",
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3809": [
+      "branch_name: \"פוריה עילית \" -> \"פוריה עילית\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"ליד מזכירות הישוב \" -> \"ליד מזכירות הישוב\""
+    ],
+    "3810": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3811": [
+      "branch_name: \"עצמון \" -> \"עצמון\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3812": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3813": [
+      "branch_name: \"מורשת \" -> \"מורשת\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3814": [
+      "branch_name: \"חד נס \" -> \"חד נס\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3815": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3816": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3817": [
+      "branch_name: \"נאות גולן \" -> \"נאות גולן\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3818": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3819": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3820": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3821": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3822": [
+      "branch_name: \"כפר חושן ספסופה \" -> \"כפר חושן ספסופה\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"ספסופה \" -> \"ספסופה\""
+    ],
+    "3823": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3825": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3826": [
+      "street: \"ראשי \" -> \"None\"",
+      "hours day1: (None, None, True) -> ('17:00 - 18:00', None, False)",
+      "hours day2: ('16:00 - 17:00', None, False) -> (None, None, True)",
+      "hours day4: ('16:00 - 17:00', None, False) -> ('17:00 - 18:00', None, False)"
+    ],
+    "3827": [
+      "branch_name: \"מנוף \" -> \"מנוף\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3828": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3830": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3831": [
+      "branch_name: \"סמיע \" -> \"סמיע\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3832": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3835": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3837": [
+      "branch_name: \"שדמות דבורה \" -> \"שדמות דבורה\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3839": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3840": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3843": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3844": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3845": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3846": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3847": [
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3849": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3853": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3860": [
+      "city: \"עין אל אסד\" -> \"עין אל-אסד\"",
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3862": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3865": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3866": [
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "extra_services removed: ['Click2Post', 'הסטות']"
+    ],
+    "3870": [
+      "street: \"ראשי \" -> \"None\""
+    ],
+    "3872": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3873": [
+      "branch_name: \"חוסן \" -> \"חוסן\"",
+      "street: \"רחוב ראשי \" -> \"None\"",
+      "address_extra: \"חדר הדואר בישוב \" -> \"חדר הדואר בישוב\""
+    ],
+    "3874": [
+      "street: \"מרכז תאי חלוקה דואר\" -> \"None\""
+    ],
+    "3879": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3881": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3882": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3884": [
+      "street: \"חדר דואר\" -> \"None\""
+    ],
+    "3887": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3888": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3889": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3891": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3892": [
+      "branch_name: \"נס עמים \" -> \"נס עמים\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3897": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3898": [
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3899": [
+      "branch_name: \"שומרה \" -> \"שומרה\"",
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3918": [
+      "branch_name: \"כלנית \" -> \"כלנית\"",
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "address_extra: \"חדר דואר \" -> \"חדר דואר\""
+    ],
+    "3922": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3923": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3925": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3926": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3929": [
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3930": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3932": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3933": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3938": [
+      "branch_name: \"דישון \" -> \"דישון\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3940": [
+      "branch_name: \"מצפה מתת \" -> \"מצפה מתת\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3942": [
+      "branch_name: \"גבעת יואב \" -> \"גבעת יואב\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3944": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3947": [
+      "branch_name: \"בית הילל \" -> \"בית הילל\"",
+      "street: \"רחוב ראשי \" -> \"None\""
+    ],
+    "3949": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3950": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3952": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3953": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3954": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3955": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3956": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3959": [
+      "branch_name: \"שקד \" -> \"שקד\"",
+      "street: \"רחוב ראשי\" -> \"None\"",
+      "hours day1: ('16:00 - 18:00', None, False) -> (None, None, True)",
+      "hours day4: ('16:00 - 18:00', None, False) -> (None, None, True)",
+      "hours day5: ('16:00 - 18:00', None, False) -> ('16:00 - 18:30', None, False)"
+    ],
+    "3960": [
+      "branch_name: \"בית חנניה \" -> \"בית חנניה\"",
+      "street: \"רחוב ראשי\" -> \"None\""
+    ],
+    "3961": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3962": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3963": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3964": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3966": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3967": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3968": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3969": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3970": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3975": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3976": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3977": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3978": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3980": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3981": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3982": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3985": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3986": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3987": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3988": [
+      "street: \"ראשי\" -> \"None\""
+    ],
+    "3994": [
+      "street: \"ראשי\" -> \"None\"",
+      "address_extra: \"חדר הדואר \" -> \"חדר הדואר\""
+    ]
+  },
+  "unknown_service_ids": []
+}
