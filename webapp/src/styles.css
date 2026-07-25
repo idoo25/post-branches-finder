@@ -70,7 +70,9 @@ a { color: inherit; text-decoration: none; }
 .app-header {
   position: sticky;
   top: 0;
-  z-index: 200;
+  /* Must stay above .hero (z-index 1100) so content scrolling under the
+     sticky header never paints over it. */
+  z-index: 1200;
   height: var(--header-h);
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
@@ -142,9 +144,12 @@ a { color: inherit; text-decoration: none; }
 .hero {
   padding: 24px 24px 0;
   /* Above the map: Leaflet's internal panes/controls carry z-indexes up to
-     ~1000, and the address-suggestions dropdown must paint over them. */
+     1000 (tiles 400, zoom controls 1000), and none of the map's ancestors
+     isolate them into their own stacking context — so the hero (and with it
+     the address-suggestions dropdown) must clear 1000, not just "be
+     positioned". The sticky header is raised above the hero separately. */
   position: relative;
-  z-index: 300;
+  z-index: 1100;
 }
 
 .hero-card {
