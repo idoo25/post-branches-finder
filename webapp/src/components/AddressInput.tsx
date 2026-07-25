@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { autocomplete, type Suggestion } from "../api";
+import { govmapAutocomplete } from "../govmap";
 
 interface Props {
   onSubmit: (address: string, coord?: { lat: number; lng: number }) => void;
@@ -27,10 +28,13 @@ export function AddressInput({ onSubmit, loading }: Props) {
     timer.current = window.setTimeout(async () => {
       try {
         lastQuery.current = q;
-        const r = await autocomplete(q);
-        if (q === lastQuery.current) {
-          if (r.suggestions.length > 0) setSuggestions(r.suggestions);
+        // GovMap (official government data) first; on miss/failure fall back
+        // to the server's autocomplete — the user never sees the difference.
+        let next: Suggestion[] = (await govmapAutocomplete(q)) ?? [];
+        if (next.length === 0 && q === lastQuery.current) {
+          next = (await autocomplete(q)).suggestions;
         }
+        if (q === lastQuery.current && next.length > 0) setSuggestions(next);
       } catch {
         /* ignore */
       }

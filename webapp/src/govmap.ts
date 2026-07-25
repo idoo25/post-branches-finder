@@ -119,40 +119,79 @@ export function itmToWgs84(easting: number, northing: number): [number, number] 
 
 const WKT_POINT_RE = /^POINT\s*\(\s*([\d.]+)\s+([\d.]+)\s*\)$/;
 
-/** Resolve a free-text Israeli address via GovMap. Returns WGS84 coordinates,
- * or null on ANY miss/failure — callers fall back to the server's chain. */
-export async function govmapGeocode(address: string): Promise<{ lat: number; lng: number } | null> {
-  if (!API_KEY || !address.trim()) return null;
+interface GovmapResult {
+  text?: unknown;
+  centroid?: unknown;
+}
+
+/** Parse one api-search result into a WGS84 point, or null if unusable. */
+function resultToPoint(r: GovmapResult): { lat: number; lng: number } | null {
+  if (typeof r?.centroid !== "string") return null;
+  const m = WKT_POINT_RE.exec(r.centroid);
+  if (!m) return null;
+  const [lat, lng] = itmToWgs84(parseFloat(m[1]), parseFloat(m[2]));
+  // Sanity: must land inside Israel's bounding box, else refuse the result.
+  if (lat < 29 || lat > 33.5 || lng < 34 || lng > 36) return null;
+  return { lat, lng };
+}
+
+async function apiSearch(
+  searchText: string,
+  opts: { maxResults: number; isAccurate: boolean; timeoutMs: number },
+): Promise<GovmapResult[] | null> {
+  if (!API_KEY || !searchText.trim()) return null;
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 6500);
+  const timer = setTimeout(() => ctrl.abort(), opts.timeoutMs);
   try {
     const resp = await fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        searchText: address,
+        searchText,
         language: "he",
-        maxResults: 5,
-        isAccurate: true,
+        maxResults: opts.maxResults,
+        isAccurate: opts.isAccurate,
         apiKey: API_KEY,
       }),
       signal: ctrl.signal,
     });
     if (!resp.ok) return null;
     const data = await resp.json();
-    const hit = (data?.results ?? []).find(
-      (r: { centroid?: unknown }) => typeof r?.centroid === "string",
-    );
-    if (!hit) return null;
-    const m = WKT_POINT_RE.exec(hit.centroid as string);
-    if (!m) return null;
-    const [lat, lng] = itmToWgs84(parseFloat(m[1]), parseFloat(m[2]));
-    // Sanity: must land inside Israel's bounding box, else refuse the result.
-    if (lat < 29 || lat > 33.5 || lng < 34 || lng > 36) return null;
-    return { lat, lng };
+    return Array.isArray(data?.results) ? (data.results as GovmapResult[]) : null;
   } catch {
     return null;
   } finally {
     clearTimeout(timer);
   }
+}
+
+/** Resolve a free-text Israeli address via GovMap. Returns WGS84 coordinates,
+ * or null on ANY miss/failure — callers fall back to the server's chain. */
+export async function govmapGeocode(address: string): Promise<{ lat: number; lng: number } | null> {
+  const results = await apiSearch(address, { maxResults: 5, isAccurate: true, timeoutMs: 6500 });
+  for (const r of results ?? []) {
+    const pt = resultToPoint(r);
+    if (pt) return pt;
+  }
+  return null;
+}
+
+/** As-you-type suggestions via GovMap (isAccurate=false tolerates partial
+ * input). Returns null/[] on miss — callers fall back to the server's
+ * autocomplete so the user never sees the difference. Verified behavior:
+ * partial street+number queries work well; partial settlement names may
+ * return nothing (the fallback covers those). */
+export async function govmapAutocomplete(
+  query: string,
+): Promise<Array<{ label: string; lat: number; lng: number }> | null> {
+  const results = await apiSearch(query, { maxResults: 5, isAccurate: false, timeoutMs: 3500 });
+  if (!results) return null;
+  const out: Array<{ label: string; lat: number; lng: number }> = [];
+  for (const r of results) {
+    const pt = resultToPoint(r);
+    if (pt && typeof r.text === "string" && r.text.trim()) {
+      out.push({ label: r.text, ...pt });
+    }
+  }
+  return out;
 }
