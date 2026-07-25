@@ -141,6 +141,10 @@ a { color: inherit; text-decoration: none; }
 /* ----- Hero / search panel ----- */
 .hero {
   padding: 24px 24px 0;
+  /* Above the map: Leaflet's internal panes/controls carry z-indexes up to
+     ~1000, and the address-suggestions dropdown must paint over them. */
+  position: relative;
+  z-index: 300;
 }
 
 .hero-card {
@@ -150,12 +154,15 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
-  overflow: hidden;
+  /* NOT overflow:hidden — it would clip the suggestions dropdown at the
+     card's bottom edge. The gradient child rounds its own top corners. */
+  overflow: visible;
 }
 
 .hero-top {
   padding: 28px 28px 0;
   background: linear-gradient(180deg, var(--surface) 0%, var(--brand-light) 120%);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
 .hero-title {
