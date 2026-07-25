@@ -20,7 +20,17 @@ from __future__ import annotations
 
 import os
 import sqlite3
+import sys
 from pathlib import Path
+
+# On Windows the console encoding is often cp1252, which can't print Hebrew or
+# arrows — and an *uncatchable* UnicodeEncodeError inside a log print() in an
+# `except` block would torpedo the very fallback chain doing the logging (this
+# actually happened: an ORS timeout's fallback print crashed the handler and
+# turned a graceful degradation into a raw 500). Make logging unable to crash.
+for _stream in (sys.stdout, sys.stderr):
+    if _stream is not None and hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(errors="replace")
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware

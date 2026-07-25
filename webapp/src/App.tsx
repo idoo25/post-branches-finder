@@ -13,6 +13,7 @@ import {
   type SearchResponse,
   type BranchSummary,
 } from "./api";
+import { govmapGeocode } from "./govmap";
 
 const MODE_SUBTITLES: Record<Mode, string> = {
   travel: "מצאו את 10 הסניפים הקרובים ביותר לפי זמן נסיעה אמיתי, כולל תנועה בזמן אמת.",
@@ -74,7 +75,12 @@ export default function App() {
     setSelectedRank(null);
     setHoveredRank(null);
     try {
-      const r = await search({ address, lat: coord?.lat, lng: coord?.lng });
+      // No explicit coordinate (autocomplete pick)? Ask GovMap — the official
+      // government geocoder — first, from the browser (domain-locked key).
+      // Returns null on any miss/failure, leaving the server chain to geocode.
+      const resolved = coord ?? (await govmapGeocode(address)) ?? undefined;
+      if (requestId !== searchRequestIdRef.current) return;
+      const r = await search({ address, lat: resolved?.lat, lng: resolved?.lng });
       if (requestId !== searchRequestIdRef.current) return;
       setResults(r.results);
       setOrigin(r.origin);
@@ -103,6 +109,12 @@ export default function App() {
     setSelectedRank(null);
     setHoveredRank(null);
     try {
+      // Same GovMap-first resolution as travel mode (see handleSearch).
+      if (params.lat === undefined && params.address) {
+        const gv = await govmapGeocode(params.address);
+        if (requestId !== nearbyRequestIdRef.current) return;
+        if (gv) params = { lat: gv.lat, lng: gv.lng };
+      }
       const r = await nearbyByAirDistance(params);
       if (requestId !== nearbyRequestIdRef.current) return;
       const asRanked: RankedBranch[] = r.results.map((x) => ({
