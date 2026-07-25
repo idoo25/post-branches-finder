@@ -13,6 +13,7 @@
 
 const API_KEY = import.meta.env.VITE_GOVMAP_API_KEY as string | undefined;
 const ENDPOINT = "https://www.govmap.gov.il/api/search-service/api-search";
+const AC_ENDPOINT = "https://www.govmap.gov.il/api/search-service/autocomplete";
 
 // ---------------------------------------------------------------------------
 // ITM (EPSG:2039, Israel TM Grid) -> WGS84.
@@ -176,22 +177,55 @@ export async function govmapGeocode(address: string): Promise<{ lat: number; lng
   return null;
 }
 
-/** As-you-type suggestions via GovMap (isAccurate=false tolerates partial
- * input). Returns null/[] on miss — callers fall back to the server's
- * autocomplete so the user never sees the difference. Verified behavior:
- * partial street+number queries work well; partial settlement names may
- * return nothing (the fallback covers those). */
+// GovMap's dedicated /autocomplete returns shapes in Web Mercator (EPSG:3857),
+// unlike api-search's ITM — a different, much simpler conversion.
+const MERC_R = 6378137.0;
+function mercatorToWgs84(x: number, y: number): [number, number] {
+  const lng = (x / MERC_R) * (180 / Math.PI);
+  const lat = (2 * Math.atan(Math.exp(y / MERC_R)) - Math.PI / 2) * (180 / Math.PI);
+  return [lat, lng];
+}
+
+interface GovmapAcResult {
+  text?: unknown;
+  shape?: unknown;
+}
+
+/** As-you-type suggestions via GovMap's dedicated autocomplete endpoint —
+ * much broader coverage than api-search on partial input (settlements, POIs,
+ * streets; verified: "תל א" → 2,700+ candidates, "מצפה רמ" → מצפה-רמון).
+ * Returns null/[] on miss — callers fall back to the server's autocomplete
+ * so the user never sees the difference. */
 export async function govmapAutocomplete(
   query: string,
 ): Promise<Array<{ label: string; lat: number; lng: number }> | null> {
-  const results = await apiSearch(query, { maxResults: 5, isAccurate: false, timeoutMs: 3500 });
-  if (!results) return null;
-  const out: Array<{ label: string; lat: number; lng: number }> = [];
-  for (const r of results) {
-    const pt = resultToPoint(r);
-    if (pt && typeof r.text === "string" && r.text.trim()) {
-      out.push({ label: r.text, ...pt });
+  if (!API_KEY || !query.trim()) return null;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 3500);
+  try {
+    const resp = await fetch(AC_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ searchText: query, language: "he", maxResults: 5, apiKey: API_KEY }),
+      signal: ctrl.signal,
+    });
+    if (!resp.ok) return null;
+    const data = await resp.json();
+    const results: GovmapAcResult[] = Array.isArray(data?.results) ? data.results : [];
+    const out: Array<{ label: string; lat: number; lng: number }> = [];
+    for (const r of results) {
+      if (typeof r.text !== "string" || !r.text.trim() || typeof r.shape !== "string") continue;
+      const m = WKT_POINT_RE.exec(r.shape);
+      if (!m) continue;
+      const [lat, lng] = mercatorToWgs84(parseFloat(m[1]), parseFloat(m[2]));
+      // Sanity: inside Israel's bounding box, else skip the candidate.
+      if (lat < 29 || lat > 33.5 || lng < 34 || lng > 36) continue;
+      out.push({ label: r.text, lat, lng });
     }
+    return out;
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
   }
-  return out;
 }
